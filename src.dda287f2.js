@@ -74,4 +74,4 @@ var t=arguments[3],e="Expected a function",n=NaN,r="[object Symbol]",i=/^\s+|\s+
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=d(require("./js/movies-API-service")),r=d(require("./handlebars/article.hbs")),s=d(require("./handlebars/grid-cards.hbs")),i=d(require("axios")),u=d(require("notiflix")),a=d(require("lodash.debounce"));function d(e){return e&&e.__esModule?e:{default:e}}
 },{"./sass/main.scss":"clu1","./js/movies-API-service":"clu1","./handlebars/article.hbs":"BCuf","./handlebars/grid-cards.hbs":"BCuf","axios":"dZBD","notiflix":"xeAG","lodash.debounce":"PZFh"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-team9-project/src.7531dcd3.js.map
+//# sourceMappingURL=/filmoteka-team9-project/src.dda287f2.js.map
