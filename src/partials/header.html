@@ -1,0 +1,50 @@
+<header class="header header--home">
+    <div class="header__wrapper">
+        <a class="header__link" href="/index.html">
+            <svg class="header__icon">
+                <use href="./images/sprite.svg#logo_icon"  style="width: 24px; height: 24px;"></use>
+            </svg>
+            <h1 class="header__title" id="navlink-homepage">
+                Filmoteka
+            </h1>
+        </a>
+        <nav class="header__nav">
+                <a href="/index.html" class="header__navlink header__navlink--currentlink" id="navlink-home">
+                    home
+                </a>
+                <a class="header__navlink" id="navlink-library">
+                    my library
+                </a>
+        </nav>
+    </div>
+
+    <!-- Секция поиска, будет активна на главной странице и скрываться на библиотеке -->
+    <div class="search__section">
+        <form action="searchQuery" class="search__form">
+            <label class="search__formwrapper">
+                <input type="text" class="search__input" id="search-input" placeholder="Поиск фильмов">
+                <svg class="search__inputicon" style="height: 12px; width: 12px;">
+                    <use href="./images/sprite.svg#search_icon"></use>
+                </svg>
+            </label>
+        </form>
+
+        <!-- Блок уведомления о неуспешном поиске. Прописан display:none, 
+            при выполнении условия в пустом поиске он будет сниматься -->
+        <div class="search__hint" id="search-hint">
+            <a>Search result not successful. Enter the correct movie name</a>
+        </div>
+    </div>
+
+    <!-- Секция для кнопок библиотеки, будет скрыта на главной странице и активна на библиотеке -->
+    <div class="library__section">
+        <div class="library__buttons">
+            <button class="library_button btn" id="button-watched">
+                watched
+            </button>
+            <button class="library_button btn" id="button-queue">
+                queue
+            </button>
+        </div>
+    </div>
+</header>
