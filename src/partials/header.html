@@ -1,0 +1,50 @@
+<header class="header__home">
+    <section class="header__wrapper">
+        <h1 class="header__title" id="navlink-homepage">
+            <svg class="header__icon">
+                <use href="#"  style="width: 24px; height: 24px;"></use>
+            </svg>
+            Filmoteka
+        </h1>
+        <nav class="header__nav">
+            <ul class="header__navlist">
+                <li class="header__navlink header__navlink--currentlink" id="navlink-home">
+                    home
+                </li>
+                <li class="header__navlink" id="navlink-library">
+                    my library
+                </li>
+
+            </ul>
+        </nav>
+    </section>
+
+    <!-- Секция поиска, будет активна на главной странице и скрываться на библиотеке -->
+    <section class="search__section">
+        <form action="searchQuery" class="search__form">
+            <div class="search__formwrapper">
+                <input type="text" class="search__input" id="search-input" placeholder="Поиск фильмов">
+                <svg class="search__inputicon" style="height: 12px; width: 12px;">
+                    <use href="#"></use>
+                </svg>
+            </div>
+        </form>
+
+        <!-- Блок уведомления о неуспешном поиске. Будет активироваться по условию либо загружаться через шаблоны -->
+        <div class="search__hint" id="search-hint">
+            <a>Search result not successful. Enter the correct movie name</a>
+        </div>
+    </section>
+
+    <!-- Секция для кнопок библиотеки, будет скрыта на главной странице и активна на библиотеке -->
+    <section class="library__section">
+        <div class="library__buttons">
+            <button class="library__button" id="button-watched">
+                watched
+            </button>
+            <button class="library__button" id="button-queue">
+                queue
+            </button>
+        </div>
+    </section>
+</header>
