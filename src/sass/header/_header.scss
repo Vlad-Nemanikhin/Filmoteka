@@ -1,0 +1,251 @@
+.header {
+    position: relative;
+    overflow: hidden;
+  
+
+&__wrapper {
+    padding: 40px 20px 40px 20px;
+
+    @media screen and (min-width: 768px) {
+        padding: 45px 70px 40px 70px;
+    }
+}
+
+&--home {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/header_mobile.jpg);
+    background-size: auto 100%;
+    background-position: center;
+  
+        @media screen and (min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+              url(../images/header_mobile@2x.jpg);
+              background-size: auto 100%;
+              background-position: center;
+                    }
+      
+        @media screen and (min-width: 768px) {
+            background-image: url(../images/header_tablet.jpg);
+            background-size: auto 100%;
+            background-position: center;
+                  }
+
+                  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+                  screen and (min-width: 768px) and (min-resolution: 192dpi),
+                  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+                    background-image: url(../images/header_tablet@2x.jpg);
+                    background-size: auto 100%;
+                    background-position: center;
+                                  };
+
+
+        @media screen and (min-width: 1024px) {
+            background-image: url(../images/header_desktop.jpg);
+            background-size: auto 100%;
+            background-position: center;
+                  }
+
+                  @media screen and (min-width: 1024px) and (min-device-pixel-ratio: 2),
+                  screen and (min-width: 1024px) and (min-resolution: 192dpi),
+                  screen and (min-width: 1024px) and (min-resolution: 2dppx) {
+                    background-image: url(../images/header_desktop@2x.jpg);
+                    background-size: auto 100%;
+                    background-position: center;
+                                  };
+    }
+
+&--library {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/my_library_mobile.jpg);
+    background-size: auto 100%;
+    background-position: center;
+  
+        @media screen and (min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+              url(../images/my_library_mobile@2x.jpg);
+              background-size: auto 100%;
+              background-position: center;
+                    }
+      
+        @media screen and (min-width: 768px) {
+            background-image: url(../images/my_library_tablet.jpg);
+            background-size: auto 100%;
+            background-position: center;
+                  }
+
+                  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+                  screen and (min-width: 768px) and (min-resolution: 192dpi),
+                  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+                    background-image: url(../images/my_library_tablet@2x.jpg);
+                    background-size: auto 100%;
+                    background-position: center;
+                                  };
+
+
+        @media screen and (min-width: 1024px) {
+            background-image: url(../images/my_library_desktop.jpg);
+            background-size: auto 100%;
+            background-position: center;
+                  }
+
+                  @media screen and (min-width: 1024px) and (min-device-pixel-ratio: 2),
+                  screen and (min-width: 1024px) and (min-resolution: 192dpi),
+                  screen and (min-width: 1024px) and (min-resolution: 2dppx) {
+                    background-image: url(../images/my_library_desktop@2x.jpg);
+                    background-size: auto 100%;
+                    background-position: center;
+                                  };
+    }
+
+&__link {
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+&__title {
+    font-size: 30px;
+    line-height: 1.17;
+    font-weight: 500;
+    color: $white-color;
+    margin-left: 10px;
+
+    &:focus,
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+&__icon {
+    width: 24px;
+    height: 24px;
+    color: #818181;
+}
+
+&__wrapper {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+
+&__nav {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+&__navlink {
+    margin: 0px;
+    font-size: 12px;
+    line-height: 1.17;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $white-color;
+
+    &:not(:last-child) {
+        margin-right: 40px;
+    }
+
+    &:focus,
+    &:hover,
+    &--currentlink {
+        cursor: pointer;
+        text-decoration: underline 2px $accent-text-color;
+    }
+}
+
+}
+
+// Стили поисковой секции для главной страницы
+
+.search__section {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    padding-bottom: 95px;
+}
+
+.search__form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search__formwrapper {
+    position: relative;
+    border-bottom: 1px solid $white-color;
+}
+
+.search__input {
+    width: 280px;
+    height: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.17;
+    outline: none;
+    color: $white-color;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.0);
+
+    @media screen and (min-width: 768px) {
+        width: 336px;
+    }
+}
+
+.search__hint {
+    display: none;
+    font-size: 14px;
+    line-height: 1.17;
+    font-weight: 400;
+    color: $hint-red-color;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Стили секции для библиотеки
+
+
+.library__section {
+    display: none;
+    align-items: baseline;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 65px;
+}
+
+.library__btn {
+    width: 135px;
+    height: 45px;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $white-color;
+    background-color: rgba(255, 255, 255, 0.0);
+    border: $white-color 1px solid;
+
+    &:not(last-child) {
+        margin-right: 15px;
+    }
+
+    &:focus,
+    &:hover,
+    &--active {
+        cursor: pointer;
+        background-color: $accent-btn-color;
+    }
+}
