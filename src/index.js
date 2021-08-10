@@ -5,3 +5,7 @@ import cards from './handlebars/grid-cards.hbs';
 import axios from 'axios';
 import Notiflix from "notiflix";
 import debounce from 'lodash.debounce';
+import * as APIs from './js/movies-API-service';
+
+APIs.fetchGenres();
+
