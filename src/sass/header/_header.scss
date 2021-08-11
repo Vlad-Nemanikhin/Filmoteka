@@ -147,11 +147,13 @@
 }
 
 &__navlink {
+    position: relative;
     margin: 0px;
     font-size: 12px;
     line-height: 1.17;
     font-weight: 500;
     text-transform: uppercase;
+    text-decoration: none;
     color: $white-color;
 
     &:not(:last-child) {
@@ -162,7 +164,19 @@
     &:hover,
     &--currentlink {
         cursor: pointer;
-        text-decoration: underline 2px $accent-text-color;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            border-radius: 2px;
+            background-color: $accent-text-color;
+            opacity: 1;
+            transition: $anim-duration $anim-timing;
+          }
+      
     }
 }
 
@@ -186,6 +200,17 @@
 .search__formwrapper {
     position: relative;
     border-bottom: 1px solid $white-color;
+}
+
+.search__button {
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.0);
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+    }
 }
 
 .search__input {
