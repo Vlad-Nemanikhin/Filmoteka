@@ -9,4 +9,6 @@ import * as APIs from './js/movies-API-service';
 import modalHidden from './js/close-modal'
 
 APIs.fetchGenres();
+modalHidden.closeModal();
+
 
