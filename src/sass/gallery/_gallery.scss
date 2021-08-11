@@ -10,7 +10,7 @@
   }
 }
 
-.gallery-list {
+.gallery__list {
   list-style: none;
   display: block;
   margin: 0 auto;
@@ -30,7 +30,7 @@
   }
 }
 
-.gallery-item {
+.gallery__item {
   border: solid 1px orange;
 //   max-width: 280px;
   margin-bottom: 20px;
@@ -51,11 +51,11 @@
   }
 }
 
-.gallery-info_list {
+.gallery__info-list {
   list-style: none;
 }
 
-.gallery-image_wrapper {
+.gallery__image-wrapper {
   border: solid 1px rgb(67, 31, 97);
   border-radius: 5px;
   object-fit: contain;
@@ -64,16 +64,16 @@
 //   height: 402px;
 }
 
-.gallery-info_genre {
+.gallery__info-genre {
   color: rgba(255, 107, 8, 1);
   margin: 0;
 }
 
-.gallery-info_name {
+.gallery__info-name {
   margin: 0;
 }
 
-.gallery-info_rating {
+.gallery__info-rating {
   height: 16px;
   width: 36px;
   background-color: rgba(255, 107, 1, 1);
