@@ -1,50 +1,13 @@
-//База, перенести в container
-
-html {
-    box-sizing: border-box;
-}
-
-*,
-*:after,
-*:before {
-    box-sizing: inherit;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-p {
-    margin: 0;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
 //стилизация бэкдропа
 
 .backdrop {
     position: fixed;
-    align-items: center;
-    justify-content: center;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    background-color:  rgba(0, 0, 0, 0.25);
+    margin-top: 0;
+    background-color:  $backdrop-color;
     overflow-y: scroll;
 
     padding-left: 20px;
@@ -67,9 +30,15 @@ img {
 // базовая разметка модалки
 
 .modal {
-    background-color: rgba(255, 255, 255, 1);
-    position: relative;
+    background-color: $white-color;
+    position: absolute;
+    transform: translateX(-50%) translateY(-5%);
+    top: 93px;
+    left: 50%;
     overflow-y: scroll;
+
+    width: 280px;
+    height: 958px;
 
     padding-left: 20px;
     padding-right: 20px;
@@ -77,6 +46,10 @@ img {
     padding-bottom: 20px;
 
     @media screen and (min-width: 768px) {
+        width: 618px;
+        height: 562px;
+        transform: translateX(-50%) translateY(25%);
+
         padding-left: 28px;
         padding-right: 28px;
         padding-bottom: 40px;
@@ -84,6 +57,10 @@ img {
     }
 
     @media screen and (min-width: 1024px) {
+        width: 882px;
+        height: 568px;
+        transform: translateX(-50%) translateY(0);
+
         padding-left: 30px;
         padding-right: 30px;
         padding-bottom: 40px;
@@ -95,17 +72,17 @@ img {
 
 .modal__cross {
     position: absolute;
-    transform: translate(220px, -30px);
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     border: none;
     background-color: transparent;
-
-    @media screen and (min-width: 768px) {
-        transform: translate(600px, -30px);
-    }
-
-    @media screen and (min-width: 1024px) {
-        transform: translate(800px, -30px);
-    }
 
     &:hover,
     &:focus {
@@ -154,12 +131,11 @@ img {
 
 .modal__list {
     display: flex;
-    align-items: center;
+    margin-bottom: 20px;
 
+    align-items: center;
     font-size: 12px;
     line-height: 16px;
-
-    margin-bottom: 20px;
 }
 
 .modal__params {
@@ -202,10 +178,12 @@ img {
 //описание
 
 .modal__desc {
-    font-size: 12px;
-    line-height: 20px;
     margin-bottom: 20px;
     margin-top: 10px;
+
+    font-size: 12px;
+    line-height: 20px;
+    
 }
 
 //кнопки
@@ -221,25 +199,8 @@ img {
     }
 }
 
-.movie-card__btn {
-    border-radius: 5px;
-    background-color: transparent;
-    color: $main-text-color;
+//скрытие модалки
 
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 500;
-
-    &:hover,
-    &:focus {
-        background-color: $accent-btn-color;
-        color: $white-color;
-        border-color: inherit;
-    }
-
-    @media screen and (min-width: 1024px) {
-    &:first-child {
-        margin-right: 15px;
-    }
-}
+.modal--close {
+    display: none;
 }
