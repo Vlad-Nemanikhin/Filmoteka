@@ -4,9 +4,9 @@
             <svg class="header__icon">
                 <use href="./images/sprite.svg#logo_icon"  style="width: 24px; height: 24px;"></use>
             </svg>
-            <h1 class="header__title" id="navlink-homepage">
+            <span class="header__title" id="navlink-homepage">
                 Filmoteka
-            </h1>
+            </span>
         </a>
         <nav class="header__nav">
                 <a href="/index.html" class="header__navlink header__navlink--currentlink" id="navlink-home">
@@ -23,9 +23,11 @@
         <form action="searchQuery" class="search__form">
             <label class="search__formwrapper">
                 <input type="text" class="search__input" id="search-input" placeholder="Поиск фильмов">
-                <svg class="search__inputicon" style="height: 12px; width: 12px;">
-                    <use href="./images/sprite.svg#search_icon"></use>
-                </svg>
+                <button class="search__button" type="submit" id="search-button">
+                    <svg class="search__inputicon" style="height: 12px; width: 12px;">
+                        <use href="./images/sprite.svg#search_icon"></use>
+                    </svg>
+                </button>
             </label>
         </form>
 
