@@ -1,4 +1,4 @@
-const modal = document.querySelector('.modal');
-const closeModal = () => modal.classList.add('modal--close');
+const backdrop = document.querySelector('.backdrop');
+const closeModal = () => backdrop.classList.add('modal--close');
 
-export default {modal, closeModal};
+export default {backdrop, closeModal};
