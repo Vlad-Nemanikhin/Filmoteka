@@ -7,20 +7,17 @@ import Notiflix from "notiflix";
 import debounce from 'lodash.debounce';
 import * as APIs from './js/movies-API-service';
 
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery__list');
 const searchInput = document.querySelector('#search-input');
-let inputValue = '';
 
-searchInput.addEventListener('input', oninputChange);
 
 async function getGenres() {
    try {
        const result = await APIs.fetchGenres();
        const genres = result.genres;
-       const id = genres.map(id => id.id);
-       const name = genres.map(name => name.name);
-       localStorage.setItem(`${id}`, `${name}`);
-       console.log(genres);
+       for (const genre of genres) {
+           localStorage.setItem(`${genre.id}`,`${genre.name}`);
+       } 
    } catch (error) {
        console.log('OOOOOPS!');
    }
@@ -34,7 +31,7 @@ async function fetchTopMovies() {
         const movies = response.results;
         const genres = movies.map(r => r.genre_ids);
 
-        renderGenres(genres);
+        // renderGenres(genres);
         renderTopMovies(movies);
         console.log(movies);
         console.log(response);
@@ -46,39 +43,42 @@ async function fetchTopMovies() {
 fetchTopMovies();
 
 function renderTopMovies(movies) {
-    const markup = cards(movies);
-    // const releaseDate = movies.map(date => date.release_date);
-    // console.log(releaseDate);
+    const releaseDate = movies.map(date => date.release_date);
+    const releaseYears = releaseDate.map(year => year.slice(0, 4));
 
+    const markup = cards(movies, releaseYears);
     gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 function renderGenres(genres) {
-    // console.log(genres);
+    
 }
 
 
 
 // ----------------Функция по поиску фильма с инпута-----------------------
+// let inputValue = '';
 
-function oninputChange(event) {
-    inputValue = event.target.value;
-    console.log(inputValue);
-}
+// searchInput.addEventListener('input', oninputChange);
 
-// нужно в разметке доделать кнопку с ID button-search
-const buttonSearch = document.querySelector('#button-search');
-// и повесить слушатель на нее
-buttonSearch.addEventListener('click', getMoviesByInput);
+// function oninputChange(event) {
+//     inputValue = event.target.value;
+//     console.log(inputValue);
+// }
 
-async function getMoviesByInput(event) {
-    event.preventDefault();
-    try {
-        const response = await APIs.fetchMoviesByQuery(inputValue);
-        const movies = response.results;
-        console.log(movies);
-    } catch (error) {
-        console.log('ERROR');
-    }
-}
+// // нужно в разметке доделать кнопку с ID button-search
+// const buttonSearch = document.querySelector('#button-search');
+// // и повесить слушатель на нее
+// buttonSearch.addEventListener('click', getMoviesByInput);
+
+// async function getMoviesByInput(event) {
+//     event.preventDefault();
+//     try {
+//         const response = await APIs.fetchMoviesByQuery(inputValue);
+//         const movies = response.results;
+//         console.log(movies);
+//     } catch (error) {
+//         console.log('ERROR');
+//     }
+// }
 
