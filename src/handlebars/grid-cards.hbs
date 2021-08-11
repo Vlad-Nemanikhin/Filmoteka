@@ -1,0 +1,11 @@
+{{#each this}}
+    <li class="card-item">
+        <div class="img-wrp">
+            <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="movie poster" width="300" height="400">
+            <p class="title">{{original_title}}</p>
+            <span class="genres"></span>
+            <span class="date">{{release_date}}</span>
+            <span class="rating-off">{{vote_average}}</span>
+        </div>
+    </li>
+{{/each}}
