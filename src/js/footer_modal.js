@@ -110,6 +110,8 @@ const teamItems = [
   },
 ];
 
+//! Создание разметки команды
+
 const createTeamElements = teamItems.map(
   ({ photoLink, teamItemName, teamPosition, gitLink, emailLink, linkedinLink, telNumber }) => {
     return `<li class="team-item">
