@@ -14,12 +14,12 @@
   @media screen and (min-width: 768px) {
     transform: translateX(-50%) translateY(8%);
     top: 0;
-    max-width: 730px;
+    width: 630px;
   }
 
   @media screen and (min-width: 1024px) {
     transform: translateX(-50%) translateY(25%);
-    max-width: 900px;
+    width: 900px;
   }
 }
 
@@ -128,26 +128,26 @@
 
 .footer-backdrop__modal__upper {
   background-color: rgb(211, 204, 204);
-  position: absolute;
-  transform: translateX(-50%) translateY(0);
+  position: fixed;
+  transform: translateX(-50%) translateY(12%);
   top: 93px;
   left: 50%;
   min-width: 250px;
-  width: 75%;
+  width: 65%;
   height: auto;
   padding: 25px;
   border: 1px solid black;
   border-radius: 10px;
 
   @media screen and (min-width: 768px) {
-    transform: translateX(-50%) translateY(30%);
+    transform: translateX(-50%) translateY(44%);
     top: 0;
     max-width: 630px;
     height: auto;
   }
 
   @media screen and (min-width: 1024px) {
-    transform: translateX(-50%) translateY(35%);
+    transform: translateX(-50%) translateY(50%);
     max-width: 800px;
     height: auto;
   }
