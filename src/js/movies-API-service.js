@@ -7,6 +7,7 @@ const QUERY = '&language=en-US&page=1&include_adult=false';
 async function fetchGenres() {
     const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list${KEY}&language=en-US`);
     const genres = await response;
+    //console.log(genres.data.genres);
     return genres.data;
 }
 
