@@ -1,4 +1,4 @@
-import '../sass/dark-theme/dark-theme.scss';
+import '../sass/dark-theme/_dark-theme.scss';
 
 const themeToggle = document.getElementById('theme-switch-toggle');
 const Theme = {
