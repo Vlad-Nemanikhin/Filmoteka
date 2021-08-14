@@ -8,6 +8,8 @@ let page = 1;
 
 export const findFilms = refs.formEl.addEventListener('submit', getMoviesCards);
 
+saveGenres();
+
 //чистим галерею при обновлении результатов поиска
 function clearContainer() {
 	if (refs.galleryEl.hasChildNodes() === true) {
