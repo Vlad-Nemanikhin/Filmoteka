@@ -1,4 +1,4 @@
-
+import * as APIs from './movies-API-service';
 
 const gallery = document.querySelector('.gallery__list');
 
