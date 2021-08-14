@@ -4,9 +4,9 @@
             <svg class="header__icon">
                 <use href="./images/sprite.svg#logo_icon"  style="width: 24px; height: 24px;"></use>
             </svg>
-            <span class="header__title" id="navlink-homepage">
+            <h1 class="header__title" id="navlink-homepage">
                 Filmoteka
-            </span>
+            </h1>
         </a>
         <nav class="header__nav">
                 <a href="/index.html" class="header__navlink header__navlink--currentlink" id="navlink-home">
@@ -18,16 +18,44 @@
         </nav>
     </div>
 
+<!-- Разметка переключателя темы -->
+    <div class="toolbar">
+        <div class="theme-switch">
+          <svg class="theme-switch__icon" role="img" aria-label="Иконка солнца">
+            <use href="./images/sprite.svg#icon-brightness-up"></use>
+          </svg>
+  
+          <div class="theme-switch__control">
+            <input
+              class="theme-switch__toggle"
+              type="checkbox"
+              name="theme"
+              id="theme-switch-toggle"
+              aria-label="Переключить между тёмной и светлой темой"
+            />
+            <label
+              aria-hidden="true"
+              class="theme-switch__track"
+              for="theme-switch-toggle"
+            >
+            </label>
+            <div aria-hidden="true" class="theme-switch__marker"></div>
+          </div>
+  
+          <svg class="theme-switch__icon" aria-label="Иконка луны">
+            <use href="./images/sprite.svg#icon-moon"></use>
+          </svg>
+        </div>
+      </div>
+
     <!-- Секция поиска, будет активна на главной странице и скрываться на библиотеке -->
     <div class="search__section">
         <form action="searchQuery" class="search__form">
             <label class="search__formwrapper">
-                <input type="text" class="search__input" id="search-input" placeholder="Поиск фильмов" name="searchQuery">
-                <button class="search__button" type="submit" id="search-button">
-                    <svg class="search__inputicon" style="height: 12px; width: 12px;">
-                        <use href="./images/sprite.svg#search_icon"></use>
-                    </svg>
-                </button>
+                <input type="text" class="search__input" id="search-input" placeholder="Поиск фильмов">
+                <svg class="search__inputicon" style="height: 12px; width: 12px;">
+                    <use href="./images/sprite.svg#search_icon"></use>
+                </svg>
             </label>
         </form>
 
@@ -39,14 +67,16 @@
     </div>
 
     <!-- Секция для кнопок библиотеки, будет скрыта на главной странице и активна на библиотеке -->
-    <div class="library__section hidden_markup">
+    <div class="library__section">
         <div class="library__buttons">
-            <button class="library__btn library__btn--active" id="button-watched">
-                WATCHED
+            <button class="library_button btn" id="button-watched">
+                watched
             </button>
-            <button class="library__btn" id="button-queue">
-                QUERE
+            <button class="library_button btn" id="button-queue">
+                queue
             </button>
         </div>
     </div>
+
+    
 </header>
