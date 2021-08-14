@@ -5,8 +5,8 @@ const QUERY = '&language=en-US&page=1&include_adult=false';
 
 
 async function fetchGenres() {
-    const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list${KEY}&language=en-US`);
-    const genres = await response;
+    const responce = await axios.get(`https://api.themoviedb.org/3/genre/movie/list${KEY}&language=en-US`);
+    const genres = await responce;
     //console.log(genres.data.genres);
     return genres.data;
 }
@@ -23,8 +23,8 @@ async function fetchTopMovies() {
 
 
 async function fetchMoviesByQuery(movie, page) {
-    const response = await axios.get(`https://api.themoviedb.org/3/search/movie${KEY}${QUERY}&query=${movie}`);
-    const movies = await response;
+    const responce = await axios.get(`https://api.themoviedb.org/3/search/movie${KEY}${QUERY}&query=${movie}`);
+    const movies = await responce;
     return movies.data;
 }
 
