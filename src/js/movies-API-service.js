@@ -22,7 +22,7 @@ async function fetchTopMovies() {
 // fetchTopMovies();
 
 
-async function fetchMoviesByQuery(movie) {
+async function fetchMoviesByQuery(movie, page) {
     const response = await axios.get(`https://api.themoviedb.org/3/search/movie${KEY}${QUERY}&query=${movie}`);
     const movies = await response;
     return movies.data;
