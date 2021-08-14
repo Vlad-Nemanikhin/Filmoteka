@@ -3,10 +3,11 @@ import axios from 'axios';
 const KEY = '?api_key=130ddbced0917ef5d6e094c730cee47c';
 const QUERY = '&language=en-US&page=1&include_adult=false';
 
+
 async function fetchGenres() {
     const responce = await axios.get(`https://api.themoviedb.org/3/genre/movie/list${KEY}&language=en-US`);
     const genres = await responce;
-    console.log(genres.data.genres);
+    //console.log(genres.data.genres);
     return genres.data;
 }
 
@@ -22,10 +23,9 @@ async function fetchTopMovies() {
 // fetchTopMovies();
 
 
-async function fetchMoviesByQuery(movie) {
-    const responce = await axios.get(`https://api.themoviedb.org/3/search/movie${KEY}${QUERY}&query=${movie}`);
+async function fetchMoviesByQuery(movie, page) {
+    const responce = await axios.get(`https://api.themoviedb.org/3/search/movie${KEY}${QUERY}&query=${movie}&page=${page}`);
     const movies = await responce;
-    console.log(movies.data.results);
     return movies.data;
 }
 

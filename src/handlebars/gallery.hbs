@@ -1,6 +1,8 @@
 
-        <li class="gallery__item">
-            <div class="gallery__image-wrapper"><img src=""alt"">{{image}}</div>
-            <p class="gallery__info-name">{{name}}</p>
-            <p class="gallery__info-genre">{{#each genre}} | {{year}}<span class="gallery__info-rating">rating</span></p>{{/each}}
+
+        <li class="gallery__item" data-act="{{id}}">
+            <div class="gallery__image-wrapper"><img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}"></div>
+            <p class="gallery__info-name">{{title}}</p>
+            <ul class="gallery__info-genre">{{#each genre_ids}}<li class="gallery__info-item">{{this}}</li>{{/each}}<li class="gallery__info-item">| {{release_date}}</li><li class="gallery__info-item gallery__info-rating">{{vote_average}}</li></ul>
         </li>
+
