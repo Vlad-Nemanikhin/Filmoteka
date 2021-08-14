@@ -11,4 +11,3 @@ import changeHeader from './js/change-view-header';
 import './js/footer_modal';
 
 APIs.fetchGenres();
-modalHidden.closeModal();
