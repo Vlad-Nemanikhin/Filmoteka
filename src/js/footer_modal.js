@@ -3,8 +3,11 @@ const gitIcon = `${icons}#git_icon`;
 const mailIcon = `${icons}#mail_icon`;
 const linkedInIcon = `${icons}#icon-linkedin`;
 const phoneIcon = `${icons}#mobile-phone_icon`;
+const crossIcon = `${icons}#close_icon`;
 
 const teamList = document.querySelector('.team-list');
+const teamCardList = document.querySelector('.footer-modal__wrap__upper');
+
 const teamItems = [
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77212359?v=4',
@@ -113,7 +116,16 @@ const teamItems = [
 //! Создание разметки команды
 
 const createTeamElements = teamItems.map(
-  ({ photoLink, teamItemName, teamPosition, gitLink, emailLink, linkedinLink, telNumber }) => {
+  ({
+    photoLink,
+    teamItemName,
+    teamPosition,
+    gitLink,
+    emailLink,
+    linkedinLink,
+    telNumber,
+    mainDuties,
+  }) => {
     return `<li class="team-item">
           <img
             src="${photoLink}"
@@ -148,3 +160,115 @@ const createTeamElements = teamItems.map(
 );
 
 teamList.insertAdjacentHTML('beforeend', createTeamElements.join(''));
+
+// !закрытие модалки
+const backdropFooter = document.querySelector('.footer-backdrop');
+const modalFooter = document.querySelector('.footer-backdrop__modal');
+const closeModalBtn = document.querySelector('.close-btn-modal');
+const heartButton = document.querySelector('.heart');
+const developerLink = document.querySelector('.developers__link');
+
+backdropFooter.addEventListener('click', onFootBackdropClick);
+closeModalBtn.addEventListener('click', onFootModalCloseBtnClick);
+window.addEventListener('keydown', onKeyEscPress);
+heartButton.addEventListener('click', onHeartClick);
+developerLink.addEventListener('click', onHeartClick);
+
+function onMovieCardClick(e) {
+  if (e.target === e.currentTarget) {
+    backdropFooter.classList.toggle('backdrop--is-hidden');
+    modalFooter.classList.toggle('modal--close');
+  }
+}
+
+function onFootModalCloseBtnClick(e) {
+  backdropFooter.classList.toggle('backdrop--is-hidden');
+  modalFooter.classList.toggle('modal--close');
+
+  backdropFooter.removeEventListener('click', onFootBackdropClick);
+  window.removeEventListener('keydown', onKeyEscPress);
+}
+
+function onFootBackdropClick(e) {
+  if (e.target === e.currentTarget) {
+    backdropFooter.classList.toggle('backdrop--is-hidden');
+    modalFooter.classList.toggle('modal--close');
+  }
+}
+
+function onKeyEscPress(e) {
+  if (e.code === 'Escape') {
+    backdropFooter.classList.toggle('backdrop--is-hidden');
+    modalFooter.classList.toggle('modal--close');
+  }
+}
+
+function onHeartClick(e) {
+  backdropFooter.classList.toggle('backdrop--is-hidden');
+  modalFooter.classList.toggle('modal--close');
+  backdropFooter.addEventListener('click', onFootBackdropClick);
+  window.addEventListener('keydown', onKeyEscPress);
+}
+
+// !
+
+//! Создание разметки карточки
+
+const createTeamCardElements = teamItems.map(
+  ({
+    photoLink,
+    teamItemName,
+    teamPosition,
+    gitLink,
+    emailLink,
+    linkedinLink,
+    telNumber,
+    mainDuties,
+  }) => {
+    return `<div class="team-item__container">
+      <button class="close-btn modal__cross" data-modal-close>
+    <svg class="close-btn__icon" width="18" height="18">
+      <use width="18" height="18" href="${crossIcon}"></use>
+    </svg>
+  </button>      
+    <img
+            src="${photoLink}"
+            alt="member"
+            width="200"
+            height="200"
+            class="team-item__photo__upper"/>
+          <p class="team-item__name__upper">${teamItemName}</p>
+          <p class="team-item__position__upper">${teamPosition}</p>
+          <div class="team-item__social__upper">
+            <a href="${gitLink}" class="team-item__social-link__upper"
+              ><svg class="team-social__icon__upper" width="50" height="50">
+                <use width="50" height="50" href="${gitIcon}"></use>
+              </svg>
+            </a>
+            <a href="mailto:${emailLink}" class="team-item__social-link__upper"
+              ><svg class="team-social__icon__upper" width="50" height="50">
+                <use width="50" height="50" href="${mailIcon}"></use></svg
+            ></30
+            <a href="${linkedinLink}" class="team-item__social-link__upper"
+              ><svg class="team-social__icon__upper" width="50" height="50">
+                <use width="50" height="50" href="${linkedInIcon}"></use></svg
+            ></a>
+            <a href="tel:${telNumber})" class="team-item__social-link__upper"
+              ><svg class="team-social__icon__upper" width="50" height="50">
+                <use width="50" height="50" href="${phoneIcon}"></use></svg
+            ></a>
+          </div>
+          
+          <div class="team-item__inform">
+			    <div class="team-item__upper2">
+          <p class="team-item__feature">Ключевые особенности на проекте</p>
+          </div>
+          <div class="team-item__upper3">
+          <p class="team-item__discr__upper">${mainDuties}</p>
+          </div>
+        </div>
+        </div>`;
+  },
+);
+
+teamCardList.insertAdjacentHTML('beforeend', createTeamCardElements.join(''));

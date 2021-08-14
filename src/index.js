@@ -8,6 +8,7 @@ import modalHidden from './js/close-modal';
 import * as renderFilms from './js/renderFilmsFromSubmit';
 import { getYear } from 'date-fns';
 import changeHeader from './js/change-view-header';
+import './js/footer_modal';
 
 APIs.fetchGenres();
 modalHidden.closeModal();
