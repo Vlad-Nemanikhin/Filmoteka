@@ -15,7 +15,7 @@
   display: block;
   margin: 0 auto;
 
-  @media screen and (min-width 768px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     margin-top: -30px;
@@ -65,12 +65,17 @@
 }
 
 .gallery__info-genre {
+  display: flex;
   color: rgba(255, 107, 8, 1);
-  margin: 0;
+  margin: 5px 5px 5px 5px;
 }
 
 .gallery__info-name {
-  margin: 0;
+  margin-left: 5px;
+}
+
+.gallery__info-item {
+  margin-right: 5px;
 }
 
 .gallery__info-rating {

@@ -30,10 +30,17 @@ export function getMoviesCards(e) {
 	if (movie.length > 1) {
 		APIs.fetchMoviesByQuery(movie, page)
 			.then(res => {
-				console.log(res)
+				//console.log(res);
+
 				const data = res.results.map(el => {
 					return el;
 				})
+
+				data.map(el => {
+					const normalDate = getYear(new Date(el.release_date));
+					return el.release_date = normalDate;
+				})
+					
 				//console.log(data);
 				const parsedId = JSON.parse(localStorage.getItem('id'));
 				const parsedName = JSON.parse(localStorage.getItem('name'));
@@ -41,7 +48,6 @@ export function getMoviesCards(e) {
 				
 				console.log(arrOfGenres);
 				
-				//Необходимо массив имен жанров arrOfGenres поэлементно добавить в объект data[i] с ключем genre_names
 				data[0].genre_names = arrOfGenres[0];
 				data[1].genre_names = arrOfGenres[1];
 				data[2].genre_names = arrOfGenres[2];
@@ -67,7 +73,7 @@ export function getMoviesCards(e) {
 				page = page + 1;
 				clearContainer();
 				renderFilms(data);
-		
+				
 				if (res.total_results === 0) {
 					Notiflix.Notify.failure('could not enter the correct name');
 				}
@@ -115,10 +121,8 @@ function getNameOfGenre(parsedId, parsedName, data) {
 	console.log(data)
 	let idx = 0;
 	let gNames = [];
-	//let arrGenres = [];
 	let foundName = '';
-	
-	//let namesOfGenre = [];
+
 	const genreArrIds = data.map(el => {
 		return el.genre_ids
 	});
@@ -131,7 +135,7 @@ function getNameOfGenre(parsedId, parsedName, data) {
 				foundName = parsedName[idx];
 
 				//console.log(foundName);
-				gNames.push(foundName)
+					gNames.push(foundName)
 				}else{gNames.push('no genres')}
 		}
 		return gNames;
@@ -144,15 +148,21 @@ function getNameOfGenre(parsedId, parsedName, data) {
 	console.log(arrLength)
 	
 	let gArr = [];
+	let slicedArr = [];
+	let splicedArr = [];
 
 	for (let i = 0; i < arrLength.length; i++){
-		let slicedArr = gNames.slice(0, arrLength[i]);
-		gArr.push(slicedArr);
-		const splicedArr = gNames.splice(0, arrLength[i]);
+		if (arrLength[i] === 0) {
+			gArr.push(['no genres']);
+		} else if(arrLength[i] < 3){slicedArr = gNames.slice(0, arrLength[i]);
+			gArr.push(slicedArr);
+			splicedArr = gNames.splice(0, arrLength[i]);
+			}else{slicedArr = gNames.slice(0, arrLength[i]-2);
+			gArr.push(slicedArr);
+			splicedArr = gNames.splice(0, arrLength[i]);}
 		
 		//console.log(slicedArr);
 		//console.log(splicedArr);
 	}
 	return gArr;
 }
-
