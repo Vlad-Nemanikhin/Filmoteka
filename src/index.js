@@ -7,6 +7,7 @@ import * as APIs from './js/movies-API-service';
 import modalHidden from './js/close-modal';
 import * as renderFilms from './js/renderFilmsFromSubmit';
 import { getYear } from 'date-fns';
+import changeHeader from './js/change-view-header';
 
 APIs.fetchGenres();
 modalHidden.closeModal();
