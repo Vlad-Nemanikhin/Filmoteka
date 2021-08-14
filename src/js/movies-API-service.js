@@ -14,9 +14,8 @@ async function fetchGenres() {
 // fetchGenres();
 
 async function fetchTopMovies() {
-    const responce = await axios.get(`https://api.themoviedb.org/3/trending/movie/day${KEY}`);
-    const movies = await responce;
-    console.log(movies.data);
+    const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day${KEY}`);
+    const movies = await response;
     return movies.data;
 }
 
@@ -32,9 +31,9 @@ async function fetchMoviesByQuery(movie, page) {
 // fetchMoviesByQuery('pirates');
 
 async function fetchMovieById(movieId) {
-    const responce = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}${KEY}&language=en-US`);
-    const movie = await responce;
-    console.log(movie.data);
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}${KEY}&language=en-US`);
+    const movie = await response;
+    // console.log(movie.data);
     return movie.data;
 }
 
