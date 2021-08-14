@@ -14,7 +14,8 @@
 &--home {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/header_mobile.jpg);
-    background-size: auto 100%;
+    //background-size: auto 100%;
+    background-size: contain;
     background-position: center;
   
         @media screen and (min-device-pixel-ratio: 2),
@@ -22,13 +23,15 @@
         screen and (min-resolution: 2dppx) {
             background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
               url(../images/header_mobile@2x.jpg);
-              background-size: auto 100%;
+              ///background-size: auto 100%;
+              background-size: contain;
               background-position: center;
                     }
       
         @media screen and (min-width: 768px) {
             background-image: url(../images/header_tablet.jpg);
-            background-size: auto 100%;
+            //background-size: auto 100%;
+            background-size: contain;
             background-position: center;
                   }
 
@@ -36,14 +39,16 @@
                   screen and (min-width: 768px) and (min-resolution: 192dpi),
                   screen and (min-width: 768px) and (min-resolution: 2dppx) {
                     background-image: url(../images/header_tablet@2x.jpg);
-                    background-size: auto 100%;
+                    //background-size: auto 100%;
+                    background-size: contain;
                     background-position: center;
                                   };
 
 
         @media screen and (min-width: 1024px) {
             background-image: url(../images/header_desktop.jpg);
-            background-size: auto 100%;
+            //background-size: auto 100%;
+            background-size: contain;
             background-position: center;
                   }
 
@@ -51,15 +56,17 @@
                   screen and (min-width: 1024px) and (min-resolution: 192dpi),
                   screen and (min-width: 1024px) and (min-resolution: 2dppx) {
                     background-image: url(../images/header_desktop@2x.jpg);
-                    background-size: auto 100%;
+                   //background-size: auto 100%;
                     background-position: center;
+                    background-size: contain;
                                   };
     }
 
 &--library {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/my_library_mobile.jpg);
-    background-size: auto 100%;
+    //background-size: auto 100%;
+    background-size: contain;
     background-position: center;
   
         @media screen and (min-device-pixel-ratio: 2),
@@ -67,13 +74,15 @@
         screen and (min-resolution: 2dppx) {
             background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
               url(../images/my_library_mobile@2x.jpg);
-              background-size: auto 100%;
+              //background-size: auto 100%;
+              background-size: contain;
               background-position: center;
                     }
       
         @media screen and (min-width: 768px) {
             background-image: url(../images/my_library_tablet.jpg);
-            background-size: auto 100%;
+            //background-size: auto 100%;
+            background-size: contain;
             background-position: center;
                   }
 
@@ -81,14 +90,16 @@
                   screen and (min-width: 768px) and (min-resolution: 192dpi),
                   screen and (min-width: 768px) and (min-resolution: 2dppx) {
                     background-image: url(../images/my_library_tablet@2x.jpg);
-                    background-size: auto 100%;
+                    //background-size: auto 100%;
+                    background-size: contain;
                     background-position: center;
                                   };
 
 
         @media screen and (min-width: 1024px) {
             background-image: url(../images/my_library_desktop.jpg);
-            background-size: auto 100%;
+            //background-size: auto 100%;
+            background-size: contain;
             background-position: center;
                   }
 
@@ -96,7 +107,8 @@
                   screen and (min-width: 1024px) and (min-resolution: 192dpi),
                   screen and (min-width: 1024px) and (min-resolution: 2dppx) {
                     background-image: url(../images/my_library_desktop@2x.jpg);
-                    background-size: auto 100%;
+                    //background-size: auto 100%;
+                    background-size: contain;
                     background-position: center;
                                   };
     }
@@ -243,8 +255,8 @@
 // Стили секции для библиотеки
 
 
-.library__section {
-    display: none;
+.library__buttons {
+    display: flex;
     align-items: baseline;
     justify-content: center;
     padding-top: 10px;
@@ -272,5 +284,10 @@
     &--active {
         cursor: pointer;
         background-color: $accent-btn-color;
+        border-color: $accent-btn-color;
     }
+}
+
+.hidden_markup {
+    display: none;
 }
