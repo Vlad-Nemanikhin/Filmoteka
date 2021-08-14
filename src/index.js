@@ -7,8 +7,6 @@ import debounce from 'lodash.debounce';
 import * as APIs from './js/movies-API-service';
 import modalHidden from './js/close-modal';
 
-import changeHeader from './js/change-view-header'
-
 APIs.fetchGenres();
 modalHidden.closeModal();
 
