@@ -4,10 +4,9 @@ import card from '../handlebars/gallery.hbs';
 import Notiflix from "notiflix";
 import { getYear } from 'date-fns';
 
-let page = 1;
-
 export const findFilms = refs.formEl.addEventListener('submit', getMoviesCards);
-
+let page = 1;
+let pageArr = [];
 saveGenres();
 
 //чистим галерею при обновлении результатов поиска
@@ -18,21 +17,34 @@ function clearContainer() {
 }
 
 //сбрасываем количество просмотренных страниц
-function resetPage(page) {
+function resetPage() {
 		return page = 1;
 	}
+
+//счетчик страниц
+function pageCounter(page) {
+	page = ++page;
+	return page;
+}
 
 //основная функция - callback события
 export function getMoviesCards(e) {
 	e.preventDefault();
 	const movie = e.currentTarget.elements.searchQuery.value.trim();
-	
+	//resetPage();
+
 	if (movie.length > 1) {
 		APIs.fetchMoviesByQuery(movie, page)
 			.then(res => {
-				//console.log(res);
-
-				const data = res.results.map(el => {
+				if (res.total_results === 0) {
+					refs.notifyEl.classList.add('search__hint--blocked');
+				} else {
+					refs.notifyEl.classList.remove('search__hint--blocked');
+				}
+				page = page + 1;
+				pageArr.push(page);   
+				console.log(res)
+					const data = res.results.map(el => {
 					return el;
 				})
 
@@ -46,7 +58,7 @@ export function getMoviesCards(e) {
 				const parsedName = JSON.parse(localStorage.getItem('name'));
 				const arrOfGenres = getNameOfGenre(parsedId, parsedName, data);
 				
-				console.log(arrOfGenres);
+				//console.log(arrOfGenres);
 				
 				data[0].genre_names = arrOfGenres[0];
 				data[1].genre_names = arrOfGenres[1];
@@ -70,17 +82,15 @@ export function getMoviesCards(e) {
 				data[19].genre_names = arrOfGenres[19];
 				
 				//console.log(data);
-				page = page + 1;
+				
 				clearContainer();
 				renderFilms(data);
 				
-				if (res.total_results === 0) {
-					Notiflix.Notify.failure('could not enter the correct name');
-				}
 				return res.results;
 			}).catch(error => {
-				console.log(error)
-			});
+				console.dir(error);
+				
+				});
 		}
 }
 		
@@ -144,8 +154,8 @@ function getNameOfGenre(parsedId, parsedName, data) {
 	const arrLength=genreArrIds.map(item => {
 		return item.length;
 	})
-		console.log(gNames);
-	console.log(arrLength)
+		//console.log(gNames);
+	//console.log(arrLength)
 	
 	let gArr = [];
 	let slicedArr = [];
