@@ -15,6 +15,7 @@ const refs = {
 	footerHeartEl: document.querySelector('.heart'),
 	footerLinkEl: document.querySelector('.developers__link'),
 	galleryEl: document.querySelector('.gallery__list'),
-	dateEl: document.querySelector('.gallery__date')
+	dateEl: document.querySelector('.gallery__date'),
+	modalEl: document.querySelector('.modal')
 };
 export { refs };
