@@ -10,7 +10,7 @@ import { getYear } from 'date-fns';
 import changeHeader from './js/change-view-header';
 import './js/footer_modal';
 import switchTheme from './js/switch-theme';
-import renderTopMovies from './js/renderTopMovies';
+import renderPopMovies from './js/popular-movies.js';
 
 
 APIs.fetchGenres();
