@@ -13,5 +13,4 @@ import switchTheme from './js/switch-theme';
 import renderPopMovies from './js/popular-movies.js';
 import Pagination from 'tui-pagination';
 
-
 APIs.fetchGenres();
