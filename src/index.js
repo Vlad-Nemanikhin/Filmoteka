@@ -11,8 +11,6 @@ import changeHeader from './js/change-view-header';
 import './js/footer_modal';
 import switchTheme from './js/switch-theme';
 import renderTopMovies from './js/renderTopMovies';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 import './js/top-btn-scroll';
 
 APIs.fetchGenres();
