@@ -55,11 +55,7 @@ function onMovieCardClick(e) {
   const movieId = e.target.parentNode.parentNode.dataset.id;
 
  fetchMovieById(movieId).then(movie => renderMarkupModal(articleTpl(movie)));
-
-  // renderMarkupModal();
   refs.backdropEl.classList.toggle('backdrop--is-hidden');
-
-  // refs.modalEl.classList.toggle('modal--close');
   
 }
 
@@ -77,11 +73,7 @@ function onModalCloseBtnClick(e) {
 // при бажанні - можна забрати
 function onBackdropClick(e) {
   if (e.target === e.currentTarget) {
-    const isConfirm = confirm('Do you really want to leave?');
-    if (isConfirm) {
-      refs.backdropEl.classList.toggle('backdrop--is-hidden');
-    }
-    // refs.modalEl.classList.toggle('modal--close');
+    refs.backdropEl.classList.toggle('backdrop--is-hidden');
   }
 }
 
