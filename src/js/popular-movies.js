@@ -26,6 +26,7 @@ async function fetchTopMovies() {
         const movies = response.results;
         renderTopMovies(movies);
         renderGenres(movies);
+        return movies;
         //console.log(movies);
     } catch (error) {
         console.log(error);
@@ -85,4 +86,4 @@ function renderGenres(movies) {
     })
 }
 
-export{renderTopMovies, fetchTopMovies, getGenres, renderGenres}
+export { renderTopMovies, fetchTopMovies, getGenres, renderGenres };
