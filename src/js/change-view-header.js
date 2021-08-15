@@ -5,6 +5,7 @@ const homePageBtn = document.querySelector('#navlink-home');
 const homePageLogo = document.querySelector('.header__link');
 const bntWatch = document.querySelector('#button-watched');
 const bntQuere = document.querySelector('#button-queue');
+const galeryRating = document.querySelectorAll('.gallery__info-rating');
 
 libraryBtn.addEventListener('click', changeHeaderinLibrary);
 
@@ -12,6 +13,8 @@ function changeHeaderinLibrary () {
     inputSearch.classList.add('hidden_markup');
     btnInHeader.classList.remove('hidden_markup');
     homePageBtn.classList.remove('header__navlink--currentlink');
+    libraryBtn.classList.add('header__navlink--currentlink');
+    galeryRating.classList.remove('hidden_markup');
 }
 
 homePageBtn.addEventListener('click', changeHeaderinHome);
