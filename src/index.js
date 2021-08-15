@@ -13,6 +13,6 @@ import switchTheme from './js/switch-theme';
 import { renderTopMovies, fetchTopMovies, getGenres, renderGenres } from './js/popular-movies.js';
 import Pagination from 'tui-pagination';
 
-
+getGenres();
 APIs.fetchGenres();
 
