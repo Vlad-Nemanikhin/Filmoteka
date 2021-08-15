@@ -4,7 +4,7 @@ import { refs } from './refs';
 import { getYear } from 'date-fns';
 import Notiflix from 'notiflix';
 import fPagination from './pagination';
-
+let page = 1;
 // Функция записи жанров в локалсторедж
 async function getGenres() {
   try {
@@ -21,10 +21,11 @@ async function getGenres() {
 getGenres();
 
 // Функция отрисовки страници
-async function fetchTopMovies() {
+async function fetchTopMovies(page) {
   try {
-    const response = await APIs.fetchTopMovies();
-    console.log(response);
+    const response = await APIs.fetchTopMovies(page);
+    Notiflix.Loading.dots('Processing...');
+    const movies = response.results;
     //___________ПАГИНАЦИЯ_______________________
     const totalHits = response.total_pages;
     const currentPage = response.page;
@@ -37,20 +38,21 @@ async function fetchTopMovies() {
 
     instance.on('afterMove', event => {
       const currentPage = event.page;
-      OnMore(currentPage);
+      clearContainer();
+      fetchTopMovies(currentPage);
       console.log('currentPage', currentPage);
     });
     //_________________________________________
-    const movies = response.results;
+
     renderTopMovies(movies);
     renderGenres(movies);
-    //console.log(movies);
+    Notiflix.Loading.remove();
   } catch (error) {
     console.log(error);
   }
 }
 
-fetchTopMovies();
+fetchTopMovies(page);
 
 // Функция отрисовки популярных фильмов
 function renderTopMovies(movies) {
@@ -62,7 +64,7 @@ function renderTopMovies(movies) {
     })
     .join('');
 
-  //console.log(markup)
+  //console.log(markup);
   refs.galleryEl.insertAdjacentHTML('beforeend', markup);
 }
 
@@ -104,13 +106,10 @@ function renderGenres(movies) {
 
 export { renderTopMovies, fetchTopMovies, getGenres, renderGenres };
 
-//рендерит страницу с номером страницы
-async function OnMore(currentPage) {
-  Notiflix.Loading.dots('Processing...');
-  const cards = await APIs.fetchTopMovies();
-
-  // clearContainer();
-  //renderFilms(data);
-  Notiflix.Loading.remove();
-  console.log(cards);
+//чистим галерею при обновлении результатов поиска
+function clearContainer() {
+  if (refs.galleryEl.hasChildNodes() === true) {
+    refs.galleryEl.innerHTML = '';
+  }
+  return;
 }

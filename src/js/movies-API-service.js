@@ -14,14 +14,16 @@ async function fetchGenres() {
 
 // fetchGenres();
 
-async function fetchTopMovies() {
-  const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day${KEY}`);
+async function fetchTopMovies(page) {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/trending/movie/day${KEY}&page=${page}`,
+  );
   const movies = await response;
   console.log(movies.data);
   return movies.data;
 }
 
-// fetchTopMovies();
+//fetchTopMovies(2);
 
 async function fetchMoviesByQuery(movie, page) {
   const responce = await axios.get(
