@@ -16,7 +16,7 @@ async function getGenres() {
    }
 }   
 
-getGenres();
+// getGenres();
 
 // Функция отрисовки страници
 async function fetchTopMovies() {
@@ -32,7 +32,7 @@ async function fetchTopMovies() {
     }
 }
 
-fetchTopMovies();
+// fetchTopMovies();
 
 // Функция отрисовки популярных фильмов
 function renderTopMovies(movies) {
