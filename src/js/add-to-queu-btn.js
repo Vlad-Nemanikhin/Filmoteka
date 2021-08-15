@@ -1,11 +1,13 @@
 import localStorageAPI from "./localStorageAPI";
 
-const addQueueBtn = document.querySelector('button[data-name="queue"]')
 
-addQueueBtn.addEventListener('click', onAddQueueBtnClick)
+
+
 
 function onAddQueueBtnClick(evt) {
-  button = evt.target;
+  const button = evt.target;
+
+  console.log(evt.target);
 }
 
 function renameToDeleteQueueBtn(button) {
@@ -15,3 +17,5 @@ function renameToDeleteQueueBtn(button) {
 function renameToAddQueueBtn(button) {
   button.textContent = 'Add to queue'
 }
+
+export {onAddQueueBtnClick}

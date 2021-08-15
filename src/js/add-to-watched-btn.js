@@ -1,11 +1,10 @@
 import localStorageAPI from "./localStorageAPI";
 
-const addWatchedBtn = document.querySelector('button[data-name="watched"]')
 
-addWatchedBtn.addEventListener('click', onAddWatchedBtnClick)
-
-function onAddWatchedBtnClick(evt) {
+function onAddWatchedBtnClick(evt, movie) {
   const button = evt.target;
+
+  // console.log(movie);
 }
 
 
@@ -16,3 +15,5 @@ function renameToDeleteWatchedBtn(button) {
 function renameToAddWatchedBtn(button) {
   button.textContent = 'Add to watched'
 }
+
+export {onAddWatchedBtnClick}
