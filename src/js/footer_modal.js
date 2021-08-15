@@ -19,6 +19,7 @@ const teamItems = [
     telNumber: '+380666699988',
     mainDuties:
       'Координация работы всего проекта, ответственность за гитхаб, мерж веток, проверка реквестов.',
+    id: 1,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77548827?v=4',
@@ -30,6 +31,7 @@ const teamItems = [
     telNumber: '+380955325489',
     mainDuties:
       'Координация скорости и качеста выполнения всех потоков создания сего чудного сайта!',
+    id: 2,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77615583?v=4',
@@ -40,6 +42,7 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380509485523',
     mainDuties: 'Разработчик',
+    id: 3,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77894935?v=4',
@@ -50,6 +53,7 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com/in/евгения-вепрецкая-08412821a/',
     telNumber: '+380666699988',
     mainDuties: 'Разработчик',
+    id: 4,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77636476?v=4',
@@ -60,6 +64,7 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380666699988',
     mainDuties: 'Разработчик',
+    id: 5,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77733283?v=4',
@@ -70,6 +75,7 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380994483316',
     mainDuties: 'Разработчик',
+    id: 6,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/69204457?v=4',
@@ -80,6 +86,7 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380631935259',
     mainDuties: 'Разработчик',
+    id: 7,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77807168?v=4',
@@ -90,6 +97,7 @@ const teamItems = [
     linkedinLink: 'https://www.linkedin.com/in/roman-koval-2b3736203/',
     telNumber: '+380976788677',
     mainDuties: 'Разработчик',
+    id: 8,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/67787169?v=4',
@@ -100,6 +108,7 @@ const teamItems = [
     linkedinLink: 'https://www.linkedin.com/in/anatolii-medvediev-a81b60180/',
     telNumber: '+380660800906',
     mainDuties: 'Разработчик',
+    id: 9,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77930040?v=4',
@@ -110,6 +119,7 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380672462682',
     mainDuties: 'Разработчик',
+    id: 10,
   },
 ];
 
@@ -125,34 +135,36 @@ const createTeamElements = teamItems.map(
     linkedinLink,
     telNumber,
     mainDuties,
+    id,
   }) => {
     return `<li class="team-item">
-          <img
+            <img
             src="${photoLink}"
             alt="member"
             width="150"
             height="150"
             class="team-item__photo"
+            data-id="${id}"
           />
           <p class="team-item__name">${teamItemName}</p>
           <p class="team-item__position">${teamPosition}</p>
           <div class="team-item__social">
             <a href="${gitLink}" class="team-item__social-link"
-              ><svg class="team-social__icon" width="18" height="18">
-                <use width="18" height="18" href="${gitIcon}"></use>
+              ><svg class="team-social__icon" >
+                <use  href="${gitIcon}"></use>
               </svg>
             </a>
             <a href="mailto:${emailLink}" class="team-item__social-link"
-              ><svg class="team-social__icon" width="18" height="18">
-                <use width="18" height="18" href="${mailIcon}"></use></svg
+              ><svg class="team-social__icon" >
+                <use  href="${mailIcon}"></use></svg
             ></a>
             <a href="${linkedinLink}" class="team-item__social-link"
-              ><svg class="team-social__icon" width="18" height="18">
-                <use width="18" height="18" href="${linkedInIcon}"></use></svg
+              ><svg class="team-social__icon" >
+                <use  href="${linkedInIcon}"></use></svg
             ></a>
             <a href="tel:${telNumber})" class="team-item__social-link"
-              ><svg class="team-social__icon" width="18" height="18">
-                <use width="18" height="18" href="${phoneIcon}"></use></svg
+              ><svg class="team-social__icon" >
+                <use  href="${phoneIcon}"></use></svg
             ></a>
           </div>
         </li>`;
@@ -174,13 +186,6 @@ window.addEventListener('keydown', onKeyEscPress);
 heartButton.addEventListener('click', onHeartClick);
 developerLink.addEventListener('click', onHeartClick);
 
-function onMovieCardClick(e) {
-  if (e.target === e.currentTarget) {
-    backdropFooter.classList.toggle('backdrop--is-hidden');
-    modalFooter.classList.toggle('modal--close');
-  }
-}
-
 function onFootModalCloseBtnClick(e) {
   backdropFooter.classList.toggle('backdrop--is-hidden');
   modalFooter.classList.toggle('modal--close');
@@ -198,8 +203,12 @@ function onFootBackdropClick(e) {
 
 function onKeyEscPress(e) {
   if (e.code === 'Escape') {
-    backdropFooter.classList.toggle('backdrop--is-hidden');
-    modalFooter.classList.toggle('modal--close');
+    if (!teamCard.classList.contains('modal--close')) {
+      teamCard.classList.add('modal--close');
+    } else {
+      backdropFooter.classList.toggle('backdrop--is-hidden');
+      modalFooter.classList.toggle('modal--close');
+    }
   }
 }
 
@@ -225,8 +234,8 @@ const createTeamCardElements = teamItems.map(
     telNumber,
     mainDuties,
   }) => {
-    return `<div class="team-item__container">
-      <button class="close-btn modal__cross" data-modal-close>
+    return `<div class="team-item__container item">
+      <button class="close-btn-modal close-btn__modal_upper modal__cross" data-modal-close>
     <svg class="close-btn__icon" width="18" height="18">
       <use width="18" height="18" href="${crossIcon}"></use>
     </svg>
@@ -271,4 +280,93 @@ const createTeamCardElements = teamItems.map(
   },
 );
 
-teamCardList.insertAdjacentHTML('beforeend', createTeamCardElements.join(''));
+teamCardList.insertAdjacentHTML('afterbegin', createTeamCardElements.join(''));
+
+// ! ОТОБРАЖЕНИЕ ВТОРОЙ МОДАЛКИ
+const teamCard = document.querySelector('.footer-team-card-wrap');
+
+//* скрытие второ  модалки
+//скрытие по клику бэкдроп
+teamCard.addEventListener('click', onUpperBackdropClick);
+
+function onUpperBackdropClick(e) {
+  if (e.target === e.currentTarget) {
+    teamCard.classList.add('modal--close');
+    slideIndex = 0;
+  }
+}
+
+//скрытие по крестику работает только на первой карточке
+const closeUpperModalBtn = document.querySelector('.close-btn__modal_upper');
+closeUpperModalBtn.addEventListener('click', oncloseUpperModalBtn);
+
+function oncloseUpperModalBtn() {
+  teamCard.classList.add('modal--close');
+}
+
+// по клавише ESC
+
+function onKeyEscPressUpperModal(e) {
+  if (e.code === 'Escape') {
+    backdropFooter.classList.toggle('backdrop--is-hidden');
+    modalFooter.classList.toggle('modal--close');
+  }
+}
+// !
+
+// ! slider
+/* Индекс слайда по умолчанию */
+var slideIndex;
+// showSlides(slideIndex);
+
+/* Функция увеличивает индекс на 1, показывает следующй слайд*/
+function plusSlide() {
+  showSlides((slideIndex += 1));
+}
+
+/* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
+function minusSlide() {
+  showSlides((slideIndex -= 1));
+}
+
+/* Устанавливает текущий слайд */
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+  teamCard.classList.remove('modal--close');
+}
+
+/* Основная функция сладера */
+function showSlides(n) {
+  var i;
+  const slides = document.getElementsByClassName('item');
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';
+  }
+  slides[slideIndex - 1].style.display = 'block';
+}
+
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+prev.addEventListener('click', minusSlide);
+next.addEventListener('click', plusSlide);
+
+// ! slider
+
+// *костыли....для открытия карточки коллеги по клику на фото.... уже не костыли, а рабочий код :)
+const photoLink = document.querySelector('.team-list');
+photoLink.addEventListener('click', showUpperModal);
+
+function showUpperModal(event) {
+  event.preventDefault();
+  if (!modalFooter.classList.contains('modal--close') && event.target.nodeName === 'IMG') {
+    const cardId = event.target.dataset.id;
+    return currentSlide(cardId);
+  }
+}
+// *
