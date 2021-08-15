@@ -25,7 +25,7 @@ async function fetchTopMovies() {
         const response = await APIs.fetchTopMovies();
         const movies = response.results;
         renderTopMovies(movies);
-        //renderGenres(movies);
+        renderGenres(movies);
         //console.log(movies);
     } catch (error) {
         console.log(error);
@@ -47,12 +47,12 @@ function renderTopMovies(movies) {
 }
 
 // Функция отрисовки жанров
-const genreList = function renderGenres(movies) {
-    const galleryItem = document.querySelectorAll('.gallery__info-item');
+function renderGenres(movies) {
+    const galleryItem = document.querySelectorAll('.gallery__info-genre');
     const galleryItems = [...galleryItem];
     //console.log(galleryItems)
            
-    galleryItems.map((el, i) => {
+    galleryItems.map((div, i) => {
         const result = movies.map((movie) => {
         const movieGenres = movie.genre_ids;
         let array = [];
@@ -78,14 +78,11 @@ const genreList = function renderGenres(movies) {
             //console.log(genreString)
             return genreString;
         });
-        el.map(li => {
-            console.log(li.innerHtml = result[i])
-            return li.innerHtml = result[i];
-        })
         
-        //const span = `<span class="genres">${result[i]}</span>`;
-        //div.insertAdjacentHTML('beforeend', span);
+        const li = `<li class="gallery__info-item">${result[i]}</li>`;
+        //console.log(li)
+        div.insertAdjacentHTML('afterbegin', li);
     })
 }
 
-export{renderTopMovies, fetchTopMovies, getGenres}
+export{renderTopMovies, fetchTopMovies, getGenres, renderGenres}
