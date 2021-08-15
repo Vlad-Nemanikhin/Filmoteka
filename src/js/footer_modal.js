@@ -150,21 +150,21 @@ const createTeamElements = teamItems.map(
           <p class="team-item__position">${teamPosition}</p>
           <div class="team-item__social">
             <a href="${gitLink}" class="team-item__social-link"
-              ><svg class="team-social__icon" >
-                <use  href="${gitIcon}"></use>
+              ><svg class="team-social__icon" width="18" height="18">
+                <use width="18" height="18" href="${gitIcon}"></use>
               </svg>
             </a>
             <a href="mailto:${emailLink}" class="team-item__social-link"
-              ><svg class="team-social__icon" >
-                <use  href="${mailIcon}"></use></svg
+              ><svg class="team-social__icon" width="18" height="18">
+                <use width="18" height="18" href="${mailIcon}"></use></svg
             ></a>
             <a href="${linkedinLink}" class="team-item__social-link"
-              ><svg class="team-social__icon" >
-                <use  href="${linkedInIcon}"></use></svg
+              ><svg class="team-social__icon" width="18" height="18">
+                <use width="18" height="18" href="${linkedInIcon}"></use></svg
             ></a>
             <a href="tel:${telNumber})" class="team-item__social-link"
-              ><svg class="team-social__icon" >
-                <use  href="${phoneIcon}"></use></svg
+              ><svg class="team-social__icon" width="18" height="18">
+                <use width="18" height="18" href="${phoneIcon}"></use></svg
             ></a>
           </div>
         </li>`;
@@ -250,21 +250,21 @@ const createTeamCardElements = teamItems.map(
           <p class="team-item__position__upper">${teamPosition}</p>
           <div class="team-item__social__upper">
             <a href="${gitLink}" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper" width="50" height="50">
-                <use width="50" height="50" href="${gitIcon}"></use>
+              ><svg class="team-social__icon__upper">
+                <use href="${gitIcon}"></use>
               </svg>
             </a>
             <a href="mailto:${emailLink}" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper" width="50" height="50">
-                <use width="50" height="50" href="${mailIcon}"></use></svg
+              ><svg class="team-social__icon__upper">
+                <use href="${mailIcon}"></use></svg
             ></30
             <a href="${linkedinLink}" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper" width="50" height="50">
-                <use width="50" height="50" href="${linkedInIcon}"></use></svg
+              ><svg class="team-social__icon__upper">
+                <use href="${linkedInIcon}"></use></svg
             ></a>
             <a href="tel:${telNumber})" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper" width="50" height="50">
-                <use width="50" height="50" href="${phoneIcon}"></use></svg
+              ><svg class="team-social__icon__upper">
+                <use href="${phoneIcon}"></use></svg
             ></a>
           </div>
           

@@ -201,6 +201,10 @@
   }
 }
 
+.team-item__social-link__upper {
+  color: $secondary-text-color;
+}
+
 .team-social__icon__upper {
   fill: currentColor;
   margin-right: 10%;
@@ -228,7 +232,7 @@
 }
 
 .team-item__container {
-  background-color: rgb(211, 204, 204);
+  background-color: $footer-bg;
   position: fixed;
   transform: translateX(-50%) translateY(6%);
   top: 93px;
