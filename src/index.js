@@ -14,3 +14,5 @@ import { renderTopMovies, fetchTopMovies, getGenres, renderGenres } from './js/p
 import Pagination from 'tui-pagination';
 
 
+APIs.fetchGenres();
+
