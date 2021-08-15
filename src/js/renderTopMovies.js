@@ -1,6 +1,7 @@
 import * as APIs from './movies-API-service';
+import cards from '../handlebars/grid-top-movies.hbs';
+import { refs } from './refs';
 
-const gallery = document.querySelector('.gallery__list');
 
 // Функция записи жанров в локалсторедж
 async function getGenres() {
@@ -36,7 +37,7 @@ fetchTopMovies();
 // Функция отрисовки популярных фильмов
 function renderTopMovies(movies) {
     const markup = cards(movies);
-    gallery.insertAdjacentHTML('beforeend', markup);
+    refs.galleryEl.insertAdjacentHTML('beforeend', markup);
 }
 
 // Функция отрисовки жанров
@@ -69,7 +70,7 @@ function renderGenres(movies) {
             return genreString;
         });
 
-        const span = `<span calss="genres">${result[i]}</span>`;
+        const span = `<span class="genres">${result[i]}</span>`;
         div.insertAdjacentHTML('beforeend', span);
     })
 }

@@ -231,6 +231,10 @@
     margin-right: auto;
 }
 
+.search__hint--blocked {
+    display: block;
+}
+
 // Стили секции для библиотеки
 
 
@@ -254,7 +258,7 @@
     background-color: rgba(255, 255, 255, 0.0);
     border: $white-color 1px solid;
 
-    &:not(last-child) {
+    &:not(:last-child) {
         margin-right: 15px;
     }
 
