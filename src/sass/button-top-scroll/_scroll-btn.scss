@@ -1,0 +1,12 @@
+.TopBtnScroll {
+  //display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 25px;
+  &:focus,
+  &:hover {
+    cursor: pointer;
+    background-color: gray;
+  }
+}
