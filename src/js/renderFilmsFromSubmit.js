@@ -72,7 +72,12 @@ export function getMoviesCards(e) {
         const parsedName = JSON.parse(localStorage.getItem('name'));
         const arrOfGenres = getNameOfGenre(parsedId, parsedName, data);
 
-        //console.log(arrOfGenres);
+        arrOfGenres.map(el => {
+          if (el.length >= 3) {
+           return el.splice(2, el.length - 2);
+          }
+         })
+        console.log(arrOfGenres);
 
         data[0].genre_names = arrOfGenres[0];
         data[1].genre_names = arrOfGenres[1];
@@ -158,7 +163,7 @@ async function saveGenres() {
 
 //Выоводит массив массивов имен жанров по каждому объекту фильма согласно их genre_ids. Номер индекса подмассива жанров в массиве соответствует номеру индекса объекта фильма
 function getNameOfGenre(parsedId, parsedName, data) {
-  console.log(data);
+  //console.log(data);
   let idx = 0;
   let gNames = [];
   let foundName = '';
@@ -168,16 +173,15 @@ function getNameOfGenre(parsedId, parsedName, data) {
   });
 
   genreArrIds.map(item => {
-    //console.log(item)
+    //console.log(item.length)
     for (let i = 0; i < item.length; i++) {
       if (parsedId.includes(item[i]) === true) {
         idx = parsedId.indexOf(item[i]);
         foundName = parsedName[idx];
 
-        //console.log(foundName);
+        
         gNames.push(foundName);
-      } else {
-        gNames.push('no genres');
+        //console.log(gNames);
       }
     }
     return gNames;
@@ -187,7 +191,7 @@ function getNameOfGenre(parsedId, parsedName, data) {
     return item.length;
   });
   //console.log(gNames);
-  //console.log(arrLength)
+  console.log(arrLength)
 
   let gArr = [];
   let slicedArr = [];
@@ -196,12 +200,8 @@ function getNameOfGenre(parsedId, parsedName, data) {
   for (let i = 0; i < arrLength.length; i++) {
     if (arrLength[i] === 0) {
       gArr.push(['no genres']);
-    } else if (arrLength[i] < 3) {
-      slicedArr = gNames.slice(0, arrLength[i]);
-      gArr.push(slicedArr);
-      splicedArr = gNames.splice(0, arrLength[i]);
     } else {
-      slicedArr = gNames.slice(0, arrLength[i] - 2);
+      slicedArr = gNames.slice(0, arrLength[i]);
       gArr.push(slicedArr);
       splicedArr = gNames.splice(0, arrLength[i]);
     }
@@ -221,5 +221,5 @@ async function OnMore(movie, currentPage) {
   clearContainer();
   renderFilms(data);
   Notiflix.Loading.remove();
-  console.log(cards);
+  //console.log(cards);
 }
