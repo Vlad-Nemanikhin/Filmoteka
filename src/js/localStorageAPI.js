@@ -1,3 +1,5 @@
+import lightFormat from "date-fns/esm/fp/lightFormat/index.js";
+
 export default class {
 
   constructor() { }
@@ -9,6 +11,22 @@ export default class {
   filmQueueArr = [];
 
   //---------Save parth-------------
+
+  makeEmptyWatchedArr() {
+    if (this.getWatchedFilms()) {
+      return
+    }
+    
+    this.saveToWatchedLocal()
+  }
+  
+  makeEmptyQueueArr() {
+    if (this.getQueueFilms()) {
+      return
+    }
+    
+    this.saveToQueueLocal()
+  }
 
   saveToWatchedLocal() {
     try {
@@ -70,6 +88,24 @@ export default class {
     } catch (error) {
       console.error("Get state error: ", error.message)
     }
+  }
+
+  //--------Is has film?----------
+
+  isHasFilmInWatched(movie) {
+    const filmArr = this.getWatchedFilms();
+    
+    const isFilmInWathed = filmArr.find(filmFromLs => filmFromLs.id === movie.id)
+
+    return isFilmInWathed;
+  }
+
+  isHasFilmInQueue(movie) {
+    const filmArr = this.getQueueFilms();
+    
+    const isFilmInQueue = filmArr.find(filmFromLs => filmFromLs.id === movie.id)
+
+    return isFilmInQueue;
   }
 
 }

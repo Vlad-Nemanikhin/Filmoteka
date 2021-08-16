@@ -14,7 +14,12 @@ import debounce from 'lodash.debounce';
 import { getYear } from 'date-fns';
 import Pagination from 'tui-pagination';
 import 'lazysizes';
+import localStorageAPI from "./js/localStorageAPI";
 
 getGenres();
 APIs.fetchGenres();
+
+const lSAPI = new localStorageAPI();
+lSAPI.makeEmptyWatchedArr();
+lSAPI.makeEmptyQueueArr();
 
