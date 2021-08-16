@@ -17,4 +17,3 @@ import 'lazysizes';
 
 getGenres();
 APIs.fetchGenres();
-
