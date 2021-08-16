@@ -1,13 +1,12 @@
 import localStorageAPI from "./localStorageAPI";
 
+const lSAPI = new localStorageAPI();
 
 
 
-
-function onAddQueueBtnClick(evt) {
-  const button = evt.target;
-
-  console.log(evt.target);
+function onAddQueueBtnClick(movie, evt) {
+  lSAPI.saveFilmToQueueArr(movie);
+  lSAPI.saveToQueueLocal();
 }
 
 function renameToDeleteQueueBtn(button) {

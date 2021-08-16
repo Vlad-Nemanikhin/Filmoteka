@@ -1,10 +1,10 @@
 import localStorageAPI from "./localStorageAPI";
 
+const lSAPI = new localStorageAPI();
 
-function onAddWatchedBtnClick(evt, movie) {
-  const button = evt.target;
-
-  // console.log(movie);
+function onAddWatchedBtnClick(movie, evt) {
+  lSAPI.saveFilmToWatchedArr(movie);
+  lSAPI.saveToWatchedLocal();
 }
 
 

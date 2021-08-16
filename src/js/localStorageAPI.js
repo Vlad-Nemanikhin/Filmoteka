@@ -2,7 +2,7 @@ export default class {
 
   constructor() { }
 
-  WATCHED_KEY = 'watch';
+  WATCHED_KEY = 'watched';
   QUEUE_KEY = 'queue'
 
   filmWatchedArr = [];

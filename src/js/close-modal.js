@@ -1,9 +1,12 @@
 import { refs } from "./refs";
+import localStorageAPI from "./localStorageAPI";
 import renderMarkupModal from './render-modal-one-card';
 import { fetchMovieById } from "./movies-API-service";
 import articleTpl from "../handlebars/article.hbs";
 import { onAddWatchedBtnClick } from "./add-to-watched-btn";
 import { onAddQueueBtnClick } from "./add-to-queu-btn";
+
+const lSAPI = new localStorageAPI();
 
 // 1 open by click on the movie-card (either mainPage or library)
 
@@ -18,17 +21,15 @@ function onMovieCardClick(e) {
   const movieId = e.target.parentNode.parentNode.dataset.id;
 
   fetchMovieById(movieId).then(movie => {
+    lSAPI.setMovie(movie);
+
     renderMarkupModal(articleTpl(movie));
 
     const addToWatchedBtn = document.querySelector('button[data-name="watched"]');
+    addToWatchedBtn.addEventListener('click', onAddWatchedBtnClick.bind(addToWatchedBtn, movie));
+
     const addToQueueBtn = document.querySelector('button[data-name="queue"]');
-
-    addToWatchedBtn.addEventListener('click', function(evt, movie) {
-      // onAddWatchedBtnClick(evt, movie)
-
-      // console.log(movie);
-    });
-    addToQueueBtn.addEventListener('click', onAddQueueBtnClick)
+    addToQueueBtn.addEventListener('click', onAddQueueBtnClick.bind(addToQueueBtn, movie))
 
   });
 
