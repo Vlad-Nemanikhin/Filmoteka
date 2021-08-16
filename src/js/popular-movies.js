@@ -29,7 +29,7 @@ async function fetchTopMovies(page) {
         const movies = response.results;
         //___________ПАГИНАЦИЯ_______________________
         const totalHits = response.total_pages;
-        const currentPage = response.page;
+        let currentPage = response.page;
         console.log(totalHits);
         console.log(response.page);
 
@@ -38,7 +38,7 @@ async function fetchTopMovies(page) {
         instance.movePageTo(response.page);
 
         instance.on('afterMove', event => {
-            const currentPage = event.page;
+            currentPage = event.page;
             clearContainer();
             fetchTopMovies(currentPage);
             console.log('currentPage', currentPage);
@@ -92,7 +92,7 @@ async function fetchTopMovies(page) {
                         const moviegener = localStorage.getItem(gener);
                         array.push(moviegener);
                         let genreArray = array.slice(0, 2);
-                        genreArray.push('Other');
+                        genreArray.push('другие');
                         genreString = genreArray.join(', ');
                     }
                 });

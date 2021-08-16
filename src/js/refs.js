@@ -16,6 +16,7 @@ const refs = {
 	footerLinkEl: document.querySelector('.developers__link'),
 	galleryEl: document.querySelector('.gallery__list'),
 	dateEl: document.querySelector('.gallery__date'),
-	modalEl: document.querySelector('.modal')
+	modalEl: document.querySelector('.modal'),
+	topScrollBtn: document.querySelector('#scroll-btn')
 };
 export { refs };
