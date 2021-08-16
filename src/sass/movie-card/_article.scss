@@ -29,7 +29,8 @@
 
 // базовая разметка модалки
 
-.modal {
+.modal__wrapper {
+  display: block;
   background-color: $white-color;
   position: absolute;
   transform: translateX(-50%) translateY(-5%);
@@ -37,34 +38,41 @@
   left: 50%;
   overflow-y: scroll;
 
-  width: 280px;
-  height: 958px;
+  //width: 280px;
+  //height: 958px;
 
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 48px;
-  padding-bottom: 20px;
+  //padding-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 618px;
-    height: 562px;
+    //width: 618px;
+    //height: 562px;
     transform: translateX(-50%) translateY(25%);
 
     padding-left: 28px;
     padding-right: 28px;
-    padding-bottom: 40px;
+    //padding-bottom: 40px;
     padding-top: 48px;
   }
 
   @media screen and (min-width: 1024px) {
     width: 882px;
-    height: 568px;
+    //height: 568px;
     transform: translateX(-50%) translateY(0);
 
     padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 40px;
+    //padding-bottom: 40px;
     padding-top: 50px;
+  }
+}
+
+.modal {
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    width: 618px;
   }
 }
 
@@ -99,7 +107,14 @@
   box-sizing: border-box;
 }
 
-// .modal__cross {
+ .modal__cross {
+  right: 10px;
+
+  @media screen and (min-width: 768px) {
+    right: 20px;
+  }
+
+ }
 //   position: absolute;
 //   top: 10px;
 //   right: 10px;
@@ -122,10 +137,16 @@
 //обертка
 
 .modal__wrap {
+  //margin-bottom: 20px;
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
     align-items: space-between;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 0px;
   }
 }
 
@@ -133,6 +154,7 @@
 
 .modal__img {
   margin-bottom: 30px;
+  margin-left: 17px;
 
   @media screen and (min-width: 768px) {
     width: 264px;
@@ -143,6 +165,7 @@
   @media screen and (min-width: 1024px) {
     width: 396px;
     height: 478px;
+    margin-left: 220px;
   }
 }
 
@@ -169,6 +192,7 @@
 
 .modal__params {
   margin-right: 40px;
+  width: 70px;
 }
 
 .modal__item {
@@ -212,6 +236,10 @@
 
   font-size: 12px;
   line-height: 20px;
+
+  @media screen and (min-width: 1024px) {
+    width: 470px;
+  }
 }
 
 //кнопки
@@ -221,6 +249,7 @@
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 1024px) {
     justify-content: flex-start;
@@ -231,4 +260,9 @@
 
 .modal--close {
   display: none;
+}
+
+.modal__subtitle {
+  display: block;
+  margin-bottom: 10px;
 }
