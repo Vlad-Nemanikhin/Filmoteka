@@ -3,17 +3,25 @@ import localStorageAPI from "./localStorageAPI";
 const lSAPI = new localStorageAPI();
 
 function onAddWatchedBtnClick(movie, evt) {
-  lSAPI.saveFilmToWatchedArr(movie);
-  lSAPI.saveToWatchedLocal();
+  const button = evt.target;
+
+  if (button.textContent === 'ADD TO WATCHED') {
+    lSAPI.saveFilmToWatchedArr(movie);
+    lSAPI.saveToWatchedLocal();
+    
+    renameToDeleteWatchedBtn(button);
+  } else {
+    lSAPI.removeWatchedFilm(movie.id);
+    renameToAddWatchedBtn(button);
+  }
 }
 
-
 function renameToDeleteWatchedBtn(button) {
-  button.textContent = 'Delete from watched'
+  button.textContent = 'DELETE FROM WATCHED'
 }
 
 function renameToAddWatchedBtn(button) {
-  button.textContent = 'Add to watched'
+  button.textContent = 'ADD TO WATCHED'
 }
 
-export {onAddWatchedBtnClick}
+export { onAddWatchedBtnClick, renameToDeleteWatchedBtn }

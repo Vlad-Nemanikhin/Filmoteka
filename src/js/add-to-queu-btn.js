@@ -2,19 +2,26 @@ import localStorageAPI from "./localStorageAPI";
 
 const lSAPI = new localStorageAPI();
 
-
-
 function onAddQueueBtnClick(movie, evt) {
-  lSAPI.saveFilmToQueueArr(movie);
-  lSAPI.saveToQueueLocal();
+  const button = evt.target;
+
+  if (button.textContent === 'ADD TO QUEUE') {
+    lSAPI.saveFilmToQueueArr(movie);
+    lSAPI.saveToQueueLocal();
+    
+    renameToDeleteQueueBtn(button);
+  } else {
+    lSAPI.removeQueueFilm(movie.id);
+    renameToAddQueueBtn(button)
+  }
 }
 
 function renameToDeleteQueueBtn(button) {
-  button.textContent = 'Delete from queue'
+  button.textContent = 'DELETE FROM QUEUE'
 }
 
 function renameToAddQueueBtn(button) {
-  button.textContent = 'Add to queue'
+  button.textContent = 'ADD TO QUEUE'
 }
 
-export {onAddQueueBtnClick}
+export { onAddQueueBtnClick,  renameToDeleteQueueBtn}
