@@ -1,57 +1,64 @@
-const libraryBtn = document.querySelector('#navlink-library');
-const btnInHeader = document.querySelector('.library__section');
-const inputSearch = document.querySelector('.search__section');
-const homePageBtn = document.querySelector('#navlink-home');
-const homePageLogo = document.querySelector('.header__link');
-const bntWatch = document.querySelector('#button-watched');
-const bntQuere = document.querySelector('#button-queue');
-const galeryRating = document.querySelectorAll('.gallery__info-rating');
+// const galeryRating = document.querySelectorAll('.gallery__info-rating');
 
-libraryBtn.addEventListener('click', changeHeaderinLibrary);
+import { refs } from "./refs";
+import localStorageAPI from "./localStorageAPI";
+import clearMarkup from "./clear-markup-library";
+import renderLibraryMarkup from "./render-library-markup";
+import galleryLibTpl from "../handlebars/galleryLib.hbs";
 
-function changeHeaderinLibrary () {
-    inputSearch.classList.add('hidden_markup');
-    btnInHeader.classList.remove('hidden_markup');
-    homePageBtn.classList.remove('header__navlink--currentlink');
-    libraryBtn.classList.add('header__navlink--currentlink');
-    galeryRating.classList.remove('hidden_markup');
+const lSAPI = new localStorageAPI();
+
+refs.myLib.addEventListener('click', onMylibraryClick);
+function onMylibraryClick() {
+	clearMarkup();
+	if (lSAPI.getWatchedFilms().length === 0) {
+		alert("You don't watched any film")
+	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()))}
+
+
+  refs.searchSectionEl.classList.add('hidden_markup');
+  refs.wrapperBtnInHeader.classList.remove('hidden_markup');
+  refs.homePageBtn.classList.remove('header__navlink--currentlink');
+  refs.myLib.classList.add('header__navlink--currentlink');
+//   galeryRating.classList.remove('hidden_markup');
 }
 
-homePageBtn.addEventListener('click', changeHeaderinHome);
-
-function changeHeaderinHome () {
-    btnInHeader.classList.add('hidden_markup');
-    inputSearch.classList.remove('hidden_markup');
-    libraryBtn.classList.remove('header__navlink--currentlink');
+refs.homePageBtn.addEventListener('click', changeHeaderInHome);
+refs.homePageLogo.addEventListener ('click', changeHeaderInHome);
+function changeHeaderInHome() {
+  refs.wrapperBtnInHeader.classList.add('hidden_markup');
+  refs.searchSectionEl.classList.remove('hidden_markup');
+  refs.myLib.classList.remove('header__navlink--currentlink');
 }
 
-homePageLogo.addEventListener ('click', changeHeaderinHome);
 
-bntWatch.addEventListener('click', displayWatchedMovies);
+refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
+function displayWatchedMovies() {
+	clearMarkup();
+	if (lSAPI.getWatchedFilms().length === 0) {
+		alert("You don't watched any film")
+	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()))}
 
-function displayWatchedMovies () {
-    bntWatch.classList.add('library__btn--active');
-    bntQuere.classList.remove('library__btn--active');
-    libraryBtn.classList.add('header__navlink--currentlink');
+  refs.headBtnWachedEl.classList.add('library__btn--active');
+  refs.headBtnQueueEl.classList.remove('library__btn--active');
+  refs.myLib.classList.add('header__navlink--currentlink');
 }
 
-bntQuere.addEventListener('click', displayQuereMovies);
+refs.headBtnQueueEl.addEventListener('click', displayQuereMovies);
+function displayQuereMovies() {
+	clearMarkup();
+	if (lSAPI.getQueueFilms().length === 0) {
+		alert("You don't chose any film")
+	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()))}
 
-function displayQuereMovies () {
-    bntQuere.classList.add('library__btn--active');
-    bntWatch.classList.remove('library__btn--active');
-    libraryBtn.classList.add('header__navlink--currentlink');
+  refs.headBtnQueueEl.classList.add('library__btn--active');
+  refs.headBtnWachedEl.classList.remove('library__btn--active');
+  refs.myLib.classList.add('header__navlink--currentlink');
 }
 
-export default {libraryBtn, 
-    btnInHeader, 
-    inputSearch, 
-    homePageBtn, 
-    homePageLogo, 
-    bntWatch,
-    bntQuere,
-    changeHeaderinLibrary,
-    changeHeaderinHome,
-    displayWatchedMovies,
-    displayQuereMovies
- };
+// export default {
+//     changeHeaderinLibrary,
+//     changeHeaderinHome,
+//     displayWatchedMovies,
+//     displayQuereMovies
+//  };

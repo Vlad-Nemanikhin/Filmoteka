@@ -59,7 +59,7 @@ export default class {
   //-----------Delete parth-------------
 
   removeWatchedFilm(id) {
-    const filmIdx = this.filmWatchedArr.indexOf(this.filmWatchedArr.find(film => film.id === id));
+    const filmIdx = this.getWatchedFilms.indexOf(this.filmWatchedArr.find(film => film.id === id));
     this.filmWatchedArr.splice(filmIdx, 1);
     this.saveToWatchedLocal()
   }
