@@ -19,7 +19,9 @@ import localStorageAPI from "./js/localStorageAPI";
 getGenres();
 APIs.fetchGenres();
 
+
 const lSAPI = new localStorageAPI();
 lSAPI.makeEmptyWatchedArr();
 lSAPI.makeEmptyQueueArr();
+
 

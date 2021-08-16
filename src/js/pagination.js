@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import '../sass/pagination/_pag.scss';
 
 const optionsTui = {
   // below default value of options

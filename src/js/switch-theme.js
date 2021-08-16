@@ -1,6 +1,8 @@
 import '../sass/dark-theme/_dark-theme.scss';
 
 const themeToggle = document.getElementById('theme-switch-toggle');
+const tuiToggle = document.getElementById('tui-pagination-container');
+
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
@@ -13,18 +15,21 @@ function onToggleClick(evt) {
   if (checked) {
     document.body.classList.add(Theme.DARK);
     document.body.classList.remove(Theme.LIGHT);
+    tuiToggle.classList.add(Theme.DARK);
+    tuiToggle.classList.remove(Theme.LIGHT);
     localStorage.setItem('bodyTheme', Theme.DARK);
     themeToggle.checked = true;
-  }
-  else {
+  } else {
     document.body.classList.remove(Theme.DARK);
     document.body.classList.add(Theme.LIGHT);
+    tuiToggle.classList.add(Theme.LIGHT);
+    tuiToggle.classList.remove(Theme.DARK);
     localStorage.setItem('bodyTheme', Theme.LIGHT);
     themeToggle.checked = false;
   }
 }
 
-  checkBodyTheme();
+checkBodyTheme();
 function checkBodyTheme() {
   const currentThemeMod = localStorage.getItem('bodyTheme');
   if (currentThemeMod === Theme.DARK) {
