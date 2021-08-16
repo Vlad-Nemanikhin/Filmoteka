@@ -1,46 +1,12 @@
 import { refs } from "./refs";
+import localStorageAPI from "./localStorageAPI";
 import renderMarkupModal from './render-modal-one-card';
-import { fetchMovieById } from "../js/movies-API-service";
+import { fetchMovieById } from "./movies-API-service";
 import articleTpl from "../handlebars/article.hbs";
-//Пример закрытия модалки из курса по верстке
-//(() => {	
-//const refs = {
-//   openModalBtn: document.querySelector('[data-modal-open]'),
-//   closeModalBtn: document.querySelector('[data-modal-close]'),
-//   modal: document.querySelector('[data-modal]'),
-//};
-//
-//refs.openModalBtn.addEventListener('click', toggleModal);
-//refs.closeModalBtn.addEventListener('click', toggleModal);
-//
-//function toggleModal() {
-//   refs.modal.classList.toggle('backdrop--is-hidden');
-//}
-//})();
+import { onAddWatchedBtnClick } from "./add-to-watched-btn";
+import { onAddQueueBtnClick } from "./add-to-queu-btn";
 
-
-// const movieCard = document.querySelector('.gallery__item');
-
-
-// backdrop
-// const backdrop = document.querySelector('.backdrop');
-
-// // використовувала на етапі тестування
-// backdrop.classList.remove('backdrop--is-hidden');
-
-// // const modal = document.querySelector(".modal");
-// const closeModalBtn = document.querySelector(".close-btn");
-
-// modal.classList.remove('modal--close');
-
-// по картці сховала поки немає рендерингу сторінки
-// потім можна буде поправити
-
-// movieCard.addEventListener('click', onMovieCardClick)
-
-// backdrop.addEventListener('click', onBackdropClick);
-// closeModalBtn.addEventListener("click", onModalCloseBtnClick);
-// window.addEventListener('keydown', onKeyEscPress);
+const lSAPI = new localStorageAPI();
 
 // 1 open by click on the movie-card (either mainPage or library)
 
@@ -54,12 +20,22 @@ function onMovieCardClick(e) {
 
   const movieId = e.target.parentNode.parentNode.dataset.id;
 
- fetchMovieById(movieId).then(movie => renderMarkupModal(articleTpl(movie)));
+  fetchMovieById(movieId).then(movie => {
+    lSAPI.setMovie(movie);
 
-  // renderMarkupModal();
+    renderMarkupModal(articleTpl(movie));
+
+    const addToWatchedBtn = document.querySelector('button[data-name="watched"]');
+    addToWatchedBtn.addEventListener('click', onAddWatchedBtnClick.bind(addToWatchedBtn, movie));
+
+    const addToQueueBtn = document.querySelector('button[data-name="queue"]');
+    addToQueueBtn.addEventListener('click', onAddQueueBtnClick.bind(addToQueueBtn, movie))
+
+  });
+
   refs.backdropEl.classList.toggle('backdrop--is-hidden');
 
-  // refs.modalEl.classList.toggle('modal--close');
+  
   
 }
 
@@ -73,15 +49,9 @@ function onModalCloseBtnClick(e) {
 }
 
 // 3 close by click on backdrop (remove eventListener on modal)
-// застосувала функцию confirm() на випадок випадкового кліку по backdrop
-// при бажанні - можна забрати
 function onBackdropClick(e) {
   if (e.target === e.currentTarget) {
-    const isConfirm = confirm('Do you really want to leave?');
-    if (isConfirm) {
-      refs.backdropEl.classList.toggle('backdrop--is-hidden');
-    }
-    // refs.modalEl.classList.toggle('modal--close');
+    refs.backdropEl.classList.toggle('backdrop--is-hidden');
   }
 }
 

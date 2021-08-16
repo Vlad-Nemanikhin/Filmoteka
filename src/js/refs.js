@@ -8,8 +8,6 @@ const refs = {
 	headBtnQueueEl: document.querySelector('#button-queu'),
 	backdropEl: document.querySelector('.backdrop'),
 	modalCloseEl: document.querySelector('.modal__cross'),
-	addToWatchedBtn: document.querySelector('.movie-card__btn'),
-	addToQueueBtn: document.querySelector('.movie-card__btn'),
 	footerBackdropEl: document.querySelector('.footer-backdrop'),
 	footerBackdropClose: document.querySelector('.close-btn'),
 	footerHeartEl: document.querySelector('.heart'),
