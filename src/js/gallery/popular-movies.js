@@ -32,9 +32,9 @@ async function fetchTopMovies(page) {
     const totalHits = res.total_pages;
     let currentPage = res.page;
 
-    console.log('Найдено всего', totalResult);
-    console.log('кол-во страниц', totalHits);
-    console.log('текущая страница', currentPage);
+    // console.log('Найдено всего', totalResult);
+    // console.log('кол-во страниц', totalHits);
+    // console.log('текущая страница', currentPage);
 
     const instance = fPagination();
     instance.setItemsPerPage(20);
