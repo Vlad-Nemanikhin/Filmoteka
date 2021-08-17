@@ -1,5 +1,5 @@
 // const galeryRating = document.querySelectorAll('.gallery__info-rating');
-
+import Notiflix from 'notiflix';
 import { refs } from "./refs";
 import localStorageAPI from "./localStorageAPI";
 import clearMarkup from "./clear-markup-library";
@@ -12,7 +12,7 @@ refs.myLib.addEventListener('click', onMylibraryClick);
 function onMylibraryClick() {
 	clearMarkup();
 	if (lSAPI.getWatchedFilms().length === 0) {
-		alert("You don't watched any film")
+		Notiflix.Notify.info('У вас нет просмотреных фильмов');
 	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()))}
 
 
@@ -36,7 +36,7 @@ refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
 function displayWatchedMovies() {
 	clearMarkup();
 	if (lSAPI.getWatchedFilms().length === 0) {
-		alert("You don't watched any film")
+		Notiflix.Notify.info('У вас нет просмотреных фильмов');
 	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()))}
 
   refs.headBtnWachedEl.classList.add('library__btn--active');
@@ -48,7 +48,7 @@ refs.headBtnQueueEl.addEventListener('click', displayQuereMovies);
 function displayQuereMovies() {
 	clearMarkup();
 	if (lSAPI.getQueueFilms().length === 0) {
-		alert("You don't chose any film")
+		Notiflix.Notify.info('Вы не выбрали фильмы для просмотра');
 	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()))}
 
   refs.headBtnQueueEl.classList.add('library__btn--active');
