@@ -1,4 +1,4 @@
-import localStorageAPI from "./localStorageAPI";
+import localStorageAPI from "../common/localStorageAPI";
 
 const lSAPI = new localStorageAPI();
 

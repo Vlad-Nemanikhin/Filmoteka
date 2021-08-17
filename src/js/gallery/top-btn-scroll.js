@@ -1,4 +1,4 @@
-import { refs } from './refs';
+import { refs } from '../refs';
 //function ScrollTop() {
 //  window.scroll({ top: 0, behavior: 'smooth' });
 //}

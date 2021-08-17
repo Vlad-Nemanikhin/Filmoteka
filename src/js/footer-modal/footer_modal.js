@@ -1,9 +1,9 @@
-import icons from '../images/sprite.svg';
-const gitIcon = `${icons}#git_icon`;
-const mailIcon = `${icons}#mail_icon`;
-const linkedInIcon = `${icons}#icon-linkedin`;
-const phoneIcon = `${icons}#mobile-phone_icon`;
-const crossIcon = `${icons}#close_icon`;
+//import icons from '../../images/sprite.svg';
+const gitIcon = '../../images/sprite.svg#git_icon';
+const mailIcon = '../../images/sprite.svg#mail_icon';
+const linkedInIcon = '../../images/sprite.svg#icon-linkedin';
+const phoneIcon = '../../images/sprite.svg#mobile-phone_icon';
+const crossIcon = '../../images/sprite.svg#close_icon';
 
 const teamList = document.querySelector('.team-list');
 const teamCardList = document.querySelector('.footer-modal__wrap__upper');
@@ -18,8 +18,8 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380666699988',
     mainDuties:
-      'Координация работы всего проекта, ответственность за гитхаб, мерж веток, проверка реквестов.',
-    id: 1,
+      'Разметка и стилизация футера. Полученние ID жанров фильмов, их преобразование в полноценный текстовый контент (с сохранением в localstorage) и отображение необходимых жанров на каждой карточке фильма индивидуально. Общая организация работы всей команды, включая ведение репозитория, принятие реквестов, мерж отдельных веток в одну, решение конфликтов совместно с владельцами этих веток. Общение с ментором и установление deadline',
+      id: 1,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77548827?v=4',
@@ -30,8 +30,8 @@ const teamItems = [
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380955325489',
     mainDuties:
-      'Координация скорости и качеста выполнения всех потоков создания сего чудного сайта!',
-    id: 2,
+      'Реализация разметки в hendelbars основного модального окна для выбранного фильма. Написание функционала по смене внешнего вида хедера на разных страницах ("домашняя" и "моя библиотека") на JS. Отрисовка макета модального окна с участниками команды в футере. Организация ежедневных stand-upов с фиксацией статусов по каждому направлению. Распределение равномерной нагрузки на каждого участника проекта и контроль за соблюдением deadline',
+      id: 2,
   },
   {
     photoLink: 'https://avatars.githubusercontent.com/u/77615583?v=4',
@@ -41,7 +41,7 @@ const teamItems = [
     emailLink: 'nick_bron@ukr.net',
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380509485523',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Подключение Loader(Spinner) для асинхронных запросов, а также Notiflix для информационных уведомлений. Подключение номера страниц (пагинация) на главной странице. Реализация функционала поднятия страницы на вверх по клику на заданную клавишу.',
     id: 3,
   },
   {
@@ -52,7 +52,7 @@ const teamItems = [
     emailLink: 'enychka12@gmail.com',
     linkedinLink: 'https://linkedin.com/in/евгения-вепрецкая-08412821a/',
     telNumber: '+380666699988',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Создание разметки при помощи hendelbars и стилизация карточек популярных фильмов на главной странице, а также сохраненных на странице "моя библиотека". Реализация функционала смены темной и светлой темы на странице при помощи JS',
     id: 4,
   },
   {
@@ -63,7 +63,7 @@ const teamItems = [
     emailLink: 'aakim5586@gmail.com',
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380666699988',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Разметка и стилизация хедера для 3 вариантов девайсов, включая адаптивные изображения. А также разное наполнение хедера для домашней страницы (со строкой для поиска фильмов) и блока "Моя библиотека" (с клавишами "просмотренные" и "ожидающие очередь")',
     id: 5,
   },
   {
@@ -74,7 +74,7 @@ const teamItems = [
     emailLink: 'dzapara24@gmail.com',
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380994483316',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Функционал сохранения и удаления фильмов в/из категории "просмотренные" и "ожидающие очередь" в localstorage по кликам на клавиши из модального окна выбранного фильма. Отрисовка сохраненных в localstorage карточек фильмов на странице "моя библиотека". Наполнение динамическими данными модального окна одного фильма.',
     id: 6,
   },
   {
@@ -85,7 +85,7 @@ const teamItems = [
     emailLink: 'vitaliikovalenko23@gmail.com',
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380631935259',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Реализация логики работы с API запросами - создание асинхронных функций для получения информации о популярных фильмах для главной страницы, о фильмах, удовлетворяющим условию поиска в инпуте, а также о выбранном фильме (при открытии модального окна). Преобразование полученных данных, запись их в localstorage, а также для этой же информации динамическая отрисовка разметки по шаблону hendelbars',
     id: 7,
   },
   {
@@ -96,7 +96,7 @@ const teamItems = [
     emailLink: 'kovalrv83@gmail.com',
     linkedinLink: 'https://www.linkedin.com/in/roman-koval-2b3736203/',
     telNumber: '+380976788677',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Разметка и стилизация дополнительного модального окна для выбранного члена команды в футере с детальной информацией. Подключение механизма открытия/закрытия модального окна и его корректная работа включая верное позиционирование в паре с основным модальным окном футера, а также библиотеки simplelightbox для смены карточек участников',
     id: 8,
   },
   {
@@ -107,7 +107,7 @@ const teamItems = [
     emailLink: 'med.anatolii@gmail.com',
     linkedinLink: 'https://www.linkedin.com/in/anatolii-medvediev-a81b60180/',
     telNumber: '+380660800906',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Разметка и стилизация модального окна с членами команды в футере, при помощи методов map и шаблонных строк. Реализация активных ссылок для социальных сетей. Подключение механизма открытия/закрытия модального окна, а также библиотеки simplelightbox для смены карточек участников',
     id: 9,
   },
   {
@@ -118,7 +118,7 @@ const teamItems = [
     emailLink: 'irynapuchkova18@gmail.com',
     linkedinLink: 'https://linkedin.com',
     telNumber: '+380672462682',
-    mainDuties: 'Разработчик',
+    mainDuties: 'Наполнение проекта базовыми стилями, включая разметку контейнера. Создание и оптимизация спрайта с изображениями типа svg. Определение основных цветов согласно макету и создание для них переменных. Функционал JS по открытию и закрытию модальных окон проекта',
     id: 10,
   },
 ];
@@ -298,9 +298,9 @@ function onUpperBackdropClick(e) {
 
 //скрытие по крестику работает только на первой карточке
 const closeUpperModalBtn = document.querySelector('.close-btn__modal_upper');
-closeUpperModalBtn.addEventListener('click', oncloseUpperModalBtn);
+closeUpperModalBtn.addEventListener('click', onCloseUpperModalBtn);
 
-function oncloseUpperModalBtn() {
+function onCloseUpperModalBtn() {
   teamCard.classList.add('modal--close');
 }
 
@@ -316,7 +316,7 @@ function onKeyEscPressUpperModal(e) {
 
 // ! slider
 /* Индекс слайда по умолчанию */
-var slideIndex;
+let slideIndex;
 // showSlides(slideIndex);
 
 /* Функция увеличивает индекс на 1, показывает следующй слайд*/
@@ -337,7 +337,7 @@ function currentSlide(n) {
 
 /* Основная функция сладера */
 function showSlides(n) {
-  var i;
+  let i;
   const slides = document.getElementsByClassName('item');
   if (n > slides.length) {
     slideIndex = 1;

@@ -6,8 +6,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: scroll;
-}
+  }
 
 .footer-backdrop__modal {
   position: absolute;
@@ -15,11 +14,10 @@
   transform: translateX(-50%) translateY(0);
   top: 93px;
   left: 50%;
-
+  border-radius: 10px;
   min-width: 280px;
   width: 80%;
   height: auto;
-
   padding: 25px;
 
   @media screen and (min-width: 768px) {
@@ -126,6 +124,7 @@
 
 .team-item__photo {
   transition: transform 50ms ease-in, box-shadow 50ms ease-in;
+  border-radius: 5px;
 
   &:hover,
   &:focus {
@@ -180,8 +179,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: scroll;
-}
+ }
 
 // //! slider
 
