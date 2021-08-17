@@ -19,6 +19,8 @@ import debounce from 'lodash.debounce';
 import { getYear } from 'date-fns';
 import Pagination from 'tui-pagination';
 import 'lazysizes';
+import Swiper from 'swiper';
+import 'swiper/swiper-bundle.css';
 
 getGenres();
 APIs.fetchGenres();
