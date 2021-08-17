@@ -30,8 +30,8 @@ async function fetchTopMovies(page) {
         //___________ПАГИНАЦИЯ_______________________
         const totalHits = response.total_pages;
         let currentPage = response.page;
-        console.log(totalHits);
-        console.log(response.page);
+        // console.log(totalHits);
+        // console.log(response.page);
 
         const instance = fPagination();
         instance.setTotalItems(totalHits);

@@ -22,13 +22,3 @@ const refs = {
 	homePageLogo: document.querySelector('.header__link')
 };
 export { refs };
-
-  
-// const libraryBtn = document.querySelector('#navlink-library');
-// const btnInHeader = document.querySelector('.library__section');
-// const inputSearch = document.querySelector('.search__section');
-// const homePageBtn = document.querySelector('#navlink-home');
-// const homePageLogo = document.querySelector('.header__link');
-// const bntWatch = document.querySelector('#button-watched');
-// const bntQuere = document.querySelector('#button-queue');
-// const galeryRating = document.querySelectorAll('.gallery__info-rating');
