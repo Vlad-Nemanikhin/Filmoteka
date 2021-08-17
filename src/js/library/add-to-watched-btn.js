@@ -19,14 +19,11 @@ function onAddWatchedBtnClick(movie, evt) {
     renameToAddWatchedBtn(button);
   }
   
-  if (liEl.dataset.islib === 'true' && button.textContent !== 'DELETE FROM WATCHED') {
+  const hederBtn = refs.headBtnWachedEl.classList.contains('library__btn--active');
+
+  if (liEl.dataset.islib === 'true' && hederBtn && button.textContent !== 'DELETE FROM WATCHED') {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
   }
-
-  // if (liEl.dataset.islib === 'true' && button.textContent !== 'ADD TO WATCHED') {
-  //   renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
-  // }
-  
 }
 
 function renameToDeleteWatchedBtn(button) {

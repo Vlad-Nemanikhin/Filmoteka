@@ -9,11 +9,14 @@ import galleryLibTpl from "../../handlebars/galleryLib.hbs";
 const lSAPI = new localStorageAPI();
 
 refs.myLib.addEventListener('click', onMylibraryClick);
+
 function onMylibraryClick() {
 	clearMarkup();
 	if (lSAPI.getWatchedFilms().length === 0) {
 		Notiflix.Notify.info('У вас нет просмотреных фильмов');
-	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()))}
+  } else {
+    renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
+  }
 
   refs.header.classList.remove('header--home');
   refs.header.classList.add('header--library');
@@ -25,7 +28,8 @@ function onMylibraryClick() {
 }
 
 refs.homePageBtn.addEventListener('click', changeHeaderInHome);
-refs.homePageLogo.addEventListener ('click', changeHeaderInHome);
+refs.homePageLogo.addEventListener('click', changeHeaderInHome);
+
 function changeHeaderInHome() {
   refs.header.classList.remove('header--library');
   refs.header.classList.add('header--home');
@@ -36,6 +40,7 @@ function changeHeaderInHome() {
 
 
 refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
+
 function displayWatchedMovies() {
 	clearMarkup();
 	if (lSAPI.getWatchedFilms().length === 0) {
@@ -48,11 +53,14 @@ function displayWatchedMovies() {
 }
 
 refs.headBtnQueueEl.addEventListener('click', displayQuereMovies);
+
 function displayQuereMovies() {
 	clearMarkup();
 	if (lSAPI.getQueueFilms().length === 0) {
 		Notiflix.Notify.info('Вы не выбрали фильмы для просмотра');
-	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()))}
+  } else {
+    renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()));
+  }
 
   refs.headBtnQueueEl.classList.add('library__btn--active');
   refs.headBtnWachedEl.classList.remove('library__btn--active');
