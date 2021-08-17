@@ -73,6 +73,8 @@ function onDeveloperLinkClick(e) {
   window.removeEventListener('scroll', hangScrollBtn);
   window.addEventListener('keydown', onKeyEscPress);
   hideButton();
+
+  refs.body.style.overflow = "hidden";
 }
 //Закрытие модалки по крестику
 refs.closeModalBtn.addEventListener('click', onFootModalCloseBtnClick);
@@ -94,6 +96,8 @@ function onFootBackdropClick(e) {
     document.body.classList.remove('modal-open');
     window.addEventListener('scroll', hangScrollBtn);
     showButton();
+
+    refs.body.style.overflow = "visible";
   }
 }
 //Закрытие по ESC
@@ -105,6 +109,8 @@ function onKeyEscPress(e) {
     document.body.classList.remove('modal-open');
     window.addEventListener('scroll', hangScrollBtn);
     showButton();
+
+    refs.body.style.overflow = "visible";
   }
 }
 

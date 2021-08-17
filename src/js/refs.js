@@ -10,6 +10,7 @@ const refs = {
 	wrapperBtnInHeader: document.querySelector('.library__section'),
 	myLib: document.querySelector('#navlink-library'),
 	header: document.querySelector('.header'),
+	body: document.querySelector('body'),
 	//Library-----header
 	headBtnWachedEl: document.querySelector('#button-watched'),
 	headBtnQueueEl: document.querySelector('#button-queue'),
@@ -17,7 +18,7 @@ const refs = {
 	galleryEl: document.querySelector('.gallery__list'),
 	backdropEl: document.querySelector('.backdrop'),
 	modalEl: document.querySelector('.modal'),
-	modalCloseEl: document.querySelector('.modal__cross'),
+	modalCloseEl: document.querySelector('[data-modal-movie-card]'),
 	dateEl: document.querySelector('.gallery__date'),
 	//Library-----gallery
 
