@@ -1,13 +1,18 @@
 .TopBtnScroll {
-  //display: none;
   z-index: 0;
   position: fixed;
-  bottom: 100px;
+  bottom: 200px;
   right: 40px;
-  border-radius: 25px;
+  border: 0px;
+  fill: orange;
+
   &:focus,
   &:hover {
     cursor: pointer;
-    background-color: gray;
+    fill: black;
   }
+}
+
+.scroll-btn-hide {
+  opacity: 0;
 }
