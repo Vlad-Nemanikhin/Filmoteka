@@ -9,6 +9,7 @@ const refs = {
 	notifyEl: document.querySelector('#search-hint'),
 	wrapperBtnInHeader: document.querySelector('.library__section'),
 	myLib: document.querySelector('#navlink-library'),
+	header: document.querySelector('.header'),
 	//Library-----header
 	headBtnWachedEl: document.querySelector('#button-watched'),
 	headBtnQueueEl: document.querySelector('#button-queue'),
