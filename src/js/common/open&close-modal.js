@@ -1,10 +1,10 @@
-import { refs } from "./refs";
+import { refs } from "../refs";
 import localStorageAPI from "./localStorageAPI";
-import renderMarkupModal from './render-modal-one-card';
+import renderMarkupModal from '../gallery/render-modal-one-card';
 import { fetchMovieById } from "./movies-API-service";
-import articleTpl from "../handlebars/article.hbs";
-import { onAddWatchedBtnClick, renameToDeleteWatchedBtn } from "./add-to-watched-btn";
-import { onAddQueueBtnClick, renameToDeleteQueueBtn } from "./add-to-queu-btn";
+import articleTpl from "../../handlebars/article.hbs";
+import { onAddWatchedBtnClick, renameToDeleteWatchedBtn } from "../library/add-to-watched-btn";
+import { onAddQueueBtnClick, renameToDeleteQueueBtn } from "../library/add-to-queu-btn";
 
 const lSAPI = new localStorageAPI();
 
