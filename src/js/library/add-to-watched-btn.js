@@ -1,10 +1,14 @@
 import localStorageAPI from "../common/localStorageAPI";
+import { refs } from "../refs";
+import renderLibraryMarkup from "../library/render-library-markup";
+import galleryLibTpl from "../../handlebars/galleryLib.hbs";
 
 const lSAPI = new localStorageAPI();
 
 function onAddWatchedBtnClick(movie, evt) {
   const button = evt.target;
-
+  const liEl = refs.galleryEl.querySelector('.gallery__item');
+  
   if (button.textContent === 'ADD TO WATCHED') {
     lSAPI.saveFilmToWatchedArr(movie);
     lSAPI.saveToWatchedLocal();
@@ -14,6 +18,15 @@ function onAddWatchedBtnClick(movie, evt) {
     lSAPI.removeWatchedFilm(movie.id);
     renameToAddWatchedBtn(button);
   }
+  
+  if (liEl.dataset.islib === 'true' && button.textContent !== 'DELETE FROM WATCHED') {
+    renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
+  }
+
+  // if (liEl.dataset.islib === 'true' && button.textContent !== 'ADD TO WATCHED') {
+  //   renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
+  // }
+  
 }
 
 function renameToDeleteWatchedBtn(button) {
