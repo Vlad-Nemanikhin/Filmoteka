@@ -58,7 +58,7 @@ export function getMoviesCards(e) {
           //очищаем контейнер
           clearContainer();
           //рендерим карточки фильмов
-          renderFilms(data, arrOfGenres);
+          renderFilms(data, arrOfGenres, totalResult);
           //останавливаем спиннер
           Notiflix.Loading.remove();
           return res.results;
@@ -71,28 +71,36 @@ export function getMoviesCards(e) {
 }
 
 //рендерит разметку по шаблону
-function renderFilms(data, arrOfGenres) {
+function renderFilms(data, arrOfGenres, totalResult) {
   //записываем массивы названия жанров в каждый обЪект фильма
-  data[0].genre_names = arrOfGenres[0];
-  data[1].genre_names = arrOfGenres[1];
-  data[2].genre_names = arrOfGenres[2];
-  data[3].genre_names = arrOfGenres[3];
-  data[4].genre_names = arrOfGenres[4];
-  data[5].genre_names = arrOfGenres[5];
-  data[6].genre_names = arrOfGenres[6];
-  data[7].genre_names = arrOfGenres[7];
-  data[8].genre_names = arrOfGenres[8];
-  data[9].genre_names = arrOfGenres[9];
-  data[10].genre_names = arrOfGenres[10];
-  data[11].genre_names = arrOfGenres[11];
-  data[12].genre_names = arrOfGenres[12];
-  data[13].genre_names = arrOfGenres[13];
-  data[14].genre_names = arrOfGenres[14];
-  data[15].genre_names = arrOfGenres[15];
-  data[16].genre_names = arrOfGenres[16];
-  data[17].genre_names = arrOfGenres[17];
-  data[18].genre_names = arrOfGenres[18];
-  data[19].genre_names = arrOfGenres[19];
+  for (let index = 0; index < 20; index++) {
+    data[index].genre_names = arrOfGenres[index];
+    totalResult = totalResult - 1;
+    if (totalResult === 0) {
+      break;
+    }
+  }
+  //data[0].genre_names = arrOfGenres[0];
+  // data[1].genre_names = arrOfGenres[1];
+  // data[2].genre_names = arrOfGenres[2];
+  // data[3].genre_names = arrOfGenres[3];
+  // data[4].genre_names = arrOfGenres[4];
+  // data[5].genre_names = arrOfGenres[5];
+  // data[6].genre_names = arrOfGenres[6];
+  // data[7].genre_names = arrOfGenres[7];
+  // data[8].genre_names = arrOfGenres[8];
+  // data[9].genre_names = arrOfGenres[9];
+  // data[10].genre_names = arrOfGenres[10];
+  // data[11].genre_names = arrOfGenres[11];
+  // data[12].genre_names = arrOfGenres[12];
+  // data[13].genre_names = arrOfGenres[13];
+  // data[14].genre_names = arrOfGenres[14];
+  // data[15].genre_names = arrOfGenres[15];
+  // data[16].genre_names = arrOfGenres[16];
+  // data[17].genre_names = arrOfGenres[17];
+  // data[18].genre_names = arrOfGenres[18];
+  // data[19].genre_names = arrOfGenres[19];
+
   //подменяем дату на год
   data.map(el => {
     const normalDate = getYear(new Date(el.release_date));
