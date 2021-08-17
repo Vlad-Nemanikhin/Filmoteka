@@ -4,7 +4,6 @@ import { refs } from './refs';
 //}
 
 const addingScrollEvent = window.addEventListener('scroll', hangScrollBtn);
-//const removingScrollEvent = window.removeEventListener('scroll', hangScrollBtn);
 
 function hangScrollBtn() {
   const { scrollTop, scrollHeight } = document.documentElement;

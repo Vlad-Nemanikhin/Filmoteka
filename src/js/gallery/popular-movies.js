@@ -1,6 +1,6 @@
-import * as APIs from './movies-API-service';
-import cards from '../handlebars/gallery.hbs';
-import { refs } from './refs';
+import * as APIs from '../common/movies-API-service';
+import cards from '../../handlebars/gallery.hbs';
+import { refs } from '../refs';
 import { getYear } from 'date-fns';
 import Notiflix from 'notiflix';
 import fPagination from './pagination';
