@@ -19,7 +19,8 @@ const refs = {
 	searchSectionEl: document.querySelector('.search__section'),
 	wrapperBtnInHeader: document.querySelector('.library__section'),
 	homePageBtn: document.querySelector('#navlink-home'),
-	homePageLogo: document.querySelector('.header__link')
+	homePageLogo: document.querySelector('.header__link'),
+	header: document.querySelector('.header'),
 };
 export { refs };
 
