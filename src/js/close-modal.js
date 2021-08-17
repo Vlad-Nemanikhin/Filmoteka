@@ -12,11 +12,15 @@ const lSAPI = new localStorageAPI();
 
 refs.galleryEl.addEventListener('click', onMovieCardClick);
 refs.backdropEl.addEventListener('click', onBackdropClick);
+refs.modalCloseEl.addEventListener('click', onModalCloseBtnClick);
+window.addEventListener('keydown', onKeyEscPress);
 
 function onMovieCardClick(e) {
   if (e.target.nodeName !== 'IMG') {
     return
   }
+
+  refs.body.style.overflow = "hidden";
 
   const movieId = e.target.parentNode.parentNode.dataset.id;
 
@@ -44,34 +48,42 @@ function onMovieCardClick(e) {
     
     
   });
-  
-  
+
   refs.backdropEl.classList.toggle('backdrop--is-hidden');
-  
-  
+  refs.modalEl.classList.remove('modal--close');
 }
 
 // 2 close by click on modalCloseButton
+
 function onModalCloseBtnClick(e) {
-  backdrop.classList.toggle('backdrop--is-hidden');
-  modal.classList.toggle("modal--close");
-  
-  backdrop.removeEventListener('click', onBackdropClick);
-  window.removeEventListener('keydown', onKeyEscPress);
+  refs.backdropEl.classList.toggle('backdrop--is-hidden');
+  refs.modalEl.classList.toggle('modal--close');
+ 
+  refs.body.style.overflow = "visible";
+
+  refs.backdropEl.removeEventListener('click', onBackdropClick);
 }
 
 // 3 close by click on backdrop (remove eventListener on modal)
 function onBackdropClick(e) {
   if (e.target === e.currentTarget) {
     refs.backdropEl.classList.toggle('backdrop--is-hidden');
+    refs.modalEl.classList.toggle('modal--close');
+
+    refs.body.style.overflow = "visible";
+
+    // refs.modalCloseEl.removeEventListener('click', onModalCloseBtnClick);
+    // window.removeEventListener('keydown', onKeyEscPress);
   }
 }
 
 // 4 close by click on Esc-key
 function onKeyEscPress(e) {
     if (e.code === 'Escape') {
-      backdrop.classList.toggle('backdrop--is-hidden');
-      modal.classList.toggle("modal--close");
+      refs.backdropEl.classList.toggle('backdrop--is-hidden');
+      refs.modalEl.classList.toggle('modal--close');
+
+      refs.body.style.overflow = "visible";
   }
 }
 

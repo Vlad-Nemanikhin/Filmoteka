@@ -179,6 +179,7 @@ const modalFooter = document.querySelector('.footer-backdrop__modal');
 const closeModalBtn = document.querySelector('.close-btn-modal');
 const heartButton = document.querySelector('.heart');
 const developerLink = document.querySelector('.developers__link');
+const body = document.querySelector('body');
 
 backdropFooter.addEventListener('click', onFootBackdropClick);
 closeModalBtn.addEventListener('click', onFootModalCloseBtnClick);
@@ -190,6 +191,9 @@ function onFootModalCloseBtnClick(e) {
   backdropFooter.classList.toggle('backdrop--is-hidden');
   modalFooter.classList.toggle('modal--close');
 
+  body.style.overflow = "visible";
+
+
   backdropFooter.removeEventListener('click', onFootBackdropClick);
   window.removeEventListener('keydown', onKeyEscPress);
 }
@@ -198,21 +202,35 @@ function onFootBackdropClick(e) {
   if (e.target === e.currentTarget) {
     backdropFooter.classList.toggle('backdrop--is-hidden');
     modalFooter.classList.toggle('modal--close');
+
+    body.style.overflow = "visible";
+
   }
 }
 
 function onKeyEscPress(e) {
-  if (e.code === 'Escape') {
-    if (!teamCard.classList.contains('modal--close')) {
-      teamCard.classList.add('modal--close');
-    } else {
-      backdropFooter.classList.toggle('backdrop--is-hidden');
-      modalFooter.classList.toggle('modal--close');
-    }
+  if (e.code === 'Escape')
+  
+  // {
+  //   if (!teamCard.classList.contains('modal--close')) {
+  //     teamCard.classList.add('modal--close');
+  //   } else {
+
+
+  {
+    backdropFooter.classList.add('backdrop--is-hidden');
+    modalFooter.classList.add('modal--close');
+  
+    body.style.overflow = "visible";
   }
+
+  //   }
+  // }
 }
 
 function onHeartClick(e) {
+  body.style.overflow = "hidden";
+
   backdropFooter.classList.toggle('backdrop--is-hidden');
   modalFooter.classList.toggle('modal--close');
   backdropFooter.addEventListener('click', onFootBackdropClick);

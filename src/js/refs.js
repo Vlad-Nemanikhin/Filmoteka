@@ -7,7 +7,7 @@ const refs = {
 	headBtnWachedEl: document.querySelector('#button-watched'),
 	headBtnQueueEl: document.querySelector('#button-queue'),
 	backdropEl: document.querySelector('.backdrop'),
-	modalCloseEl: document.querySelector('.modal__cross'),
+	modalCloseEl: document.querySelector('[data-modal-movie-card]'),
 	footerBackdropEl: document.querySelector('.footer-backdrop'),
 	footerBackdropClose: document.querySelector('.close-btn'),
 	footerHeartEl: document.querySelector('.heart'),
@@ -19,7 +19,8 @@ const refs = {
 	searchSectionEl: document.querySelector('.search__section'),
 	wrapperBtnInHeader: document.querySelector('.library__section'),
 	homePageBtn: document.querySelector('#navlink-home'),
-	homePageLogo: document.querySelector('.header__link')
+	homePageLogo: document.querySelector('.header__link'),
+	body: document.querySelector('body'),
 };
 export { refs };
 
