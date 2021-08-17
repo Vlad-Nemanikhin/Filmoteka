@@ -10,6 +10,22 @@ export default class {
   filmWatchedArr = [];
   filmQueueArr = [];
 
+  getFilmWatchedArr() {
+    return this.filmWatchedArr
+  }
+
+  getFilmQueueArr() {
+    return this.filmQueueArr
+  }
+
+  setToWatchedArr(newMovie) {
+    this.filmWatchedArr = newMovie
+  }
+
+  setToQueueArr(newMovie) {
+    this.filmQueueArr = newMovie
+  }
+
   //---------Save parth-------------
 
   makeEmptyWatchedArr() {
@@ -48,26 +64,39 @@ export default class {
 
   saveFilmToWatchedArr(film) {
     film.btnValue = 'Delete film from watched'
-    this.filmWatchedArr.push(film)
+    const arr = this.getWatchedFilms();
+    arr.push(film);
+    this.setToWatchedArr(arr);
   }
 
   saveFilmToQueueArr(film) {
     film.btnValue = 'Delete film from queue'
-    this.filmQueueArr.push(film)
+    const arr = this.getQueueFilms();
+    arr.push(film);
+    this.setToQueueArr(arr)
   }
 
   //-----------Delete parth-------------
 
-  removeWatchedFilm(id) {
-    const filmIdx = this.getWatchedFilms.indexOf(this.filmWatchedArr.find(film => film.id === id));
-    this.filmWatchedArr.splice(filmIdx, 1);
-    this.saveToWatchedLocal()
+  removeWatchedFilm(movieId) {
+    const lsArr = this.getWatchedFilms();
+    const filmIdx = lsArr.findIndex(film => film.id === movieId);
+
+    if (filmIdx !== -1) {
+      lsArr.splice(filmIdx, 1);
+      this.setToWatchedArr(lsArr);
+      this.saveToWatchedLocal();
+    }
   }
 
-  removeQueueFilm(id) {
-    const filmIdx = this.filmQueueArr.indexOf(this.filmQueueArr.find(film => film.id === id));
-    this.filmQueueArr.splice(filmIdx, 1);
-    this.saveToQueueLocal()
+  removeQueueFilm(movieId) {
+    const lsArr = this.getQueueFilms();
+    const filmIdx = lsArr.findIndex(film => film.id === movieId);
+    if (filmIdx !== -1) {
+      lsArr.splice(filmIdx, 1);
+      this.setToQueueArr(lsArr);
+      this.saveToQueueLocal();
+    }
   }
 
   //---------Get film parth----------

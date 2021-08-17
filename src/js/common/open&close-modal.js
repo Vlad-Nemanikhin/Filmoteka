@@ -37,7 +37,6 @@ function onMovieCardClick(e) {
 
     if (lSAPI.isHasFilmInQueue(movie)) {
       const button = refs.modalEl.querySelector('button[data-name="queue"]');
-      console.log('fetchMovieById  - button', button)
 
       renameToDeleteQueueBtn(button)
     } 
