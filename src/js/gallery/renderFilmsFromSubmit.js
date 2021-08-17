@@ -23,6 +23,7 @@ export function getMoviesCards(e) {
         //выводим сообщение при неудачном поиске
         if (res.total_results === 0) {
           refs.notifyEl.classList.add('search__hint--blocked');
+          Notiflix.Notify.failure(`No results were found...`);
         } else {
           refs.notifyEl.classList.remove('search__hint--blocked');
           //запускаем спиннер
@@ -31,7 +32,7 @@ export function getMoviesCards(e) {
           const totalResult = res.total_results;
           const totalHits = res.total_pages;
           let currentPage = res.page;
-
+          Notiflix.Notify.success(`Found ${totalResult} films`);
           console.log('Найдено всего', totalResult);
           console.log('кол-во страниц', totalHits);
           console.log('текущая страница', currentPage);
