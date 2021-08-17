@@ -19,6 +19,8 @@ function onToggleClick(evt) {
     tuiToggle.classList.remove(Theme.LIGHT);
     localStorage.setItem('bodyTheme', Theme.DARK);
     themeToggle.checked = true;
+    
+
   } else {
     document.body.classList.remove(Theme.DARK);
     document.body.classList.add(Theme.LIGHT);

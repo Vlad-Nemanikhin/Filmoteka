@@ -10,7 +10,7 @@ function hangScrollBtn() {
 
   scrollTop <= 1000
     ? refs.topScrollBtn.classList.add('scroll-btn-hide')
-    : refs.topScrollBtn.classList.remove('scroll-btn-hide');
+    : refs.topScrollBtn.classList.replace('scroll-btn-hide','hidden__btn');
 }
 
 function ScrollTop() {
