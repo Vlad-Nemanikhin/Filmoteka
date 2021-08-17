@@ -28,17 +28,25 @@ export function getMoviesCards(e) {
           //запускаем спиннер
           Notiflix.Loading.dots('Processing...');
           //___________ПАГИНАЦИЯ_______________________
+          const totalResult = res.total_results;
           const totalHits = res.total_pages;
+          let currentPage = res.page;
+
+          console.log('Найдено всего', totalResult);
+          console.log('кол-во страниц', totalHits);
+          console.log('текущая страница', currentPage);
+
           const instance = fPagination();
-          instance.setTotalItems(totalHits);
-          instance.movePageTo(page);
+          instance.setItemsPerPage(20);
+          instance.setTotalItems(totalResult);
+          instance.movePageTo(currentPage);
           //отлавливаем  событие при переходе по страницам при пагинации
           instance.on('afterMove', event => {
             const currentPage = event.page;
             //получаем массив обЪектов фильмов на конкретной странице
             onMore(movie, currentPage);
-            });
-        
+          });
+
           page = page + 1;
           //получаем массив обЪектов фильмов, которые пришли по запросу
           const data = res.results.map(el => {
@@ -63,7 +71,7 @@ export function getMoviesCards(e) {
 
 //рендерит разметку по шаблону
 function renderFilms(data, arrOfGenres) {
-//записываем массивы названия жанров в каждый обЪект фильма
+  //записываем массивы названия жанров в каждый обЪект фильма
   data[0].genre_names = arrOfGenres[0];
   data[1].genre_names = arrOfGenres[1];
   data[2].genre_names = arrOfGenres[2];
@@ -86,10 +94,10 @@ function renderFilms(data, arrOfGenres) {
   data[19].genre_names = arrOfGenres[19];
   //подменяем дату на год
   data.map(el => {
-            const normalDate = getYear(new Date(el.release_date));
-            return (el.release_date = normalDate);
-          });
-//деструктуризируем объекты
+    const normalDate = getYear(new Date(el.release_date));
+    return (el.release_date = normalDate);
+  });
+  //деструктуризируем объекты
   const {
     poster_path,
     title,
@@ -126,7 +134,7 @@ async function onMore(movie, currentPage) {
     const cards = await APIs.fetchMoviesByQuery(movie, currentPage);
     const data = cards.results.map(el => {
       return el;
-    })
+    });
     //получаем массив массивов имен жанров фильмов, которые пришли по запросу
     const arrOfGenres = getherGenreNamesForData(data);
 
@@ -137,8 +145,8 @@ async function onMore(movie, currentPage) {
     //останавливаем спиннер
     Notiflix.Loading.remove();
   } catch (error) {
-        console.log(error);
-    }
+    console.log(error);
+  }
 }
 
 //Вытягивает массив id жанров и массив names жанров, записывает в localStorage
@@ -208,17 +216,17 @@ function getNameOfGenre(parsedId, parsedName, data) {
 
 //Собирает имена жанров в массивы и обрезает, если количество больше 2
 function getherGenreNamesForData(data) {
-          //получаем данные из хранилища и массив массивов имен жанров
-          const parsedId = JSON.parse(localStorage.getItem('id'));
-          const parsedName = JSON.parse(localStorage.getItem('name'));
-          const arrayOfGenres = getNameOfGenre(parsedId, parsedName, data);
-          //проходимся по массивам имен жанров в каждом обЇекте фильмов
+  //получаем данные из хранилища и массив массивов имен жанров
+  const parsedId = JSON.parse(localStorage.getItem('id'));
+  const parsedName = JSON.parse(localStorage.getItem('name'));
+  const arrayOfGenres = getNameOfGenre(parsedId, parsedName, data);
+  //проходимся по массивам имен жанров в каждом обЇекте фильмов
   arrayOfGenres.map(el => {
-            //если длина массива имен больше 2 - обрезаем
-            if (el.length >= 3) {
-              return el.splice(2, el.length - 2);
-              }
-          })
+    //если длина массива имен больше 2 - обрезаем
+    if (el.length >= 3) {
+      return el.splice(2, el.length - 2);
+    }
+  });
   return arrayOfGenres;
 }
 

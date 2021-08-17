@@ -4,9 +4,9 @@ import '../../sass/pagination/_pag.scss';
 
 const optionsTui = {
   // below default value of options
-  totalItems: 100,
-  itemsPerPage: 10,
-  visiblePages: 10,
+  //totalItems: 100,
+  //itemsPerPage: 8,
+  visiblePages: 8,
   page: 1,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
