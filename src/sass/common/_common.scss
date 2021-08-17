@@ -100,8 +100,7 @@ img {
     }
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $accent-btn-color;
     color: $white-color;
     border-color: inherit;
