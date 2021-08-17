@@ -19,13 +19,11 @@ function onAddQueueBtnClick(movie, evt) {
     renameToAddQueueBtn(button)
   }
 
-  if (liEl.dataset.islib === 'true' && button.textContent !== 'DELETE FROM QUEUE') {
+  const hederBtn = refs.headBtnQueueEl.classList.contains('library__btn--active');
+
+  if (liEl.dataset.islib === 'true' && hederBtn && button.textContent !== 'DELETE FROM QUEUE') {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()));
   }
-
-  // if (liEl.dataset.islib === 'true' && button.textContent !== 'ADD TO QUEUE') {
-  //   renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()));
-  // }
 
 }
 
