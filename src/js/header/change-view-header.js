@@ -1,10 +1,10 @@
 // const galeryRating = document.querySelectorAll('.gallery__info-rating');
 
-import { refs } from "./refs";
-import localStorageAPI from "./localStorageAPI";
-import clearMarkup from "./clear-markup-library";
-import renderLibraryMarkup from "./render-library-markup";
-import galleryLibTpl from "../handlebars/galleryLib.hbs";
+import { refs } from "../refs";
+import localStorageAPI from "../common/localStorageAPI";
+import clearMarkup from "../library/clear-markup-library";
+import renderLibraryMarkup from "../library/render-library-markup";
+import galleryLibTpl from "../../handlebars/galleryLib.hbs";
 
 const lSAPI = new localStorageAPI();
 
