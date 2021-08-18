@@ -3,6 +3,7 @@ import { teamItems } from './info-about-team';
 import { hideCloseButton, showCloseButton } from '../common/conditionOfCrossButton';
 import { hangScrollBtn } from '../top-btn-scroll';
 import { hideButton, showButton } from '../common/conditionOfScrollBtn';
+import Swiper from 'swiper';
 import icons from '../../images/sprite.svg';
 const gitIcon = `${icons}#git_icon`;
 const mailIcon = `${icons}#mail_icon`;
@@ -35,7 +36,7 @@ const createTeamElements = teamItems
             class="team-item__photo"
             data-id="${id}"
           />
-          <p class="team-item__name">${teamItemName}</p>
+          <h3 class="team-item__name">${teamItemName}</h3>
           <p class="team-item__position">${teamPosition}</p>
           <div class="team-item__social">
             <a href="${gitLink}" class="team-item__social-link"
@@ -131,8 +132,6 @@ const createTeamCardElements = teamItems.map(
     mainDuties,
   }) => {
     return `
-   <div class="team-item__container item">
- 
   <div class="team-item__global-info">
   <img src="${photoLink}" alt="member" width="200" height="200" class="team-item__photo__upper" />
 
@@ -161,7 +160,6 @@ const createTeamCardElements = teamItems.map(
       </div>
     </div>
   </div>
-
   <div class="team-item__inform">
     <div class="team-item__upper2">
       <p class="team-item__feature">Ключевые особенности на проекте</p>
