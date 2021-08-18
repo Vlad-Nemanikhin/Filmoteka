@@ -78,10 +78,12 @@ export function getMoviesCards(e) {
 refs.inputEl.addEventListener('input', getTopMoviesAgain);
 
 function getTopMoviesAgain (e) {
+  page = 1;
+
   if (!e.target.value.length) {
     clearContainer()
     getGenres();
-    fetchTopMovies(1);
+    fetchTopMovies(page);
   }
   return;
 }
