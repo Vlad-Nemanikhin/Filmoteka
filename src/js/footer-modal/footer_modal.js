@@ -75,8 +75,29 @@ function onDeveloperLinkClick(e) {
   window.addEventListener('keydown', onKeyEscLeftRightPress);
   hideButton();
 
+  changeToDarkTheme();
+
   refs.body.style.overflow = 'hidden';
 }
+
+// Применение темной темы
+function changeToDarkTheme() {
+  if (document.body.classList.contains('dark-theme')) {
+    refs.modalFooter.classList.add('theme-dark')
+    refs.modalFooter.classList.remove('theme-light')
+    
+    refs.teamCard.classList.add('theme-dark')
+    refs.teamCard.classList.remove('theme-light')
+  }
+  else {
+    refs.modalFooter.classList.add('theme-light')
+    refs.modalFooter.classList.remove('theme-dark')
+
+    refs.teamCard.classList.add('theme-light')
+    refs.teamCard.classList.remove('theme-dark')
+  }
+};
+
 //Закрытие модалки по крестику
 refs.closeModalBtn.addEventListener('click', footModalClose);
 
