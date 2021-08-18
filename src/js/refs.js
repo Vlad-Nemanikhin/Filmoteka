@@ -33,6 +33,7 @@ const refs = {
 	teamCardList: document.querySelector('.footer-modal__wrap__upper'),
 	teamCard: document.querySelector('.footer-team-card-wrap'),
 	photoLink: document.querySelector('.team-list'),
+
 	//TopScroll
 	topScrollBtn: document.querySelector('#scroll-btn'),
 };
