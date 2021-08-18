@@ -11,22 +11,22 @@ const phoneIcon = `${icons}#mobile-phone_icon`;
 const crossIcon = `${icons}#close_icon`;
 const closeUpperModalBtn = document.querySelector('.close-btn__modal_upper');
 
-
 //! Создание разметки команды
 
-const createTeamElements = teamItems.map(
-  ({
-    photoLink,
-    teamItemName,
-    teamPosition,
-    gitLink,
-    emailLink,
-    linkedinLink,
-    telNumber,
-    mainDuties,
-    id,
-  }) => {
-    return `<li class="team-item">
+const createTeamElements = teamItems
+  .map(
+    ({
+      photoLink,
+      teamItemName,
+      teamPosition,
+      gitLink,
+      emailLink,
+      linkedinLink,
+      telNumber,
+      mainDuties,
+      id,
+    }) => {
+      return `<li class="team-item">
             <img
             src="${photoLink}"
             alt="member"
@@ -57,8 +57,9 @@ const createTeamElements = teamItems.map(
             ></a>
           </div>
         </li>`;
-  },
-).join('');
+    },
+  )
+  .join('');
 
 refs.teamList.insertAdjacentHTML('beforeend', createTeamElements);
 
@@ -66,51 +67,53 @@ refs.teamList.insertAdjacentHTML('beforeend', createTeamElements);
 refs.developerLink.addEventListener('click', onDeveloperLinkClick);
 function onDeveloperLinkClick(e) {
   e.preventDefault();
-  refs.backdropFooter.classList.toggle('backdrop--is-hidden');
-  refs.modalFooter.classList.toggle('modal--close');
+  refs.backdropFooter.classList.remove('backdrop--is-hidden');
+  refs.modalFooter.classList.remove('modal--close');
   refs.backdropFooter.addEventListener('click', onFootBackdropClick);
   document.body.classList.add('modal-open');
   window.removeEventListener('scroll', hangScrollBtn);
-  window.addEventListener('keydown', onKeyEscPress);
+  window.addEventListener('keydown', onKeyEscLeftRightPress);
   hideButton();
 
-  refs.body.style.overflow = "hidden";
+  refs.body.style.overflow = 'hidden';
 }
 //Закрытие модалки по крестику
-refs.closeModalBtn.addEventListener('click', onFootModalCloseBtnClick);
-function onFootModalCloseBtnClick(e) {
-  refs.backdropFooter.classList.toggle('backdrop--is-hidden');
-  refs.modalFooter.classList.toggle('modal--close');
+refs.closeModalBtn.addEventListener('click', footModalClose);
+
+function footModalClose(e) {
+  refs.backdropFooter.classList.add('backdrop--is-hidden');
+  refs.modalFooter.classList.add('modal--close');
   refs.backdropFooter.removeEventListener('click', onFootBackdropClick);
-  window.removeEventListener('keydown', onKeyEscPress);
-  window.addEventListener('scroll', hangScrollBtn);
   document.body.classList.remove('modal-open');
+  window.addEventListener('scroll', hangScrollBtn);
+  window.removeEventListener('keydown', onKeyEscLeftRightPress);
+  refs.body.style.overflow = 'visible';
   showButton();
 }
 //Закрытие модалки по бэкдропу
 refs.backdropFooter.addEventListener('click', onFootBackdropClick);
+
 function onFootBackdropClick(e) {
   if (e.target === e.currentTarget) {
-    refs.backdropFooter.classList.toggle('backdrop--is-hidden');
-    refs.modalFooter.classList.toggle('modal--close');
-    document.body.classList.remove('modal-open');
-    window.addEventListener('scroll', hangScrollBtn);
-    showButton();
-
-    refs.body.style.overflow = "visible";
+    footModalClose();
   }
 }
-//Закрытие по ESC
-window.addEventListener('keydown', onKeyEscPress);
-function onKeyEscPress(e) {
-  if (e.code === 'Escape') {
-    refs.backdropFooter.classList.toggle('backdrop--is-hidden');
-    refs.modalFooter.classList.toggle('modal--close');
-    document.body.classList.remove('modal-open');
-    window.addEventListener('scroll', hangScrollBtn);
-    showButton();
+//Закрытие по ESC и работа стрелок
 
-    refs.body.style.overflow = "visible";
+function onKeyEscLeftRightPress(e) {
+  if (e.code === 'Escape') {
+    if (!teamCard.classList.contains('modal--close')) {
+      console.log(111);
+      onUpperBackdropClose();
+    } else {
+      footModalClose();
+    }
+  }
+  if (e.code === 'ArrowLeft') {
+    minusSlide();
+  }
+  if (e.code === 'ArrowRight') {
+    plusSlide();
   }
 }
 
@@ -180,19 +183,19 @@ const teamCard = document.querySelector('.footer-team-card-wrap');
 const photoLink = document.querySelector('.team-list');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
-let slideIndex;
+let slideIndex = null;
 
 photoLink.addEventListener('click', showUpperModal);
 
 function showUpperModal(e) {
   e.preventDefault();
-  window.addEventListener('keydown', onKeyEscPressUpperModal);
+  // window.addEventListener('keydown', onKeyEscPressUpperModal);
   if (!refs.modalFooter.classList.contains('modal--close') && e.target.nodeName === 'IMG') {
     hideCloseButton();
-    window.removeEventListener('keydown', onKeyEscPress);
+
     const cardId = e.target.dataset.id;
     return currentSlide(cardId);
-  } 
+  }
 }
 
 /* Устанавливает текущий слайд */
@@ -202,8 +205,9 @@ function currentSlide(cardId) {
 }
 
 /* Основная функция слайдера */
+
 function showSlides(n) {
-  let i;
+  let i = 0;
   const slides = document.getElementsByClassName('item');
   if (n > slides.length) {
     slideIndex = 1;
@@ -212,17 +216,15 @@ function showSlides(n) {
     slideIndex = slides.length;
   }
   for (i = 0; i < slides.length; i++) {
-    slideIndex++;
     slides[i].style.display = 'none';
-    
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
+    slideIndex++;
+
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
   }
-  slides[slideIndex-1].style.display = "block"
+  slides[slideIndex - 1].style.display = 'block';
 }
-  }
-
-
 
 //* скрытие второй  модалки
 //скрытие по клику бэкдроп
@@ -230,31 +232,20 @@ teamCard.addEventListener('click', onUpperBackdropClick);
 
 function onUpperBackdropClick(e) {
   if (e.target === e.currentTarget) {
-    teamCard.classList.add('modal--close');
-    slideIndex = 0;
+    onUpperBackdropClose();
   }
-  window.removeEventListener('keydown', onKeyEscPressUpperModal);
+}
+
+// сама функция скрытия второй модалки
+function onUpperBackdropClose(e) {
+  teamCard.classList.add('modal--close');
+  slideIndex = null;
 }
 
 //скрытие по крестику работает только на первой карточке
-//const closeUpperModalBtn = document.querySelector('.close-btn__modal_upper');
-//closeUpperModalBtn.addEventListener('click', onCloseUpperModalBtn);
-//function onCloseUpperModalBtn() {
-//  teamCard.classList.add('modal--close');
-//window.removeEventListener('keydown', onKeyEscPressUpperModal);
-//}
+// closeUpperModalBtn.addEventListener('click', onUpperBackdropClose);
 
-// по клавише ESC
-
-function onKeyEscPressUpperModal(e) {
-  if (e.code === 'Escape') {
-    refs.backdropFooter.classList.toggle('backdrop--is-hidden');
-    refs.modalFooter.classList.toggle('modal--close');
-    teamCard.classList.add('modal--close');
-    window.addEventListener('keydown', onKeyEscPress);
-  }
-}
-
+// closeUpperModalBtn.addEventListener('click', onUpperBackdropClose);
 
 prev.addEventListener('click', minusSlide);
 next.addEventListener('click', plusSlide);
