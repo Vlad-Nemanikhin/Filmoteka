@@ -131,44 +131,46 @@ const createTeamCardElements = teamItems.map(
     telNumber,
     mainDuties,
   }) => {
-    return `<li class="team-item__container item">    
-    <img
-            src="${photoLink}"
-            alt="member"
-            width="200"
-            height="200"
-            class="team-item__photo__upper"/>
-          <h3 class="team-item__name__upper">${teamItemName}</h3>
-          <p class="team-item__position__upper">${teamPosition}</p>
-          <div class="team-item__social__upper">
-            <a href="${gitLink}" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper">
-                <use href="${gitIcon}"></use>
-              </svg>
-            </a>
-            <a href="mailto:${emailLink}" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper">
-                <use href="${mailIcon}"></use></svg
-            ></30
-            <a href="${linkedinLink}" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper">
-                <use href="${linkedInIcon}"></use></svg
-            ></a>
-            <a href="tel:${telNumber})" class="team-item__social-link__upper"
-              ><svg class="team-social__icon__upper">
-                <use href="${phoneIcon}"></use></svg
-            ></a>
-          </div>
-          
-          <div class="team-item__inform">
-			    <div class="team-item__upper2">
-          <p class="team-item__feature">Ключевые особенности на проекте</p>
-          </div>
-          <div class="team-item__upper3">
-          <p class="team-item__discr__upper">${mainDuties}</p>
-          </div>
-        </div>
-        </li>`;
+    return `
+  <div class="team-item__container item">
+ 
+  <div class="team-item__global-info">
+  <img src="${photoLink}" alt="member" width="200" height="200" class="team-item__photo__upper" />
+
+    <div class="team-item__global-info-name">
+      <p class="team-item__name__upper">${teamItemName}</p>
+      <p class="team-item__position__upper">${teamPosition}</p>
+
+      <div class="team-item__social__upper">
+        <a href="${gitLink}" class="team-item__social-link__upper"
+          ><svg class="team-social__icon__upper">
+            <use href="${gitIcon}"></use>
+          </svg>
+        </a>
+        <a href="mailto:${emailLink}" class="team-item__social-link__upper"
+          ><svg class="team-social__icon__upper">
+            <use href="${mailIcon}"></use></svg
+        ></a>
+        <a href="${linkedinLink}" class="team-item__social-link__upper"
+          ><svg class="team-social__icon__upper">
+            <use href="${linkedInIcon}"></use></svg
+        ></a>
+        <a href="tel:${telNumber})" class="team-item__social-link__upper"
+          ><svg class="team-social__icon__upper">
+            <use href="${phoneIcon}"></use></svg
+        ></a>
+      </div>
+    </div>
+  </div>
+  <div class="team-item__inform">
+    <div class="team-item__upper2">
+      <p class="team-item__feature">Ключевые особенности на проекте</p>
+    </div>
+    <div class="team-item__upper3">
+      <p class="team-item__discr__upper">${mainDuties}</p>
+    </div>
+  </div>
+</div>`;
   },
 );
 
