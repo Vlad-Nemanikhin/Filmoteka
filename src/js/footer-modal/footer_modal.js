@@ -103,8 +103,9 @@ function onFootBackdropClick(e) {
 function onKeyEscLeftRightPress(e) {
   if (e.code === 'Escape') {
     if (!teamCard.classList.contains('modal--close')) {
-      console.log(111);
       onUpperBackdropClose();
+      prev.removeEventListener('keydown', onPressKeyLeft);
+      next.removeEventListener('keydown', onPressKeyRight);
     } else {
       footModalClose();
     }
@@ -233,6 +234,8 @@ teamCard.addEventListener('click', onUpperBackdropClick);
 
 function onUpperBackdropClick(e) {
   if (e.target === e.currentTarget) {
+    prev.removeEventListener('keydown', onPressKeyLeft);
+    next.removeEventListener('keydown', onPressKeyRight);  
     onUpperBackdropClose();
   }
 }
@@ -243,22 +246,31 @@ function onUpperBackdropClose(e) {
   slideIndex = null;
 }
 
-//скрытие по крестику работает только на первой карточке
-// closeUpperModalBtn.addEventListener('click', onUpperBackdropClose);
-
-// closeUpperModalBtn.addEventListener('click', onUpperBackdropClose);
-
 prev.addEventListener('click', minusSlide);
 next.addEventListener('click', plusSlide);
+prev.addEventListener('keydown', onPressKeyLeft);
+next.addEventListener('keydown', onPressKeyRight);
+
+function onPressKeyRight(e) {
+  if (e.code === 'ArrowRight') {
+    showSlides((slideIndex += 1));
+  }
+}
+
+function onPressKeyLeft(e) {
+  if (e.code === 'ArrowLeft') {
+    showSlides((slideIndex -= 1));
+  }
+}
 
 /* Функция увеличивает индекс на 1, показывает следующй слайд*/
 function plusSlide(e) {
-  e.preventDefault();
+  
   showSlides((slideIndex += 1));
 }
 
 /* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
 function minusSlide(e) {
-  e.preventDefault();
+  
   showSlides((slideIndex -= 1));
 }
