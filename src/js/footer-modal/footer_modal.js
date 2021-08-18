@@ -11,6 +11,18 @@ const phoneIcon = `${icons}#mobile-phone_icon`;
 const crossIcon = `${icons}#close_icon`;
 const closeUpperModalBtn = document.querySelector('.close-btn__modal_upper');
 
+const modalTheme = {
+  LIGHT: 'footer-modal__theme--light',
+  DARK: 'footer-modal__theme--dark',
+}
+
+const currentTheme = {
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
+};
+
+
+
 //! Создание разметки команды
 
 const createTeamElements = teamItems
@@ -75,8 +87,23 @@ function onDeveloperLinkClick(e) {
   window.addEventListener('keydown', onKeyEscLeftRightPress);
   hideButton();
 
+  changeToDarkTheme();
+
   refs.body.style.overflow = 'hidden';
+
 }
+
+function changeToDarkTheme() {
+  if (document.body.classList.contains('dark-theme')) {
+    refs.modalFooter.classList.add('theme-dark')
+    refs.modalFooter.classList.remove('theme-light')
+  }
+  else {
+    refs.modalFooter.classList.add('theme-light')
+    refs.modalFooter.classList.remove('theme-dark')
+  }
+};
+
 //Закрытие модалки по крестику
 refs.closeModalBtn.addEventListener('click', footModalClose);
 
