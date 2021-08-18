@@ -15,7 +15,7 @@ function onMylibraryClick() {
   clearMarkup();
   fPagination().reset();
   if (lSAPI.getWatchedFilms().length === 0) {
-    Notiflix.Notify.info('У вас нет просмотреных фильмов');
+    Notiflix.Notify.info('You have not watched movies');
   } else {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
   }
@@ -45,7 +45,7 @@ refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
 function displayWatchedMovies() {
   clearMarkup();
   if (lSAPI.getWatchedFilms().length === 0) {
-    Notiflix.Notify.info('У вас нет просмотреных фильмов');
+    Notiflix.Notify.info('You have not watched movies');
   } else {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
   }
@@ -60,7 +60,7 @@ refs.headBtnQueueEl.addEventListener('click', displayQuereMovies);
 function displayQuereMovies() {
   clearMarkup();
   if (lSAPI.getQueueFilms().length === 0) {
-    Notiflix.Notify.info('Вы не выбрали фильмы для просмотра');
+    Notiflix.Notify.info('Select movies to watch');
   } else {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()));
   }
