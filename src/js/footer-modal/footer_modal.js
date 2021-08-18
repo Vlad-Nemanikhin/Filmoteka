@@ -132,33 +132,33 @@ const createTeamCardElements = teamItems.map(
     mainDuties,
   }) => {
     return `
-  <div class="team-item__container item">
- 
+<li class="team-item__container item">
   <div class="team-item__global-info">
-  <img src="${photoLink}" alt="member" width="200" height="200" class="team-item__photo__upper" />
-
+    <img src="${photoLink}" alt="member" width="200" height="200" class="team-item__photo__upper" />
     <div class="team-item__global-info-name">
-      <p class="team-item__name__upper">${teamItemName}</p>
+      <h2 class="team-item__name__upper">${teamItemName}</h2>
       <p class="team-item__position__upper">${teamPosition}</p>
-
       <div class="team-item__social__upper">
-        <a href="${gitLink}" class="team-item__social-link__upper"
-          ><svg class="team-social__icon__upper">
+        <a href="${gitLink}" class="team-item__social-link__upper">
+          <svg class="team-social__icon__upper">
             <use href="${gitIcon}"></use>
           </svg>
         </a>
-        <a href="mailto:${emailLink}" class="team-item__social-link__upper"
-          ><svg class="team-social__icon__upper">
-            <use href="${mailIcon}"></use></svg
-        ></a>
-        <a href="${linkedinLink}" class="team-item__social-link__upper"
-          ><svg class="team-social__icon__upper">
-            <use href="${linkedInIcon}"></use></svg
-        ></a>
-        <a href="tel:${telNumber})" class="team-item__social-link__upper"
-          ><svg class="team-social__icon__upper">
-            <use href="${phoneIcon}"></use></svg
-        ></a>
+        <a href="mailto:${emailLink}" class="team-item__social-link__upper">
+          <svg class="team-social__icon__upper">
+            <use href="${mailIcon}"></use>
+          </svg>
+        </a>
+        <a href="${linkedinLink}" class="team-item__social-link__upper">
+          <svg class="team-social__icon__upper">
+            <use href="${linkedInIcon}"></use>
+          </svg>
+        </a>
+        <a href="tel:${telNumber})" class="team-item__social-link__upper">
+        <svg class="team-social__icon__upper">
+            <use href="${phoneIcon}"></use>
+          </svg>
+        </a>
       </div>
     </div>
   </div>
@@ -170,7 +170,7 @@ const createTeamCardElements = teamItems.map(
       <p class="team-item__discr__upper">${mainDuties}</p>
     </div>
   </div>
-</div>`;
+</li>`;
   },
 );
 
