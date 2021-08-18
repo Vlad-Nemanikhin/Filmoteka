@@ -25,6 +25,7 @@ function onMovieCardClick(e) {
   window.addEventListener('keydown', onKeyEscPress);
 
   refs.body.style.overflow = "hidden";
+  refs.modalWrap.classList.remove('modal--close');
 
   const movieId = e.target.parentNode.parentNode.dataset.id;
 
@@ -75,9 +76,9 @@ function renderGenres(movie) {
 
 // 2 close by click on modalCloseButton
 function onModalCloseBtnClick(e) {
-  refs.modalEl.innerHTML = '';
-  refs.backdropEl.classList.toggle('backdrop--is-hidden');
-  refs.modalEl.classList.toggle('modal--close');
+  refs.modalEl.classList.add('modal--close');
+  refs.backdropEl.classList.add('backdrop--is-hidden');
+  refs.modalWrap.classList.add('modal--close');
 
   refs.body.style.overflow = "visible";
 
@@ -87,12 +88,12 @@ function onModalCloseBtnClick(e) {
 
 // 3 close by click on backdrop (remove eventListener on modal)
 function onBackdropClick(e) {
-  refs.modalEl.innerHTML = '';
-
   if (e.target === e.currentTarget) {
     refs.backdropEl.classList.add('backdrop--is-hidden');
 
     refs.modalEl.classList.add('modal--close');
+
+    refs.modalWrap.classList.add('modal--close');
 
     refs.body.style.overflow = "visible";
 
@@ -103,12 +104,11 @@ function onBackdropClick(e) {
 
 // 4 close by click on Esc-key
 function onKeyEscPress(e) {
-    refs.modalEl.innerHTML = '';
-
     if (e.code === 'Escape') {
       refs.backdropEl.classList.add('backdrop--is-hidden');
       refs.modalEl.classList.add('modal--close');
-
+      refs.modalWrap.classList.add('modal--close');
+      
       refs.body.style.overflow = "visible";
 
       refs.backdropEl.removeEventListener('click', onBackdropClick);
