@@ -3,6 +3,7 @@ import '../sass/dark-theme/_dark-theme.scss';
 const themeToggle = document.getElementById('theme-switch-toggle');
 const tuiToggle = document.getElementById('tui-pagination-container');
 const footer = document.getElementById('footer');
+const footerModal = document.getElementById('footer-modal');
 
 const Theme = {
   LIGHT: 'light-theme',
@@ -12,6 +13,11 @@ const Theme = {
 const Footer = {
   LIGHT: 'footer__theme--light',
   DARK: 'footer__theme--dark',
+};
+
+const FooterModal = {
+  LIGHT: 'footer-modal__theme--light',
+  DARK: 'footer-modal__theme--dark',
 }
 
 themeToggle.addEventListener('click', onToggleClick);
@@ -23,6 +29,8 @@ function onToggleClick(evt) {
     document.body.classList.remove(Theme.LIGHT);
     footer.classList.add(Footer.DARK);
     footer.classList.remove(Footer.LIGHT);
+    footerModal.classList.add(FooterModal.DARK);
+    footerModal.classList.remove(FooterModal.LIGHT);
     tuiToggle.classList.add(Theme.DARK);
     tuiToggle.classList.remove(Theme.LIGHT);
     localStorage.setItem('bodyTheme', Theme.DARK);
@@ -34,6 +42,8 @@ function onToggleClick(evt) {
     document.body.classList.add(Theme.LIGHT);
     footer.classList.remove(Footer.DARK);
     footer.classList.add(Footer.LIGHT);
+    footerModal.classList.add(FooterModal.DARK);
+    footerModal.classList.remove(FooterModal.LIGHT);
     tuiToggle.classList.add(Theme.LIGHT);
     tuiToggle.classList.remove(Theme.DARK);
     localStorage.setItem('bodyTheme', Theme.LIGHT);
@@ -50,6 +60,9 @@ function checkBodyTheme() {
 
     footer.classList.add(Footer.DARK);
     footer.classList.remove(Footer.LIGHT);
+
+    footerModal.classList.add(FooterModal.DARK);
+    footerModal.classList.remove(FooterModal.LIGHT);
     
     localStorage.setItem('bodyTheme', Theme.DARK);
     themeToggle.checked = true;
