@@ -53,17 +53,24 @@
   padding: 0;
   align-items: center;
   justify-content: center;
-
+  color: $main-text-color;
   background-color: transparent;
   border: none;
 
   transition: fill $anim-duration $anim-timing;
 }
+
+.theme-dark> .modal__cross {
+  color: #fff;
+  fill: #fff;
+}
+
+
 .close-btn-modal:hover,
 .close-btn__upper_modal:hover {
   cursor: pointer;
 
-  background-color: lightblue;
+  background-color: transparent;
   fill: $accent-btn-color;
 }
 
