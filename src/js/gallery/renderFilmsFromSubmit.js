@@ -4,6 +4,7 @@ import card from '../../handlebars/gallery.hbs';
 import Notiflix from 'notiflix';
 import { getYear } from 'date-fns';
 import fPagination from './pagination';
+import { fetchTopMovies, getGenres } from './popular-movies';
 
 let page = 1;
 let pageArr = [];
@@ -69,8 +70,22 @@ export function getMoviesCards(e) {
       .catch(error => {
         console.dir(error);
       });
-  }
+  } 
 }
+
+//при очистке сабмита/потере фокуса, если он пустой - отображаем популярные фильмы
+
+refs.inputEl.addEventListener('input', getTopMoviesAgain);
+
+function getTopMoviesAgain (e) {
+  if (!e.target.value.length) {
+    clearContainer()
+    getGenres();
+    fetchTopMovies(1);
+  }
+  return;
+}
+
 
 //рендерит разметку по шаблону
 function renderFilms(data, arrOfGenres, totalResult) {
