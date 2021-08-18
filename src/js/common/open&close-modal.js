@@ -50,9 +50,26 @@ function onMovieCardClick(e) {
       const button = refs.modalEl.querySelector('button[data-name="queue"]');
 
       renameToDeleteQueueBtn(button)
-    } 
+    }
     
-    
+    renderGenres(movie);
+  });
+}
+
+function renderGenres(movie) {
+  const galleryItem = document.querySelectorAll('.modal__value');
+  const galleryItems = [...galleryItem]; 
+  const movieGenres = movie.genres;
+  galleryItems.map((div, i) => {
+      let array = [];
+      let genreString;
+      movieGenres.map(gener => {
+          const moviegener = localStorage.getItem(gener.id);
+          array.push(moviegener);
+          genreString = array.join(', ');
+      });
+    const li = `<li class="gallery__info-item">${genreString}</li>`;
+    div.insertAdjacentHTML('beforeEnd', li);
   });
 }
 
@@ -94,5 +111,4 @@ function onKeyEscPress(e) {
   }
 }
 
-
-export {onMovieCardClick, onModalCloseBtnClick, onBackdropClick, onKeyEscPress}
+export {onMovieCardClick, onModalCloseBtnClick, onBackdropClick, onKeyEscPress, renderGenres}

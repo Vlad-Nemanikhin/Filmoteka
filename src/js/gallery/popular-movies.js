@@ -63,7 +63,7 @@ function renderTopMovies(movies) {
   const markup = movies
     .map(el => {
       el.release_date = getYear(new Date(el.release_date));
-      const { id, poster_path, original_title, title, vote_average, release_date } = el;
+      let { id, poster_path, original_title, title, vote_average, release_date } = el;
       return cards({ id, poster_path, original_title, title, vote_average, release_date });
     })
     .join('');
