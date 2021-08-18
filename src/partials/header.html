@@ -21,32 +21,21 @@
 
     <!-- Разметка переключателя темы -->
     <div class="toolbar">
-        <div class="theme-switch">
-          <svg class="theme-switch__icon" role="img" aria-label="Иконка солнца">
-            <use href="./images/sprite.svg#icon-brightness-up"></use>
-          </svg>
-  
-          <div class="theme-switch__control">
-            <input
-              class="theme-switch__toggle"
-              type="checkbox"
-              name="theme"
-              id="theme-switch-toggle"
-              aria-label="Переключить между тёмной и светлой темой"
-            />
-            <label
-              aria-hidden="true"
-              class="theme-switch__track"
-              for="theme-switch-toggle"
-              aria-label="switch_theme"
-            >
-            </label>
-            <div aria-hidden="true" class="theme-switch__marker"></div>
-          </div>
-  
-          <svg class="theme-switch__icon" aria-label="Иконка луны">
-            <use href="./images/sprite.svg#icon-moon"></use>
-          </svg>
+      <div class="theme-switch">
+        <svg class="theme-switch__icon" role="img" aria-label="Иконка солнца">
+          <use href="./images/sprite.svg#icon-brightness-up"></use>
+        </svg>
+
+        <div class="theme-switch__control">
+          <input
+            class="theme-switch__toggle"
+            type="checkbox"
+            name="theme"
+            id="theme-switch-toggle"
+            aria-label="Переключить между тёмной и светлой темой"
+          />
+          <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
+          <div aria-hidden="true" class="theme-switch__marker"></div>
         </div>
 
         <svg class="theme-switch__icon" aria-label="Иконка луны">
@@ -57,16 +46,23 @@
 
     <!-- Секция поиска, будет активна на главной странице и скрываться на библиотеке -->
     <div class="search__section">
-        <form action="searchQuery" class="search__form">
-            <label class="search__formwrapper">
-                <input type="text" name="searchQuery" class="search__input" id="search-input" placeholder="Поиск фильмов" aria-label="input__search">
-                    <button type="submit" class="search__button" aria-label="submit">
-                    <svg class="search__inputicon" style="height: 12px; width: 12px;">
-                        <use href="./images/sprite.svg#search_icon"></use>
-                    </svg>
-                </button>
-            </label>
-        </form>
+      <form action="searchQuery" class="search__form">
+        <label class="search__formwrapper">
+          <input
+            type="text"
+            name="searchQuery"
+            class="search__input"
+            id="search-input"
+            placeholder="Поиск фильмов"
+          />
+          <button type="submit" class="search__button">
+            <svg class="search__inputicon" style="height: 12px; width: 12px">
+              <use href="./images/sprite.svg#search_icon"></use>
+            </svg>
+          </button>
+        </label>
+      </form>
+
       <!-- Блок уведомления о неуспешном поиске. Прописан display:none, 
             при выполнении условия в пустом поиске он будет сниматься -->
       <div class="search__hint" id="search-hint">
@@ -76,15 +72,10 @@
 
     <!-- Секция для кнопок библиотеки, будет скрыта на главной странице и активна на библиотеке -->
     <div class="library__section hidden_markup">
-        <div class="library__buttons">
-            <button class="library__btn library__btn--active" id="button-watched" aria-label="watched">
-                WATCHED
-            </button>
-            <button class="library__btn" id="button-queue" aria-label="queue">
-                QUEUE
-            </button>
-        </div>
-    </div>
+      <div class="library__buttons">
+        <button class="library__btn library__btn--active" id="button-watched">WATCHED</button>
+        <button class="library__btn" id="button-queue">QUEUE</button>
+      </div>
     </div>
   </div>
 </header>
