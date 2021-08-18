@@ -334,12 +334,17 @@
   justify-content: space-around;
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
-    // display: block;
-    justify-content: space-between;
-  }
-  @media screen and (min-width: 1024px) {
-  }
+    justify-content: center;}
 }
+
+.team-item__social__upper>a:not(:last-child){
+    @media screen and (min-width: 768px) {
+    margin-right: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 40px;}
+  }
+
 
 .team-item__social-link__upper {
   color: $secondary-text-color;
