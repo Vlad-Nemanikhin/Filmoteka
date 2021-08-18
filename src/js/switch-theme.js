@@ -58,6 +58,9 @@ function checkBodyTheme() {
     document.body.classList.add(Theme.DARK);
     document.body.classList.remove(Theme.LIGHT);
 
+    modalWrapper.classList.remove(Modal.LIGHT);
+    modalWrapper.classList.add(Modal.DARK);
+
     footer.classList.add(Footer.DARK);
     footer.classList.remove(Footer.LIGHT);
     
@@ -71,6 +74,8 @@ function checkBodyTheme() {
     footer.classList.remove(Footer.DARK);
     footer.classList.add(Footer.LIGHT);
 
+    modalWrapper.classList.remove(Modal.DARK);
+    modalWrapper.classList.add(Modal.LIGHT );
 
     localStorage.setItem('bodyTheme', Theme.LIGHT);
     themeToggle.checked = false;
