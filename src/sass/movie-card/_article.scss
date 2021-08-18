@@ -31,13 +31,11 @@
 
 .modal__wrapper {
   display: block;
-  background-color: $white-color;
   position: absolute;
   transform: translateX(-50%) translateY(-5%);
   top: 93px;
   left: 50%;
   overflow-y: hidden;
-  color: $main-text-color;
   border-radius: 5px;
 
   //width: 280px;
@@ -69,8 +67,17 @@
     //padding-bottom: 40px;
     padding-top: 50px;
   }
+
+}
+.theme--light {
+  background-color: $white-color;
+  color: $main-text-color;
 }
 
+.theme--dark {
+  background-color: $footer-dark-bg;
+  color: $footer-darktheme-text-color;
+}
 .modal {
   width: 280px;
   @media screen and (min-width: 768px) {
@@ -229,6 +236,15 @@
   border-radius: 20%;
   border: 1px solid $beige-color;
   background-color: $beige-color;
+}
+
+.theme--light .modal__meaning--grey {
+  background-color: $beige-color;
+  color: $main-text-color;
+}
+
+.theme--dark .modal__meaning--grey {
+  background-color: $footer-dark-bg;
 }
 
 //описание

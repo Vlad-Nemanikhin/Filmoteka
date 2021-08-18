@@ -20,6 +20,7 @@ const refs = {
 	modalEl: document.querySelector('.modal'),
 	modalCloseEl: document.querySelector('[data-modal-movie-card]'),
 	dateEl: document.querySelector('.gallery__date'),
+	modalWrap: document.querySelector('.modal__wrapper'),
 	//Library-----gallery
 
 	//Footer
