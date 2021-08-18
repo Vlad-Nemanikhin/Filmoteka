@@ -3,6 +3,7 @@ import { teamItems } from './info-about-team';
 import { hideCloseButton, showCloseButton } from '../common/conditionOfCrossButton';
 import { hangScrollBtn } from '../top-btn-scroll';
 import { hideButton, showButton } from '../common/conditionOfScrollBtn';
+import Swiper from 'swiper';
 import icons from '../../images/sprite.svg';
 const gitIcon = `${icons}#git_icon`;
 const mailIcon = `${icons}#mail_icon`;
@@ -35,7 +36,7 @@ const createTeamElements = teamItems
             class="team-item__photo"
             data-id="${id}"
           />
-          <p class="team-item__name">${teamItemName}</p>
+          <h3 class="team-item__name">${teamItemName}</h3>
           <p class="team-item__position">${teamPosition}</p>
           <div class="team-item__social">
             <a href="${gitLink}" class="team-item__social-link"
@@ -130,19 +131,14 @@ const createTeamCardElements = teamItems.map(
     telNumber,
     mainDuties,
   }) => {
-    return `<div class="team-item__container item">
-      <button class="close-btn-modal close-btn__modal_upper modal__cross" data-modal-close>
-    <svg class="close-btn__icon" width="18" height="18">
-      <use width="18" height="18" href="${crossIcon}"></use>
-    </svg>
-  </button>      
+    return `<li class="team-item__container item">    
     <img
             src="${photoLink}"
             alt="member"
             width="200"
             height="200"
             class="team-item__photo__upper"/>
-          <p class="team-item__name__upper">${teamItemName}</p>
+          <h3 class="team-item__name__upper">${teamItemName}</h3>
           <p class="team-item__position__upper">${teamPosition}</p>
           <div class="team-item__social__upper">
             <a href="${gitLink}" class="team-item__social-link__upper"
@@ -172,7 +168,7 @@ const createTeamCardElements = teamItems.map(
           <p class="team-item__discr__upper">${mainDuties}</p>
           </div>
         </div>
-        </div>`;
+        </li>`;
   },
 );
 

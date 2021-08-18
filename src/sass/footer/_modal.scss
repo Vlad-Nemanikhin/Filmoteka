@@ -6,29 +6,36 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: auto;
 }
 
 .footer-backdrop__modal {
   position: absolute;
   background-color: $white-color;
   transform: translateX(-50%) translateY(0);
-  top: 93px;
+  top: 10px;
   left: 50%;
   border-radius: 10px;
   min-width: 280px;
   width: 80%;
   height: auto;
-  padding: 25px;
+  padding: 10px;
+  overflow-y: scroll;
+
+  @media screen and (min-width: 480px) {
+  top: 10px;
+
+  }
 
   @media screen and (min-width: 768px) {
     transform: translateX(-50%) translateY(8%);
     top: 0;
-    width: 630px;
+    width: 80%;
   }
 
   @media screen and (min-width: 1024px) {
     transform: translateX(-50%) translateY(11%);
-    width: 900px;
+    width: 90%;
   }
 }
 
@@ -36,8 +43,8 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin: 0;
 
   display: flex;
@@ -61,14 +68,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0;
   padding: 20px 0;
 }
 
 .footer-modal__title {
   font-size: 20px;
   line-height: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .team-list {
@@ -90,8 +96,7 @@
 .team-item {
   border: 1px solid black;
   border-radius: 10px;
-  width: 220px;
-  //   max-width: 250px;
+  width: 250px;
   display: flex;
   flex-direction: column;
 
@@ -151,7 +156,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
+  width: 80%;
 }
 
 .team-item__social-link {
@@ -356,8 +361,8 @@
   max-width: 90%;
   position: relative;
   margin: auto;
-  height: 0px;
-  margin-bottom: 15px;
+  height: auto;
+
 }
 /* Картинка мастабируется по отношению к родительскому элементу */
 .slider .item img {
@@ -395,9 +400,17 @@
 }
 
 .slider .prev {
+  overflow: hidden;
+  background-color: transparent;
+  outline: none;
+  border: none;
   margin-left: 20px;
 }
 .slider .next {
+  overflow: hidden;
+  background-color: transparent;
+  outline: none;
+  border: none;
   margin-right: 20px;
   border-radius: 3px 0 0 3px;
 }
