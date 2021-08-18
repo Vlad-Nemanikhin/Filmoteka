@@ -1,19 +1,21 @@
 // const galeryRating = document.querySelectorAll('.gallery__info-rating');
 import Notiflix from 'notiflix';
-import { refs } from "../refs";
-import localStorageAPI from "../common/localStorageAPI";
-import clearMarkup from "../library/clear-markup-library";
-import renderLibraryMarkup from "../library/render-library-markup";
-import galleryLibTpl from "../../handlebars/galleryLib.hbs";
+import { refs } from '../refs';
+import localStorageAPI from '../common/localStorageAPI';
+import clearMarkup from '../library/clear-markup-library';
+import renderLibraryMarkup from '../library/render-library-markup';
+import galleryLibTpl from '../../handlebars/galleryLib.hbs';
+import fPagination from '../gallery/pagination';
 
 const lSAPI = new localStorageAPI();
 
 refs.myLib.addEventListener('click', onMylibraryClick);
 
 function onMylibraryClick() {
-	clearMarkup();
-	if (lSAPI.getWatchedFilms().length === 0) {
-		Notiflix.Notify.info('У вас нет просмотреных фильмов');
+  clearMarkup();
+  fPagination().reset();
+  if (lSAPI.getWatchedFilms().length === 0) {
+    Notiflix.Notify.info('У вас нет просмотреных фильмов');
   } else {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
   }
@@ -24,7 +26,7 @@ function onMylibraryClick() {
   refs.wrapperBtnInHeader.classList.remove('hidden_markup');
   refs.homePageBtn.classList.remove('header__navlink--currentlink');
   refs.myLib.classList.add('header__navlink--currentlink');
-//   galeryRating.classList.remove('hidden_markup');
+  //   galeryRating.classList.remove('hidden_markup');
 }
 
 refs.homePageBtn.addEventListener('click', changeHeaderInHome);
@@ -38,14 +40,15 @@ function changeHeaderInHome() {
   refs.myLib.classList.remove('header__navlink--currentlink');
 }
 
-
 refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
 
 function displayWatchedMovies() {
-	clearMarkup();
-	if (lSAPI.getWatchedFilms().length === 0) {
-		Notiflix.Notify.info('У вас нет просмотреных фильмов');
-	} else {renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()))}
+  clearMarkup();
+  if (lSAPI.getWatchedFilms().length === 0) {
+    Notiflix.Notify.info('У вас нет просмотреных фильмов');
+  } else {
+    renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
+  }
 
   refs.headBtnWachedEl.classList.add('library__btn--active');
   refs.headBtnQueueEl.classList.remove('library__btn--active');
@@ -55,9 +58,9 @@ function displayWatchedMovies() {
 refs.headBtnQueueEl.addEventListener('click', displayQuereMovies);
 
 function displayQuereMovies() {
-	clearMarkup();
-	if (lSAPI.getQueueFilms().length === 0) {
-		Notiflix.Notify.info('Вы не выбрали фильмы для просмотра');
+  clearMarkup();
+  if (lSAPI.getQueueFilms().length === 0) {
+    Notiflix.Notify.info('Вы не выбрали фильмы для просмотра');
   } else {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getQueueFilms()));
   }
