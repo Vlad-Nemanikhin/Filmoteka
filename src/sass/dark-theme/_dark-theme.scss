@@ -8,7 +8,7 @@ body.dark-theme {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
-  background-color: white;
+  background-color: transparent;
   border-radius: 20px;
   position: absolute;
   right: 20px;
@@ -20,9 +20,9 @@ body.dark-theme {
 }
 
 .theme-switch__icon {
-  color: currentColor;
-  height: 15px;
-  width: 15px;
+  fill: rgb(238, 155, 46);
+  height: 20px;
+  width: 20px;
   margin-right: 3px;
   margin-left: 3px;
 }
@@ -67,8 +67,8 @@ body.dark-theme {
 .theme-switch__marker {
   position: relative;
   background-color: #fff;
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
   z-index: 0;
   pointer-events: none;
