@@ -132,8 +132,6 @@ const createTeamCardElements = teamItems.map(
     mainDuties,
   }) => {
     return `
-  <div class="team-item__container item">
- 
   <div class="team-item__global-info">
   <img src="${photoLink}" alt="member" width="200" height="200" class="team-item__photo__upper" />
 
@@ -249,11 +247,13 @@ prev.addEventListener('click', minusSlide);
 next.addEventListener('click', plusSlide);
 
 /* Функция увеличивает индекс на 1, показывает следующй слайд*/
-function plusSlide() {
+function plusSlide(e) {
+  e.preventDefault();
   showSlides((slideIndex += 1));
 }
 
 /* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
-function minusSlide() {
+function minusSlide(e) {
+  e.preventDefault();
   showSlides((slideIndex -= 1));
 }
