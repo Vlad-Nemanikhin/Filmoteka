@@ -29,15 +29,14 @@
   padding: 10px;
 
   @media screen and (min-width: 768px) {
-    transform: translateX(-50%) translateY(0);
-    top: 2%;
+    transform: translate(-50%, 0);
     width: 630px;
   }
 
   @media screen and (min-width: 1024px) {
     height: auto;
-    top: 2%;
-    transform: translate(-50%) scale(1);
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 900px;
   }
 }
@@ -60,7 +59,8 @@
 
   transition: fill $anim-duration $anim-timing;
 }
-.close-btn-modal:hover {
+.close-btn-modal:hover,
+.close-btn__upper_modal:hover {
   cursor: pointer;
 
   background-color: lightblue;
@@ -137,7 +137,6 @@
   box-shadow: 0px 5px 10px 2px rgba(255, 107, 8, 0.2);
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 .team-item:last-child {
   margin-bottom: 0px;
@@ -227,34 +226,61 @@
   margin: 0 auto;
   width: 80%;
   height: 100%;
-  overflow: auto;
+}
+
+.close-btn__upper_modal {
+  background-color: transparent;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  fill: $secondary-text-color;
+  background-color: transparent;
+  border: 3px solid $accent-text-color;
+  border-radius: 25%;
+
+  transition: fill $anim-duration $anim-timing;
+  z-index: 5;
+
+  @media screen and (min-width: 768px) {
+    top: 10%;
+  }
 }
 
 .team-item__container {
   background-color: $footer-bg;
-  position: fixed;
+  position: absolute;
   transform: translate(-50%) scale(1);
   top: 2%;
-  left: 50%;
-  // clear: both;
+  left: 50vw;
   display: flex;
   content: '';
   padding: 10px;
-  border: 1px solid black;
+
   border-radius: 10px;
   min-width: 270px;
-  // max-width: 500px;
-  overflow: auto;
 
   @media screen and (min-width: 768px) {
-    max-width: 590px;
+    top: 50vh;
+    transform: translate(-55%, -50%) scale(1);
+    width: 590px;
     padding: 25px;
   }
 
   @media screen and (min-width: 1024px) {
+    transform: translate(-49%, -50%) scale(1);
     max-width: 840px;
-    height: 622px;
+
     width: 800px;
+    left: 50%;
   }
 }
 
@@ -290,13 +316,13 @@
   height: auto;
 
   @media screen and (min-width: 768px) {
-    // float: left;
-    width: 200px;
-    // position: relative;
+    // width: auto;
+    // height: 200px;
+    width: 40%;
   }
   @media screen and (min-width: 1024px) {
-    width: 350px;
-    height: 300px;
+    // height: 300px;
+    // width: auto;
   }
 }
 
@@ -305,6 +331,10 @@
     display: column;
     justify-content: center;
     align-items: center;
+    margin-left: 30px;
+    width: 50%;
+  }
+  @media screen and (min-width: 1024px) {
     margin-left: 20px;
   }
 }
@@ -332,23 +362,33 @@
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
     font-size: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 50px;
   }
 
   @media screen and (min-width: 1024px) {
     display: flex;
     font-size: 26px;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
   }
 }
 
 .slider-wrp {
-  position: relative;
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    top: 0hv;
+    position: relative;
+    width: 96%;
+    height: 50px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 1024px) {
+    position: relative;
+    width: 83%;
+    height: 0vh;
+    margin: 0 auto;
+  }
 }
 
 .team-item__social__upper {
@@ -356,16 +396,7 @@
   justify-content: space-around;
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
-    justify-content: center;
-  }
-}
-
-.team-item__social__upper > a:not(:last-child) {
-  @media screen and (min-width: 768px) {
-    margin-right: 10px;
-  }
-  @media screen and (min-width: 768px) {
-    margin-right: 40px;
+    justify-content: space-between;
   }
 }
 
@@ -400,9 +431,7 @@
   display: block;
   @media screen and (min-width: 768px) {
     width: 100%;
-    // position: relative;
     display: flex;
-    // align-items: stretch;
   }
   @media screen and (min-width: 1024px) {
   }
@@ -424,7 +453,6 @@
   @media screen and (min-width: 768px) {
     width: 50%;
     margin-bottom: 0px;
-    margin-right: 20px;
   }
   @media screen and (min-width: 1024px) {
   }
@@ -444,22 +472,12 @@
   line-height: 1.5;
 
   @media screen and (min-width: 768px) {
-    // margin-left: 30px;
   }
   @media screen and (min-width: 1024px) {
     font-size: 16px;
-    // margin-top: 65px;
-    // margin-left: 40px;
   }
 }
-/* Собственно сам слайдер */
-//.slider {
-//  max-width: 90%;
-//  position: relative;
-//  margin: auto;
-//  height: auto;
-//
-//}
+
 /* Картинка мастабируется по отношению к родительскому элементу */
 .slider .item img {
   object-fit: cover;
@@ -480,15 +498,19 @@
 .next {
   cursor: pointer;
   color: $accent-text-color;
+
   font-weight: bold;
-  font-size: 60px;
+  font-size: 25px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
+  @media screen and (min-width: 400px) {
+    font-size: 60px;
+  }
 }
 
 .prev {
   position: absolute;
-  top: 50%;
+  top: 50vh;
   left: 0;
   overflow: hidden;
   background-color: transparent;
@@ -500,7 +522,7 @@
 }
 .next {
   position: absolute;
-  top: 50%;
+  top: 50vh;
   right: 0;
   overflow: hidden;
   background-color: transparent;
