@@ -33,3 +33,11 @@
       contrast(112%);
   }
 }
+
+.tui-pagination .tui-first-child.tui-is-selected {
+  border-left: 1px solid orange;
+}
+
+.tui-pagination .tui-last-child.tui-is-selected {
+  border-right: 1px solid orange;
+}
