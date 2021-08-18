@@ -190,7 +190,6 @@
   margin: 20px 0;
   padding: 20px 0;
   top: 50vh;
-  // position: relative;
 }
 
 .team-item__social__upper {
@@ -205,7 +204,7 @@
 
 .team-social__icon__upper {
   fill: currentColor;
-  margin-right: 10%;
+  margin-right: 8%;
   width: 30px;
   height: 30px;
 
@@ -286,7 +285,7 @@
 }
 
 .team-item__name__upper {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 20px;
   font-weight: 700;
   margin-top: 20px;
@@ -377,30 +376,30 @@
 .slider .prev,
 .slider .next {
   cursor: pointer;
-  // position: absolute;
   display: flex;
   justify-content: flex-start;
-  top: 0%;
-  width: auto;
-  margin-top: 30px;
-  padding: 16px;
   color: $accent-text-color;
   font-weight: bold;
   font-size: 60px;
   transition: 0.6s ease;
-  border-radius: 3px;
+  border-radius: 0 3px 3px 0;
+  @media screen and (min-width: 768px) {
+    margin-top: -40px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-top: 30px
+
+  }
 }
 
 .slider .prev {
-  margin-top: 0.5vw;
-  margin-left: 5%;
-  border-radius: 3px;
+  margin-left: 20px;
 }
 .slider .next {
-  margin-top: 0.5vw;
-  margin-right: 5%;
-  border-radius: 3px;
+  margin-right: 20px;
+  border-radius: 3px 0 0 3px;
 }
+
 /* При наведении на кнопки добавляем фон кнопок */
 .slider .prev:hover,
 .slider .next:hover {
