@@ -1,5 +1,5 @@
-import { refs } from '../js/refs';
-import { renderTopMovies, fetchTopMovies, getGenres, renderGenres } from '../js/gallery/popular-movies';
+import { refs } from '../refs';
+import { renderTopMovies, fetchTopMovies, getGenres, renderGenres } from '../gallery/popular-movies';
 
 let initialPoint;
 let finalPoint;

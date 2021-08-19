@@ -5,21 +5,19 @@ import { fetchMovieById } from "./movies-API-service";
 import articleTpl from "../../handlebars/article.hbs";
 import { onAddWatchedBtnClick, renameToDeleteWatchedBtn } from "../library/add-to-watched-btn";
 import { onAddQueueBtnClick, renameToDeleteQueueBtn } from "../library/add-to-queu-btn";
+import { getYear } from 'date-fns';
 
 const lSAPI = new localStorageAPI();
 
 // 1 open by click on the movie-card (either mainPage or library)
 
 refs.galleryEl.addEventListener('click', onMovieCardClick);
-// refs.backdropEl.addEventListener('click', onBackdropClick);
-// refs.modalCloseEl.addEventListener('click', onModalCloseBtnClick);
-// window.addEventListener('keydown', onKeyEscPress);
+
 
 function onMovieCardClick(e) {
   if (e.target.nodeName !== 'IMG') {
     return
   }
-
   refs.backdropEl.addEventListener('click', onBackdropClick);
   refs.modalCloseEl.addEventListener('click', onModalCloseBtnClick);
   window.addEventListener('keydown', onKeyEscPress);
@@ -33,6 +31,8 @@ function onMovieCardClick(e) {
   refs.modalEl.classList.remove('modal--close');
 
   fetchMovieById(movieId).then(movie => {
+    movie.release_date = getYear(new Date(movie.release_date));
+    
     renderMarkupModal(articleTpl(movie));
     
     const addToWatchedBtn = document.querySelector('button[data-name="watched"]');
@@ -81,6 +81,7 @@ function onModalCloseBtnClick(e) {
   refs.modalWrap.classList.add('modal--close');
 
   refs.body.style.overflow = "visible";
+  refs.modalEl.innerHTML = '';
 
   refs.backdropEl.removeEventListener('click', onBackdropClick);
   window.removeEventListener('keydown', onKeyEscPress);
