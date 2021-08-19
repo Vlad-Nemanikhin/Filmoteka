@@ -60,11 +60,10 @@
   transition: fill $anim-duration $anim-timing;
 }
 
-.theme-dark> .modal__cross {
+.theme-dark > .modal__cross {
   color: #fff;
   fill: #fff;
 }
-
 
 .close-btn-modal:hover,
 .close-btn__upper_modal:hover {
@@ -109,7 +108,6 @@
 }
 
 .team-item {
-  // border: 1px solid black;
   -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -317,19 +315,13 @@
 
 .team-item__photo__upper {
   display: block;
-  // margin: 0 auto;
+
   width: 100%;
   border-radius: 5px;
   height: auto;
 
   @media screen and (min-width: 768px) {
-    // width: auto;
-    // height: 200px;
     width: 40%;
-  }
-  @media screen and (min-width: 1024px) {
-    // height: 300px;
-    // width: auto;
   }
 }
 
@@ -426,7 +418,6 @@
   @media screen and (min-width: 768px) {
     width: 30px;
     height: 30px;
-    // margin-right: 25px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -491,8 +482,7 @@
 /* Картинка мастабируется по отношению к родительскому элементу */
 .slider .item img {
   object-fit: cover;
-  // width: 100%;
-  // height: 300px;
+
   border: none !important;
   box-shadow: none !important;
 }
@@ -558,8 +548,8 @@
   animation-duration: 0.5s;
 }
 
-.item-color{
-color: black!important;
+.item-color {
+  color: black !important;
 }
 
 @-webkit-keyframes fade {
@@ -578,4 +568,3 @@ color: black!important;
     opacity: 1;
   }
 }
-
