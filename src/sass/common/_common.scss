@@ -3,6 +3,8 @@ html {
 }
 
 body {
+  position: relative;
+  min-height: 100vh;
   font-family: $main-font;
   font-weight: 500;
   background-color: $white-color;
