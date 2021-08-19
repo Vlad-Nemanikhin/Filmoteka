@@ -36,6 +36,7 @@ refs.homePageBtn.addEventListener('click', changeHeaderInHome);
 getGenres();
 //_________________________________________HOME______________________________
 function changeHeaderInHome() {
+  Notiflix.Loading.dots('Processing...');
   clearContainer();
   refs.header.classList.remove('header--library');
   refs.header.classList.add('header--home');
@@ -44,6 +45,7 @@ function changeHeaderInHome() {
   refs.myLib.classList.remove('header__navlink--currentlink');
   refs.homePageBtn.classList.add('header__navlink--currentlink');
   fetchTopMovies(page);
+  Notiflix.Loading.remove();
 }
 
 refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
