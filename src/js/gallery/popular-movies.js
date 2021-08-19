@@ -44,6 +44,41 @@ async function fetchTopMovies(page) {
     });
     //_________________________________________
 
+    //___________________Swipe_________________
+let initialPoint;
+let finalPoint;
+document.querySelector('.gallery').addEventListener('touchstart', function(event) {
+event.preventDefault();
+event.stopPropagation();
+initialPoint=event.changedTouches[0];
+}, false);
+document.querySelector('.gallery').addEventListener('touchend', function(event) {
+event.preventDefault();
+event.stopPropagation();
+finalPoint=event.changedTouches[0];
+let xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+
+  if (xAbs > 20) {
+    if (finalPoint.pageX < initialPoint.pageX) {
+            /*СВАЙП ВЛЕВО*/
+      if (currentPage === 1) { return } else {
+        clearContainer();
+        fetchTopMovies(currentPage - 1);
+        instance.movePageTo(currentPage - 1);
+      }
+      document.querySelector('.gallery').style.webkitTransition = 'left ease 0s';
+    }
+    else {
+      /*СВАЙП ВПРАВО*/
+      clearContainer();
+      fetchTopMovies(currentPage + 1);
+      instance.movePageTo(currentPage + 1);
+      document.querySelector('.gallery').style.webkitTransition = 'right ease 0s';
+    }
+  }
+}, false);
+//__________________________________________________________
+
     renderTopMovies(movies);
     renderGenres(movies);
     Notiflix.Loading.remove();
@@ -72,7 +107,6 @@ function renderTopMovies(movies) {
 function renderGenres(movies) {
   const galleryItem = document.querySelectorAll('.gallery__info-genre');
   const galleryItems = [...galleryItem];
-  //console.log(galleryItems)
 
   galleryItems.map((div, i) => {
     const result = movies.map(movie => {
@@ -94,7 +128,7 @@ function renderGenres(movies) {
           genreString = genreArray.join(', ');
         }
       });
-      //console.log(genreString)
+      
       return genreString;
     });
 
