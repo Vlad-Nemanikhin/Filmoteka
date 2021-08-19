@@ -93,12 +93,11 @@ function renderGenres(movies) {
           genreString = genreArray.join(', ');
         }
       });
-      
+
       return genreString;
     });
 
     const li = `<li class="gallery__info-item">${result[i]}</li>`;
-    //console.log(li)
     div.insertAdjacentHTML('afterbegin', li);
   });
 }

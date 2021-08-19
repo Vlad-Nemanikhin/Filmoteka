@@ -26,7 +26,6 @@ function onMylibraryClick() {
   refs.wrapperBtnInHeader.classList.remove('hidden_markup');
   refs.homePageBtn.classList.remove('header__navlink--currentlink');
   refs.myLib.classList.add('header__navlink--currentlink');
-  //   galeryRating.classList.remove('hidden_markup');
 }
 
 refs.homePageBtn.addEventListener('click', changeHeaderInHome);
@@ -69,10 +68,3 @@ function displayQuereMovies() {
   refs.headBtnWachedEl.classList.remove('library__btn--active');
   refs.myLib.classList.add('header__navlink--currentlink');
 }
-
-// export default {
-//     changeHeaderinLibrary,
-//     changeHeaderinHome,
-//     displayWatchedMovies,
-//     displayQuereMovies
-//  };

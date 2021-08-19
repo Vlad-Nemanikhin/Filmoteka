@@ -7,7 +7,6 @@ const QUERY = '&language=en&language=ru&include_adult=false';
 async function fetchGenres() {
     const responce = await axios.get(`https://api.themoviedb.org/3/genre/movie/list${KEY}&language=en&language=ru`);
     const genres = await responce;
-    //console.log(genres.data.genres);
     return genres.data;
 }
 
@@ -33,7 +32,6 @@ async function fetchMoviesByQuery(movie, page) {
 async function fetchMovieById(movieId) {
     const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}${KEY}&language=en&language=ru`);
     const movie = await response;
-    // console.log(movie.data);
     return movie.data;
 }
 
