@@ -1,4 +1,3 @@
-import { refs } from '../refs';
 
 function hideCloseButton() {
 	document.querySelector('.close-btn-modal').classList.add('hide');

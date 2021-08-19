@@ -24,6 +24,7 @@ import {
   getGenres,
   renderGenres,
 } from './js/gallery/popular-movies';
+import './js/swipe';
 import renderArticle from './js/gallery/render-modal-one-card';
 import * as renderFilms from './js/gallery/renderFilmsFromSubmit';
 import * as topScrollBtn from './js/top-btn-scroll';
