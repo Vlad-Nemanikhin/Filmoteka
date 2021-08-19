@@ -23,12 +23,14 @@ export function getMoviesCards(e) {
       .then(res => {
         //выводим сообщение при неудачном поиске
         if (res.total_results === 0) {
+          refs.tPagination.classList.add('hidden');
           refs.notifyEl.classList.add('search__hint--blocked');
           Notiflix.Notify.failure(`No results were found...`);
           clearContainer();
           fPagination().reset();
         } else {
           refs.notifyEl.classList.remove('search__hint--blocked');
+          refs.tPagination.classList.remove('hidden');
           //запускаем спиннер
           Notiflix.Loading.dots('Processing...');
           //___________ПАГИНАЦИЯ_______________________
@@ -67,24 +69,23 @@ export function getMoviesCards(e) {
       .catch(error => {
         console.dir(error);
       });
-  } 
+  }
 }
 
 //при очистке сабмита/потере фокуса, если он пустой - отображаем популярные фильмы
 
 refs.inputEl.addEventListener('input', getTopMoviesAgain);
 
-function getTopMoviesAgain (e) {
+function getTopMoviesAgain(e) {
   resetPage();
   if (!e.target.value.length) {
-    clearContainer()
+    clearContainer();
     getGenres();
     fetchTopMovies(page);
     refs.notifyEl.classList.remove('search__hint--blocked');
   }
   return;
 }
-
 
 //рендерит разметку по шаблону
 function renderFilms(data, arrOfGenres, totalResult) {
