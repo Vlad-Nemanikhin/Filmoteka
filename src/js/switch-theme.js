@@ -20,62 +20,51 @@ const Modal = {
   DARK: 'theme--dark',
 }
 
+function changeMainTheme(element, newClass, oldClass) {
+  element.classList.add(newClass);
+  element.classList.remove(oldClass);
+}
+
 themeToggle.addEventListener('click', onToggleClick);
 
 function onToggleClick(evt) {
   const checked = evt.currentTarget.checked;
   if (checked) {
-    document.body.classList.add(Theme.DARK);
-    document.body.classList.remove(Theme.LIGHT);
-    modalWrapper.classList.remove(Modal.LIGHT);
-    modalWrapper.classList.add(Modal.DARK);
-    footer.classList.add(Footer.DARK);
-    footer.classList.remove(Footer.LIGHT);
-    tuiToggle.classList.add(Theme.DARK);
-    tuiToggle.classList.remove(Theme.LIGHT);
+    changeMainTheme(document.body, Theme.DARK, Theme.LIGHT);
+    changeMainTheme(modalWrapper, Modal.DARK, Modal.LIGHT);
+    changeMainTheme(footer, Footer.DARK, Footer.LIGHT);
+    changeMainTheme(tuiToggle, Theme.DARK, Theme.LIGHT);
+
     localStorage.setItem('bodyTheme', Theme.DARK);
     themeToggle.checked = true;
     
-
   } else {
-    document.body.classList.remove(Theme.DARK);
-    document.body.classList.add(Theme.LIGHT);
-    modalWrapper.classList.remove(Modal.DARK);
-    modalWrapper.classList.add(Modal.LIGHT );
-    footer.classList.remove(Footer.DARK);
-    footer.classList.add(Footer.LIGHT);
-    tuiToggle.classList.add(Theme.LIGHT);
-    tuiToggle.classList.remove(Theme.DARK);
+    changeMainTheme(document.body, Theme.LIGHT, Theme.DARK);
+    changeMainTheme(modalWrapper, Modal.LIGHT, Modal.DARK);
+    changeMainTheme(footer, Footer.LIGHT, Footer.DARK);
+    changeMainTheme(tuiToggle, Theme.LIGHT, Theme.DARK);
+
     localStorage.setItem('bodyTheme', Theme.LIGHT);
     themeToggle.checked = false;
   }
 }
 
 checkBodyTheme();
+
 function checkBodyTheme() {
   const currentThemeMod = localStorage.getItem('bodyTheme');
   if (currentThemeMod === Theme.DARK) {
-    document.body.classList.add(Theme.DARK);
-    document.body.classList.remove(Theme.LIGHT);
-
-    modalWrapper.classList.remove(Modal.LIGHT);
-    modalWrapper.classList.add(Modal.DARK);
-
-    footer.classList.add(Footer.DARK);
-    footer.classList.remove(Footer.LIGHT);
+    changeMainTheme(document.body, Theme.DARK, Theme.LIGHT);
+    changeMainTheme(modalWrapper, Modal.DARK, Modal.LIGHT);
+    changeMainTheme(footer, Footer.DARK, Footer.LIGHT);
     
     localStorage.setItem('bodyTheme', Theme.DARK);
     themeToggle.checked = true;
   }
   if (currentThemeMod === Theme.LIGHT) {
-    document.body.classList.remove(Theme.DARK);
-    document.body.classList.add(Theme.LIGHT);
-
-    footer.classList.remove(Footer.DARK);
-    footer.classList.add(Footer.LIGHT);
-
-    modalWrapper.classList.remove(Modal.DARK);
-    modalWrapper.classList.add(Modal.LIGHT );
+    changeMainTheme(document.body, Theme.LIGHT, Theme.DARK);
+    changeMainTheme(modalWrapper, Modal.LIGHT, Modal.DARK);
+    changeMainTheme(footer, Footer.LIGHT, Footer.DARK);
 
     localStorage.setItem('bodyTheme', Theme.LIGHT);
     themeToggle.checked = false;
