@@ -143,6 +143,8 @@
     text-transform: uppercase;
     text-decoration: none;
     color: $white-color;
+    background: transparent;
+    border: none;
 
     &:not(:last-child) {
       margin-right: 40px;
