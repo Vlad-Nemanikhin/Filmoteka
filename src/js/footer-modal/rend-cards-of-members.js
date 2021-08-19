@@ -14,20 +14,19 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 let slideIndex;
 
-
 //! Создание разметки карточки
 /* Индекс слайда по умолчанию */
 const createTeamCardElements = teamItems.map(
-({
-   photoLink,
-   teamItemName,
-   teamPosition,
-   gitLink,
-   emailLink,
-   linkedinLink,
-   telNumber,
-   mainDuties,
-}) => {
+  ({
+    photoLink,
+    teamItemName,
+    teamPosition,
+    gitLink,
+    emailLink,
+    linkedinLink,
+    telNumber,
+    mainDuties,
+  }) => {
     return `
   <li class="team-item__container item">
   <div class="img-wrp">
@@ -38,7 +37,7 @@ const createTeamCardElements = teamItems.map(
       <p class="team-item__position__upper">${teamPosition}</p>
 
     <div class="team-item__social__upper">
-      <a href="${gitLink}" class="team-item__social-link__upper"
+      <a href="${gitLink}" target="_blank" class="team-item__social-link__upper"
         ><svg class="team-social__icon__upper" width="30" height="30">
           <use href="${gitIcon}"></use>
         </svg>
@@ -47,7 +46,7 @@ const createTeamCardElements = teamItems.map(
         ><svg class="team-social__icon__upper" width="30" height="30">
           <use href="${mailIcon}"></use></svg
       ></a>
-      <a href="${linkedinLink}" class="team-item__social-link__upper"
+      <a href="${linkedinLink}" target="_blank" class="team-item__social-link__upper"
         ><svg class="team-social__icon__upper" width="30" height="30">
           <use href="${linkedInIcon}"></use></svg
       ></a>
@@ -77,39 +76,38 @@ refs.teamCardList.insertAdjacentHTML('afterbegin', createTeamCardElements.join('
 photoLink.addEventListener('click', showUpperModal);
 
 function showUpperModal(e) {
-e.preventDefault();
-	if (!refs.modalFooter.classList.contains('modal--close') && e.target.nodeName === 'IMG') {
-	hideCloseButton();
-	const cardId = e.target.dataset.id;
-	return currentSlide(cardId);
-   }
+  if (!refs.modalFooter.classList.contains('modal--close') && e.target.nodeName === 'IMG') {
+    hideCloseButton();
+    const cardId = e.target.dataset.id;
+    return currentSlide(cardId);
+  }
 }
 
 //* скрытие второй  модалки
 
 //Закрытие по ESC и работа стрелок
 function onKeyEscLeftRightPress(e) {
-if (e.code === 'Escape') {
-   if (!refs.teamCard.classList.contains('modal--close')) {
+  if (e.code === 'Escape') {
+    if (!refs.teamCard.classList.contains('modal--close')) {
       onUpperBackdropClose();
-      } else {
+    } else {
       footModalClose();
-      }
-   }
-   if (e.code === 'ArrowLeft') {
-      minusSlide();
-   }
-   if (e.code === 'ArrowRight') {
-      plusSlide();
-   }
+    }
+  }
+  if (e.code === 'ArrowLeft') {
+    minusSlide();
+  }
+  if (e.code === 'ArrowRight') {
+    plusSlide();
+  }
 }
 
 //скрытие по клику бэкдроп
 refs.teamCard.addEventListener('click', onUpperBackdropClick);
 function onUpperBackdropClick(e) {
-if (e.target === e.currentTarget) {
-   onUpperBackdropClose();
-   }
+  if (e.target === e.currentTarget) {
+    onUpperBackdropClose();
+  }
 }
 
 //  скрытие по крестику
@@ -117,11 +115,11 @@ closeBtmUpperModal.addEventListener('click', onUpperBackdropClose);
 
 // сама функция скрытия второй модалки
 function onUpperBackdropClose(e) {
-   refs.teamCard.classList.add('modal--close');
-	slideIndex = null;
-	prev.removeEventListener('keydown', onKeyEscLeftRightPress);
-	next.removeEventListener('keydown', onKeyEscLeftRightPress);
-	showCloseButton();
+  refs.teamCard.classList.add('modal--close');
+  slideIndex = null;
+  prev.removeEventListener('keydown', onKeyEscLeftRightPress);
+  next.removeEventListener('keydown', onKeyEscLeftRightPress);
+  showCloseButton();
 }
 
 prev.addEventListener('click', minusSlide);

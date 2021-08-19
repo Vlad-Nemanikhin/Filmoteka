@@ -36,7 +36,7 @@ const createTeamElements = teamItems
           <h3 class="team-item__name">${teamItemName}</h3>
           <p class="team-item__position">${teamPosition}</p>
           <div class="team-item__social">
-            <a href="${gitLink}" class="team-item__social-link"
+            <a href="${gitLink}" target="_blank" class="team-item__social-link"
               ><svg class="team-social__icon" width="18" height="18">
                 <use width="18" height="18" href="${gitIcon}"></use>
               </svg>
@@ -45,7 +45,7 @@ const createTeamElements = teamItems
               ><svg class="team-social__icon" width="18" height="18">
                 <use width="18" height="18" href="${mailIcon}"></use></svg
             ></a>
-            <a href="${linkedinLink}" class="team-item__social-link"
+            <a href="${linkedinLink}" target="_blank" class="team-item__social-link"
               ><svg class="team-social__icon" width="18" height="18">
                 <use width="18" height="18" href="${linkedInIcon}"></use></svg
             ></a>
@@ -73,21 +73,23 @@ function onDeveloperLinkClick(e) {
   window.addEventListener('keydown', onKeyEscLeftRightPress);
   hideButton();
 
-  changeToDarkTheme();
+  themeColorChek();
 
   refs.body.style.overflow = 'hidden';
 }
 
 // Применение темной темы
-function changeToDarkTheme() {
+function themeColorChek() {
   if (document.body.classList.contains('dark-theme')) {
-    refs.modalFooter.classList.add('theme-dark');
-    refs.modalFooter.classList.remove('theme-light');
+    changeTheme('theme-dark', 'theme-light');
   } else {
-    refs.modalFooter.classList.add('theme-light');
-    refs.modalFooter.classList.remove('theme-dark');
-    document.querySelector('.team-item__container').classList.remove('item-color');
+    changeTheme('theme-light', 'theme-dark');
   }
+}
+
+function changeTheme(newest, old) {
+  refs.modalFooter.classList.add(newest);
+  refs.modalFooter.classList.remove(old);
 }
 
 //Закрытие модалки по крестику
@@ -112,4 +114,4 @@ function onFootBackdropClick(e) {
   }
 }
 
-export { onDeveloperLinkClick, changeToDarkTheme, footModalClose, onFootBackdropClick };
+export { onDeveloperLinkClick, themeColorChek, footModalClose, onFootBackdropClick, changeTheme };
