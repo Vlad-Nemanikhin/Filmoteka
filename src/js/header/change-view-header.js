@@ -6,9 +6,11 @@ import clearMarkup from '../library/clear-markup-library';
 import renderLibraryMarkup from '../library/render-library-markup';
 import galleryLibTpl from '../../handlebars/galleryLib.hbs';
 import fPagination from '../gallery/pagination';
+import { fetchTopMovies, getGenres, clearContainer } from '../gallery/popular-movies';
 
+let page = 1;
 const lSAPI = new localStorageAPI();
-
+//____________________________LIBRARY________________________________
 refs.myLib.addEventListener('click', onMylibraryClick);
 
 function onMylibraryClick() {
@@ -29,14 +31,19 @@ function onMylibraryClick() {
 }
 
 refs.homePageBtn.addEventListener('click', changeHeaderInHome);
-refs.homePageLogo.addEventListener('click', changeHeaderInHome);
+//refs.homePageLogo.addEventListener('click', changeHeaderInHome);
 
+getGenres();
+//_________________________________________HOME______________________________
 function changeHeaderInHome() {
+  clearContainer();
   refs.header.classList.remove('header--library');
   refs.header.classList.add('header--home');
   refs.wrapperBtnInHeader.classList.add('hidden_markup');
   refs.searchSectionEl.classList.remove('hidden_markup');
   refs.myLib.classList.remove('header__navlink--currentlink');
+  refs.homePageBtn.classList.add('header__navlink--currentlink');
+  fetchTopMovies(page);
 }
 
 refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
