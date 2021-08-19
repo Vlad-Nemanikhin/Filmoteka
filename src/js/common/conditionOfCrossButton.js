@@ -1,11 +1,11 @@
 import { refs } from '../refs';
 
 function hideCloseButton() {
-	refs.closeModalBtn.classList.add('hide');
+	document.querySelector('.close-btn-modal').classList.add('hide');
 }
 
 function showCloseButton() {
-	refs.closeModalBtn.classList.remove('hide');
+	document.querySelector('.close-btn-modal').classList.remove('hide');
 }
 
 export { hideCloseButton, showCloseButton };

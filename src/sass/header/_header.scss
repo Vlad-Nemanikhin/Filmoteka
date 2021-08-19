@@ -236,6 +236,10 @@
   }
 }
 
+.search__input::placeholder{
+  color: $white-color;
+}
+
 .search__hint {
   display: none;
   font-size: 14px;

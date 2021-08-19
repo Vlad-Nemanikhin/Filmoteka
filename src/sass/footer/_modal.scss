@@ -347,6 +347,7 @@
 }
 
 .team-item__name__upper {
+  color: $accent-text-color;
   font-size: 18px;
   line-height: 20px;
   font-weight: 700;
@@ -362,7 +363,7 @@
 }
 
 .team-item__position__upper {
-  color: $accent-text-color;
+  color: black;
   font-size: 18px;
   line-height: 20px;
   margin-top: 10px;
@@ -445,6 +446,7 @@
 }
 
 .team-item__upper2 {
+  color: $accent-text-color;
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
     width: 40%;
@@ -456,6 +458,7 @@
 }
 
 .team-item__upper3 {
+  color: $secondary-text-color;
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
     width: 50%;
@@ -554,6 +557,11 @@
   animation-name: fade;
   animation-duration: 0.5s;
 }
+
+.item-color{
+color: black!important;
+}
+
 @-webkit-keyframes fade {
   from {
     opacity: 0.4;
@@ -570,3 +578,4 @@
     opacity: 1;
   }
 }
+
