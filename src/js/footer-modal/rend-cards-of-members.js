@@ -29,8 +29,6 @@ const createTeamCardElements = teamItems.map(
   }) => {
     return `
   <li class="team-item__container item">
-    <div class="team-item__container-wrap-light">
-
   <div class="img-wrp">
     <img src="${photoLink}" alt="member" class="team-item__photo__upper" />
 
@@ -67,8 +65,6 @@ const createTeamCardElements = teamItems.map(
       <p class="team-item__discr__upper">${mainDuties}</p>
     </div>
   </div>
-    </div>
-
 </li>`;
   },
 );
@@ -84,7 +80,6 @@ function showUpperModal(e) {
     hideCloseButton();
     const cardId = e.target.dataset.id;
     return currentSlide(cardId);
-    changeToDarkThemeTeamCard;
   }
 }
 
@@ -132,29 +127,4 @@ next.addEventListener('click', plusSlide);
 prev.addEventListener('keydown', onKeyEscLeftRightPress);
 next.addEventListener('keydown', onKeyEscLeftRightPress);
 
-function changeToDarkThemeTeamCard() {
-  if (document.body.classList.contains('dark-theme')) {
-    document
-      .querySelector('.team-item__container-wrap')
-      .classList.add('team-item__container-wrap-dark');
-    document
-      .querySelector('.team-item__container')
-      .classList.remove('team-item__container-wrap-light');
-  } else {
-    document
-      .querySelector('.team-item__container')
-      .classList.add('team-item__container-wrap-light');
-    document
-      .querySelector('.team-item__container')
-      .classList.remove('team-item__container-wrap-dark');
-    document.querySelector('.team-item__container').classList.remove('item-color');
-  }
-}
-
-export {
-  showUpperModal,
-  onKeyEscLeftRightPress,
-  onUpperBackdropClick,
-  onUpperBackdropClose,
-  changeToDarkThemeTeamCard,
-};
+export { showUpperModal, onKeyEscLeftRightPress, onUpperBackdropClick, onUpperBackdropClose };
