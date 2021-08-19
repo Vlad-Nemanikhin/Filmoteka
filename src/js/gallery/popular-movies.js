@@ -111,4 +111,4 @@ function clearContainer() {
   return;
 }
 
-export { renderTopMovies, fetchTopMovies, getGenres, renderGenres };
+export { renderTopMovies, fetchTopMovies, getGenres, renderGenres, clearContainer };
