@@ -72,7 +72,6 @@ function renderTopMovies(movies) {
 function renderGenres(movies) {
   const galleryItem = document.querySelectorAll('.gallery__info-genre');
   const galleryItems = [...galleryItem];
-  //console.log(galleryItems)
 
   galleryItems.map((div, i) => {
     const result = movies.map(movie => {
@@ -94,12 +93,10 @@ function renderGenres(movies) {
           genreString = genreArray.join(', ');
         }
       });
-      //console.log(genreString)
       return genreString;
     });
 
     const li = `<li class="gallery__info-item">${result[i]}</li>`;
-    //console.log(li)
     div.insertAdjacentHTML('afterbegin', li);
   });
 }

@@ -36,9 +36,6 @@ export function getMoviesCards(e) {
           const totalHits = res.total_pages;
           let currentPage = res.page;
           Notiflix.Notify.success(`Found ${totalResult} films`);
-          // console.log('Найдено всего', totalResult);
-          // console.log('кол-во страниц', totalHits);
-          // console.log('текущая страница', currentPage);
 
           const instance = fPagination();
           instance.setItemsPerPage(20);
@@ -177,7 +174,6 @@ async function saveGenres() {
 
 //Выоводит массив массивов имен жанров по каждому объекту фильма согласно их genre_ids. Номер индекса подмассива жанров в массиве соответствует номеру индекса объекта фильма
 function getNameOfGenre(parsedId, parsedName, data) {
-  //console.log(data);
   let idx = 0;
   let gNames = [];
   let foundName = '';
