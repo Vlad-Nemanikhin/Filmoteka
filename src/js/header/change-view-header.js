@@ -22,7 +22,6 @@ function onMylibraryClick() {
   } else {
     renderLibraryMarkup(galleryLibTpl(lSAPI.getWatchedFilms()));
   }
-
   refs.header.classList.remove('header--home');
   refs.header.classList.add('header--library');
   refs.searchSectionEl.classList.add('hidden_markup');
@@ -79,3 +78,4 @@ function displayQuereMovies() {
   refs.headBtnWachedEl.classList.remove('library__btn--active');
   refs.myLib.classList.add('header__navlink--currentlink');
 }
+export { onMylibraryClick, changeHeaderInHome };
