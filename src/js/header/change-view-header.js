@@ -42,6 +42,7 @@ function changeHeaderInHome() {
   refs.wrapperBtnInHeader.classList.add('hidden_markup');
   refs.searchSectionEl.classList.remove('hidden_markup');
   refs.myLib.classList.remove('header__navlink--currentlink');
+  refs.homePageBtn.classList.add('header__navlink--currentlink');
   fetchTopMovies(page);
 }
 
