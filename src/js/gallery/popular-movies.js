@@ -93,6 +93,7 @@ function renderGenres(movies) {
           genreString = genreArray.join(', ');
         }
       });
+
       return genreString;
     });
 
