@@ -70,3 +70,5 @@ function checkBodyTheme() {
     themeToggle.checked = false;
   }
 }
+
+export { changeMainTheme };

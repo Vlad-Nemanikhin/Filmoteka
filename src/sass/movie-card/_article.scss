@@ -250,3 +250,13 @@
   display: block;
   margin-bottom: 10px;
 }
+
+.btn--dark {
+  color: $accent-btn-color;
+  border-color: $accent-btn-color;
+
+  :hover,
+  :focus {
+    border-color: $accent-btn-color;
+  }
+}

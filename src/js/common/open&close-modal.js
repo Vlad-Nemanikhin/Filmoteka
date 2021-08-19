@@ -6,6 +6,7 @@ import articleTpl from "../../handlebars/article.hbs";
 import { onAddWatchedBtnClick, renameToDeleteWatchedBtn } from "../library/add-to-watched-btn";
 import { onAddQueueBtnClick, renameToDeleteQueueBtn } from "../library/add-to-queu-btn";
 import { getYear } from 'date-fns';
+import { changeMainTheme } from '../switch-theme';
 
 const lSAPI = new localStorageAPI();
 
@@ -53,6 +54,14 @@ function onMovieCardClick(e) {
       const button = refs.modalEl.querySelector('button[data-name="queue"]');
 
       renameToDeleteQueueBtn(button)
+    }
+
+    if (document.body.classList.contains('dark-theme')) {
+      changeMainTheme(addToWatchedBtn,'btn--dark','btn--light');
+      changeMainTheme(addToQueueBtn,'btn--dark','btn--light');
+    } else {
+      changeMainTheme(addToWatchedBtn,'btn--light','btn--dark');
+      changeMainTheme(addToQueueBtn,'btn--light','btn--dark');
     }
     
     renderGenres(movie);
