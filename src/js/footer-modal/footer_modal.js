@@ -73,21 +73,23 @@ function onDeveloperLinkClick(e) {
   window.addEventListener('keydown', onKeyEscLeftRightPress);
   hideButton();
 
-  changeToDarkTheme();
+  themeColorChek();
 
   refs.body.style.overflow = 'hidden';
 }
 
 // Применение темной темы
-function changeToDarkTheme() {
+function themeColorChek() {
   if (document.body.classList.contains('dark-theme')) {
-    refs.modalFooter.classList.add('theme-dark');
-    refs.modalFooter.classList.remove('theme-light');
+    changeTheme('theme-dark', 'theme-light');
   } else {
-    refs.modalFooter.classList.add('theme-light');
-    refs.modalFooter.classList.remove('theme-dark');
-    document.querySelector('.team-item__container').classList.remove('item-color');
+    changeTheme('theme-light', 'theme-dark');
   }
+}
+
+function changeTheme(newest, old) {
+  refs.modalFooter.classList.add(newest);
+  refs.modalFooter.classList.remove(old);
 }
 
 //Закрытие модалки по крестику
@@ -112,4 +114,4 @@ function onFootBackdropClick(e) {
   }
 }
 
-export { onDeveloperLinkClick, changeToDarkTheme, footModalClose, onFootBackdropClick };
+export { onDeveloperLinkClick, themeColorChek, footModalClose, onFootBackdropClick, changeTheme };

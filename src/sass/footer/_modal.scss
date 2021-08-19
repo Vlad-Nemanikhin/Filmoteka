@@ -580,3 +580,11 @@
     opacity: 1;
   }
 }
+
+.modal-theme__dark {
+  background-color: #333333;
+}
+
+.team-item__container.modal-theme__dark .team-item__position__upper {
+  color: #fff;
+}
