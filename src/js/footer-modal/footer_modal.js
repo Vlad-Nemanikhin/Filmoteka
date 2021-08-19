@@ -36,7 +36,7 @@ const createTeamElements = teamItems
           <h3 class="team-item__name">${teamItemName}</h3>
           <p class="team-item__position">${teamPosition}</p>
           <div class="team-item__social">
-            <a href="${gitLink}" class="team-item__social-link"
+            <a href="${gitLink}" target="_blank" class="team-item__social-link"
               ><svg class="team-social__icon" width="18" height="18">
                 <use width="18" height="18" href="${gitIcon}"></use>
               </svg>
@@ -45,7 +45,7 @@ const createTeamElements = teamItems
               ><svg class="team-social__icon" width="18" height="18">
                 <use width="18" height="18" href="${mailIcon}"></use></svg
             ></a>
-            <a href="${linkedinLink}" class="team-item__social-link"
+            <a href="${linkedinLink}" target="_blank" class="team-item__social-link"
               ><svg class="team-social__icon" width="18" height="18">
                 <use width="18" height="18" href="${linkedInIcon}"></use></svg
             ></a>
