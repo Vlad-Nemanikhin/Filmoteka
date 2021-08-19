@@ -5,7 +5,7 @@ import localStorageAPI from '../common/localStorageAPI';
 import clearMarkup from '../library/clear-markup-library';
 import renderLibraryMarkup from '../library/render-library-markup';
 import galleryLibTpl from '../../handlebars/galleryLib.hbs';
-import fPagination from '../gallery/pagination';
+//import fPagination from '../gallery/pagination';
 import { fetchTopMovies, getGenres, clearContainer } from '../gallery/popular-movies';
 
 let page = 1;
@@ -15,7 +15,8 @@ refs.myLib.addEventListener('click', onMylibraryClick);
 
 function onMylibraryClick() {
   clearMarkup();
-  fPagination().reset();
+  // fPagination().reset();
+  refs.tPagination.classList.add('hidden');
   if (lSAPI.getWatchedFilms().length === 0) {
     Notiflix.Notify.info('You have not watched movies');
   } else {
@@ -45,6 +46,7 @@ function changeHeaderInHome() {
   refs.myLib.classList.remove('header__navlink--currentlink');
   refs.homePageBtn.classList.add('header__navlink--currentlink');
   fetchTopMovies(page);
+  refs.tPagination.classList.remove('hidden');
   Notiflix.Loading.remove();
 }
 
