@@ -46,6 +46,7 @@ function changeHeaderInHome() {
   refs.myLib.classList.remove('header__navlink--currentlink');
   refs.homePageBtn.classList.add('header__navlink--currentlink');
   fetchTopMovies(page);
+  refs.tPagination.classList.remove('hidden');
   Notiflix.Loading.remove();
 }
 
