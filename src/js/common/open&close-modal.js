@@ -34,12 +34,14 @@ function onMovieCardClick(e) {
     movie.release_date = getYear(new Date(movie.release_date));
     
     renderMarkupModal(articleTpl(movie));
+
+    const newMovie = makeNewMovie(movie);
     
     const addToWatchedBtn = document.querySelector('button[data-name="watched"]');
-    addToWatchedBtn.addEventListener('click', onAddWatchedBtnClick.bind(addToWatchedBtn, movie));
+    addToWatchedBtn.addEventListener('click', onAddWatchedBtnClick.bind(addToWatchedBtn, newMovie));
     
     const addToQueueBtn = document.querySelector('button[data-name="queue"]');
-    addToQueueBtn.addEventListener('click', onAddQueueBtnClick.bind(addToQueueBtn, movie))
+    addToQueueBtn.addEventListener('click', onAddQueueBtnClick.bind(addToQueueBtn, newMovie))
     
     if (lSAPI.isHasFilmInWatched(movie)) {
       const button = refs.modalEl.querySelector('button[data-name="watched"]');
@@ -73,6 +75,34 @@ function renderGenres(movie) {
     div.insertAdjacentHTML('beforeEnd', li);
   });
 }
+
+function makeNewMovie(movie) {
+    const newMovie = {...movie};
+    const galleryItem = document.querySelectorAll('.modal__value');
+    const galleryItems = [...galleryItem]; 
+    const movieGenres = movie.genres;
+    let array = [];
+    let genreString;
+
+      galleryItems.map((div, i) => {
+          movieGenres.map(gener => {
+            const moviegener = localStorage.getItem(gener.id);
+            array.push(moviegener);
+          });    
+        });
+        
+        if (array.length < 3) {
+          genreString = array.join(', ');
+        } else {
+          const newGenreArray = array.slice(0, 2);
+          newGenreArray.push('другие');
+          genreString = newGenreArray.join(', ');
+        }
+      
+    newMovie.genres = genreString;
+    
+    return newMovie
+  }
 
 // 2 close by click on modalCloseButton
 function onModalCloseBtnClick(e) {

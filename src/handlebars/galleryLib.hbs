@@ -3,8 +3,13 @@
   <div class="gallery__image-wrapper"><img data-src="https://image.tmdb.org/t/p/w500{{poster_path}}"
       alt="{{original_title}}" loading="lazy" class="lazyload blur-up"></div>
   <p class="gallery__info-name">{{title}}</p>
-  <ul class="gallery__info-genre">{{#each genre_names}}<li class="gallery__info-item">{{this}}</li>{{/each}}<li
-      class="gallery__info-item gallery__date">| {{release_date}}</li>
+  <ul class="gallery__info-genre">
+    <li class="gallery__info-item">
+      {{genres}}
+    </li>
+    <li class="gallery__info-item gallery__date">
+      | {{release_date}}
+    </li>
     <li class="gallery__info-item gallery__info-rating">{{vote_average}}</li>
   </ul>
 </li>
