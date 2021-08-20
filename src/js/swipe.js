@@ -23,7 +23,7 @@ page1.addEventListener('touchmove', handleTouchMove, { passive: false })
 
 function handleTouchMove (event) {
 	event.stopPropagation();
-	event.preventDefault();
+	//event.preventDefault();
 	let otk = {};
 	nowPoint = event.changedTouches[0];
 	otk.x = nowPoint.pageX-startPoint.x;
@@ -32,15 +32,16 @@ function handleTouchMove (event) {
 	/*Обработайте данные*/
 	/*Для примера*/
 	//right-left
-	if(Math.abs(otk.x)>Math.abs(otk.y)){
+	
 		//Если проводит больше 70px - swipe
-		if(Math.abs(otk.x)>70){
+		if(Math.abs(otk.x)>160){
 			//Если смещение влево - двигаем страницу 
 			if (otk.x < 0) {
-				page1.style.right = '-' + otk.x + 'px';
-				page1.style.left = otk.x + 'px';
+				page1.style.right = 40  + 'px';
+				//'-' + otk.x + 'px';
+				page1.style.left = -40  + 'px';
 				//Смещение влево второй страницы 
-				if (Math.abs(otk.x)>70) {
+				if (Math.abs(otk.x)>30) {
 					page1.style.display = "block";
 					page1.style.right = "0";
 					page1.style.transition = "right 500ms linear";
@@ -48,10 +49,10 @@ function handleTouchMove (event) {
 			}
 			//Если смещение вправо - двигаем страницу
 			if (otk.x > 0) {
-				page1.style.left = otk.x + 'px';
-				page1.style.right = '-' + otk.x + 'px';
+				page1.style.right = 40  + 'px';
+				page1.style.left = 40   + 'px';
 				//Смещение вправо второй страницы
-				if (Math.abs(otk.x) > 70) {
+				if (Math.abs(otk.x) > 30) {
 					page1.style.display = "block";
 					page1.style.right = "0";
 					page1.style.transition = "right 500ms linear";
@@ -59,7 +60,7 @@ function handleTouchMove (event) {
 			}
 			startPoint={ x: nowPoint.pageX,  y: nowPoint.pageY,};
 		}
-	}
+	
 }
 
 //__________________Ловим отпускание пальца__________________
@@ -74,7 +75,7 @@ function handleTouchEnd (event) {
 	//if (xAbs > 40 || yAbs > 40){
 	//if (xAbs > yAbs) {
 	//если отпускают палец при 40px и больше по X - swipe
-	if (xAbs > 20 && yAbs<40) {console.log(xAbs, yAbs);
+	if (xAbs > 60 && yAbs<20) {console.log(xAbs, yAbs);
 		//если смещение влево - листаем вправо и наоборот
 		if (nowPoint.pageX < startPoint.x) {
 			Notiflix.Loading.dots('Processing...');
