@@ -5,7 +5,7 @@ import localStorageAPI from '../common/localStorageAPI';
 import clearMarkup from '../library/clear-markup-library';
 import renderLibraryMarkup from '../library/render-library-markup';
 import galleryLibTpl from '../../handlebars/galleryLib.hbs';
-//import fPagination from '../gallery/pagination';
+import fPagination from '../gallery/pagination';
 import { fetchTopMovies, getGenres, clearContainer } from '../gallery/popular-movies';
 
 let page = 1;
