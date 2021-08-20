@@ -59,10 +59,7 @@ function handleTouchMove (event) {
 			}
 			startPoint={ x: nowPoint.pageX,  y: nowPoint.pageY,};
 		}
-	} else{
-		return false;
 	}
-	
 }
 
 //__________________Ловим отпускание пальца__________________
