@@ -5,6 +5,7 @@ import { fetchMovieById } from "./movies-API-service";
 import articleTpl from "../../handlebars/article.hbs";
 import { onAddWatchedBtnClick, renameToDeleteWatchedBtn } from "../library/add-to-watched-btn";
 import { onAddQueueBtnClick, renameToDeleteQueueBtn } from "../library/add-to-queu-btn";
+import {handleTouch, handleTouchMove, handleTouchEnd } from '../swipe';
 import { getYear } from 'date-fns';
 import { changeMainTheme } from '../switch-theme';
 
@@ -19,6 +20,9 @@ function onMovieCardClick(e) {
   if (e.target.nodeName !== 'IMG') {
     return
   }
+  document.querySelector('.js-swipe-home').removeEventListener('touchstart', handleTouch, { passive: false });
+  document.querySelector('.js-swipe-home').removeEventListener('touchmove', handleTouchMove, { passive: false });
+  document.querySelector('.js-swipe-home').removeEventListener('touchend', handleTouchEnd, {passive: false}); 
   refs.backdropEl.addEventListener('click', onBackdropClick);
   refs.modalCloseEl.addEventListener('click', onModalCloseBtnClick);
   window.addEventListener('keydown', onKeyEscPress);
@@ -27,7 +31,7 @@ function onMovieCardClick(e) {
   refs.modalWrap.classList.remove('modal--close');
 
   const movieId = e.target.parentNode.parentNode.dataset.id;
-
+  
   refs.backdropEl.classList.remove('backdrop--is-hidden');
   refs.modalEl.classList.remove('modal--close');
 

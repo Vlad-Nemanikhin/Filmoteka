@@ -1,78 +1,106 @@
 import { onMylibraryClick, changeHeaderInHome } from './header/change-view-header';
+import Notiflix from 'notiflix';
 
 
 const page1 = document.querySelector('.js-swipe-home');
-//const page2 = document.querySelector('.js-swipe-lib');
 
-var startPoint={};
-var nowPoint;
-page1.addEventListener('touchstart', function(event) {
-event.stopPropagation();
-startPoint.x=event.changedTouches[0].pageX;
-startPoint.y=event.changedTouches[0].pageY;
-//console.log(event);
-}, false);
-/*Ловим движение пальцем*/
-page1.addEventListener('touchmove', function(event) {
-event.stopPropagation();
-var otk={};
+let startPoint={};
+let nowPoint;
+//_____________________Touches_______________________________________
+page1.addEventListener('touchstart', handleTouch, { passive: false });
+//____________________Обработчик касания_____________________________
+function handleTouch(event){
+	event.stopPropagation();
+	startPoint.x=event.changedTouches[0].pageX;
+	startPoint.y=event.changedTouches[0].pageY;
+};
+//________________________________________________________________________
+
+//_______________________Ловим движение пальцем___________________________
+page1.addEventListener('touchmove', handleTouchMove, { passive: false })
+
+//____________________Обработчик отрезка проведенного пальцем__________________________
+
+function handleTouchMove (event) {
+	event.stopPropagation();
+	event.preventDefault();
+	let otk = {};
 	nowPoint = event.changedTouches[0];
-otk.x=nowPoint.pageX-startPoint.x;
-/*Обработайте данные*/
-/*Для примера*/
-if(Math.abs(otk.x)>50){
-	if (otk.x < 0) {
-		page1.style.right = '-' + otk.x + 'px';
-		page1.style.left = otk.x + 'px';
-		page1.style.boxShadow = "0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);"
-		if (Math.abs(otk.x)>50) {
-			page1.style.display = "block";
-			page1.style.left = "0";
-			page1.style.transition = "left 500ms linear";
+	otk.x = nowPoint.pageX-startPoint.x;
+	otk.y = nowPoint.pageY-startPoint.y;
+	//console.log(nowPoint.pageX, nowPoint.pageY)
+	/*Обработайте данные*/
+	/*Для примера*/
+	//right-left
+	if(Math.abs(otk.x)>Math.abs(otk.y)){
+		//Если проводит больше 70px - swipe
+		if(Math.abs(otk.x)>70){
+			//Если смещение влево - двигаем страницу 
+			if (otk.x < 0) {
+				page1.style.right = '-' + otk.x + 'px';
+				page1.style.left = otk.x + 'px';
+				//Смещение влево второй страницы 
+				if (Math.abs(otk.x)>70) {
+					page1.style.display = "block";
+					page1.style.right = "0";
+					page1.style.transition = "right 500ms linear";
+				}
+			}
+			//Если смещение вправо - двигаем страницу
+			if (otk.x > 0) {
+				page1.style.left = otk.x + 'px';
+				page1.style.right = '-' + otk.x + 'px';
+				//Смещение вправо второй страницы
+				if (Math.abs(otk.x) > 70) {
+					page1.style.display = "block";
+					page1.style.right = "0";
+					page1.style.transition = "right 500ms linear";
+				}
+			}
+			startPoint={ x: nowPoint.pageX,  y: nowPoint.pageY,};
 		}
+	} else{
+		return false;
 	}
-	if (otk.x > 0) {
-		page1.style.left = otk.x + 'px';
-		page1.style.right = '-' + otk.x + 'px';
-		page1.style.boxShadow = "0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);"
-		if (Math.abs(otk.x) > 50) {
-			page1.style.display = "block";
-			page1.style.right = "0";
-			page1.style.transition = "right 500ms linear";
-		}
-		
-	}
-	//console.log(startPoint.x);
-	//console.log(nowPoint.pageX);
-	//console.log(otk.x);
-	//console.log(event);
-startPoint={x:nowPoint.pageX,y:nowPoint.pageY};
+	
 }
-}, false);
-/*Ловим отпускание пальца*/
-page1.addEventListener('touchend', function(event) {
-	//console.log(event);
+
+//__________________Ловим отпускание пальца__________________
+page1.addEventListener('touchend', handleTouchEnd, {passive: false}); 
+
+//__________________Обработчик отпускания пальца__________________
+function handleTouchEnd (event) {
+	
 	nowPoint = event.changedTouches[0];
 	let xAbs = Math.abs(startPoint.x - nowPoint.pageX);
-	//console.log(event);
-	if (xAbs > 20) {
-		console.log('event');
+	let yAbs = Math.abs(startPoint.y - nowPoint.pageY);
+	//if (xAbs > 40 || yAbs > 40){
+	//if (xAbs > yAbs) {
+	//если отпускают палец при 40px и больше по X - swipe
+	if (xAbs > 40 && yAbs<20) {console.log(xAbs, yAbs);
+		//если смещение влево - листаем вправо и наоборот
 		if (nowPoint.pageX < startPoint.x) {
-			console.log('event');
+			Notiflix.Loading.dots('Processing...');
 				console.log('L');
 			onMylibraryClick();
 			normalizeBody(xAbs, nowPoint.pageX, startPoint.x);
+			Notiflix.Loading.remove();
 			}
 		else {
+			Notiflix.Loading.dots('Processing...');
 			changeHeaderInHome();
 			console.log('R');
 			normalizeBody(xAbs, nowPoint.pageX, startPoint.x);
+			Notiflix.Loading.remove();
 		}
-	}
-}, false);
+	} 
+	//}
+	//}
+};
 
+//__________________
 function normalizeBody(xAbs, a, b){
-	if (a < b && xAbs > 20) {
+	if (a < b) {
 		page1.style.display = "block";
 		page1.style.right = "0";
 		page1.style.transition = "right 500ms linear";
@@ -82,3 +110,5 @@ function normalizeBody(xAbs, a, b){
 	page1.style.transition = "left 500ms linear";
 	
 }
+
+export {handleTouch, handleTouchMove, handleTouchEnd };

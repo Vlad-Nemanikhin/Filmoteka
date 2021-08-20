@@ -3,6 +3,7 @@ import { onKeyEscLeftRightPress } from './rend-cards-of-members';
 import { teamItems } from './info-about-team';
 import { hangScrollBtn } from '../top-btn-scroll';
 import { hideButton, showButton } from '../common/conditionOfScrollBtn';
+import {handleTouch, handleTouchMove, handleTouchEnd } from '../swipe';
 import icons from '../../images/sprite.svg';
 const gitIcon = `${icons}#git_icon`;
 const mailIcon = `${icons}#mail_icon`;
@@ -65,6 +66,9 @@ refs.teamList.insertAdjacentHTML('beforeend', createTeamElements);
 refs.developerLink.addEventListener('click', onDeveloperLinkClick);
 function onDeveloperLinkClick(e) {
   e.preventDefault();
+  document.querySelector('.js-swipe-home').removeEventListener('touchstart', handleTouch, { passive: false });
+  document.querySelector('.js-swipe-home').removeEventListener('touchmove', handleTouchMove, { passive: false });
+  document.querySelector('.js-swipe-home').removeEventListener('touchend', handleTouchEnd, {passive: false}); 
   refs.backdropFooter.classList.remove('backdrop--is-hidden');
   refs.modalFooter.classList.remove('modal--close');
   refs.backdropFooter.addEventListener('click', onFootBackdropClick);

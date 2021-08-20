@@ -135,3 +135,10 @@ overflow: hidden;
 .hide{
   display: none!important; 
 }
+
+main{
+  min-height: calc(100vh - 100px);
+  @media screen and (min-width: 768px){
+		min-height: calc(100vh - 77px);
+	}
+}
