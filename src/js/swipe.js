@@ -74,7 +74,7 @@ function handleTouchEnd (event) {
 	//if (xAbs > 40 || yAbs > 40){
 	//if (xAbs > yAbs) {
 	//если отпускают палец при 40px и больше по X - swipe
-	if (xAbs > 40 && yAbs<20) {console.log(xAbs, yAbs);
+	if (xAbs > 20 && yAbs<40) {console.log(xAbs, yAbs);
 		//если смещение влево - листаем вправо и наоборот
 		if (nowPoint.pageX < startPoint.x) {
 			Notiflix.Loading.dots('Processing...');
@@ -96,7 +96,7 @@ function handleTouchEnd (event) {
 };
 
 //__________________
-function normalizeBody(xAbs, a, b){
+function normalizeBody(a, b){
 	if (a < b) {
 		page1.style.display = "block";
 		page1.style.right = "0";
