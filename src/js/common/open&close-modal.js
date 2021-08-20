@@ -119,6 +119,10 @@ function makeNewMovie(movie) {
 
 // 2 close by click on modalCloseButton
 function onModalCloseBtnClick(e) {
+  if (e.currentTarget.nodeName !== 'BUTTON') {
+    return;
+  };
+
   refs.modalEl.classList.add('modal--close');
   refs.backdropEl.classList.add('backdrop--is-hidden');
   refs.modalWrap.classList.add('modal--close');
@@ -132,32 +136,36 @@ function onModalCloseBtnClick(e) {
 
 // 3 close by click on backdrop (remove eventListener on modal)
 function onBackdropClick(e) {
-  if (e.target === e.currentTarget) {
-    refs.backdropEl.classList.add('backdrop--is-hidden');
+  if (e.target !== e.currentTarget) {
+    return;
+  };
 
-    refs.modalEl.classList.add('modal--close');
+  refs.backdropEl.classList.add('backdrop--is-hidden');
 
-    refs.modalWrap.classList.add('modal--close');
+  refs.modalEl.classList.add('modal--close');
 
-    refs.body.style.overflow = "visible";
+  refs.modalWrap.classList.add('modal--close');
 
-    window.removeEventListener('keydown', onKeyEscPress);
-    refs.modalCloseEl.removeEventListener('click', onModalCloseBtnClick);
-  }
+  refs.body.style.overflow = "visible";
+
+  window.removeEventListener('keydown', onKeyEscPress);
+  refs.modalCloseEl.removeEventListener('click', onModalCloseBtnClick);
 }
 
 // 4 close by click on Esc-key
 function onKeyEscPress(e) {
-    if (e.code === 'Escape') {
-      refs.backdropEl.classList.add('backdrop--is-hidden');
-      refs.modalEl.classList.add('modal--close');
-      refs.modalWrap.classList.add('modal--close');
-      
-      refs.body.style.overflow = "visible";
+    if (e.code !== 'Escape') {
+      return;
+    }
 
-      refs.backdropEl.removeEventListener('click', onBackdropClick);
-      refs.modalCloseEl.removeEventListener('click', onModalCloseBtnClick);
-  }
+    refs.backdropEl.classList.add('backdrop--is-hidden');
+    refs.modalEl.classList.add('modal--close');
+    refs.modalWrap.classList.add('modal--close');
+    
+    refs.body.style.overflow = "visible";
+
+    refs.backdropEl.removeEventListener('click', onBackdropClick);
+    refs.modalCloseEl.removeEventListener('click', onModalCloseBtnClick);
 }
 
 export {onMovieCardClick, onModalCloseBtnClick, onBackdropClick, onKeyEscPress, renderGenres}
