@@ -35,9 +35,11 @@ refs.homePageBtn.addEventListener('click', changeHeaderInHome);
 
 getGenres();
 //_________________________________________HOME______________________________
-function changeHeaderInHome() {
+function changeHeaderInHome(e) {
   Notiflix.Loading.dots('Processing...');
   clearContainer();
+  refs.notifyEl.classList.remove('search__hint--blocked');
+  refs.inputEl.value = '';
   refs.header.classList.remove('header--library');
   refs.header.classList.add('header--home');
   refs.wrapperBtnInHeader.classList.add('hidden_markup');
@@ -47,6 +49,7 @@ function changeHeaderInHome() {
   fetchTopMovies(page);
   refs.tPagination.classList.remove('hidden');
   Notiflix.Loading.remove();
+  
 }
 
 refs.headBtnWachedEl.addEventListener('click', displayWatchedMovies);
